@@ -2,37 +2,26 @@ function get_sets()
     send_command("@input /macro book 2;wait .1;input /macro set 1")
 
     sets.Idle = {
-        ammo = "Staunch Tathlum +1",
+        ammo = "Yamarang",
         head = "Turms Cap +1",
-        body = "Meg. Cuirie +2",
-        hands = {
-            name = "Herculean Gloves",
-            augments = {
-                "Phys. dmg. taken -5%",
-                "STR+10",
-                "Accuracy+7",
-                "Attack+7"
-            }
-        },
-        legs = "Mummu Kecks +2",
-        feet = "Meg. Jam. +2",
+        body = "Malignance Tabard",
+        hands = "Malignance Gloves",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots",
         neck = "Loricate Torque +1",
-        waist = "Engraved Belt",
-        left_ear = "Genmei Earring",
-        right_ear = "Hearty Earring",
-        left_ring = "Defending Ring",
-        right_ring = "Vocane Ring",
+        waist = "Windbuffet Belt +1",
+        left_ear = "Sherida Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Ilabrat Ring",
+        right_ring = "Defending Ring",
         back = {
             name = "Toutatis's Cape",
             augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+5",
-                '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
+                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
+                'Damage taken-5%'
             }
         }
-    } -- DT 28
+    }
 
     sets.Engaged = {
         ammo = "Yamarang",
@@ -62,45 +51,34 @@ function get_sets()
         back = {
             name = "Toutatis's Cape",
             augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+5",
-                '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
+                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
+                'Damage taken-5%'
             }
         }
     }
 
     DT = false
-    sets.PDT =
-        set_combine(
-        sets.Engaged,
-        {
-            ammo = "Staunch Tathlum +1",
-            head = {
-                name = "Adhemar Bonnet +1",
-                augments = {"DEX+12", "AGI+12", "Accuracy+20"}
-            },
-            body = "Meg. Cuirie +2",
-            hands = "Meg. Gloves +2",
-            legs = "Meg. Chausses +2",
-            feet = "Meg. Jam. +2",
-            neck = "Loricate Torque +1",
-            waist = "Dynamic Belt",
-            left_ring = "Warden's ring",
-            right_ring = "Defending Ring",
-            back = {
-                name = "Toutatis's Cape",
-                augments = {
-                    "DEX+20",
-                    "Accuracy+20 Attack+20",
-                    "DEX+5",
-                    '"Dbl.Atk."+10',
-                    "Phys. dmg. taken-10%"
-                }
+    sets.PDT = {
+        ammo = "Yamarang",
+        head = "Malignance Chapeau",
+        body = "Malignance Tabard",
+        hands = "Malignance Gloves",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots",
+        neck = "Assassin's Gorget",
+        waist = "Windbuffet Belt +1",
+        left_ear = "Sherida Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Ilabrat Ring",
+        right_ring = "Defending Ring",
+        back = {
+            name = "Toutatis's Cape",
+            augments = {
+                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
+                'Damage taken-5%'
             }
         }
-    )
+    }
 
     TH = false
     sets.TH = {
@@ -108,6 +86,28 @@ function get_sets()
             name = "Plun. Armlets +3",
             augments = {'Enhances "Perfect Dodge" effect'}
         },
+    }
+
+    sets.THDT = {
+        ammo = "Yamarang",
+        head = "Malignance Chapeau",
+        body = "Malignance Tabard",
+        hands = "Plun. Armlets +3",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots",
+        neck = "Loricate Torque +1",
+        waist = "Windbuffet Belt +1",
+        left_ear = "Sherida Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Ilabrat Ring",
+        right_ring = "Defending Ring",
+        back = {
+            name = "Toutatis's Cape",
+            augments = {
+                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
+                'Damage taken-5%'
+            }
+        }
     }
 
     sets.WeaponSkill = {
@@ -231,11 +231,17 @@ function status_change(new, old)
 end
 
 function status_change_engaged()
-    equip(sets.Engaged)
+    if DT and TH then
+        equip(sets.THDT)
+        return
+    end
 
     if DT then
         equip(sets.PDT)
+        return
     end
+
+    equip(sets.Engaged)
 
     if TH then
         equip(sets.TH)
