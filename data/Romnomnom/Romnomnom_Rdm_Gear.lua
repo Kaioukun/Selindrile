@@ -37,8 +37,8 @@ function user_job_setup()
     state.MagicalDefenseMode:options('MDT')
     state.ResistDefenseMode:options('MEVA')
     state.Weapons:options(
-		'None'
-		-- 'Naegling', 
+		'None',
+		'Naegling'
 		-- 'Sequence', 
 		-- 'DualWeapons',
 		-- 'DualWeaponsAcc', 
@@ -80,8 +80,8 @@ function user_job_setup()
     gear.wsd_jse_back = {
         name = "Sucellos's Cape",
         augments = {
-            --'STR+20', 'Accuracy+20 Attack+20', 'STR+10',
-            --'Weapon skill damage +10%'
+            'STR+20', 'Accuracy+20 Attack+20', 'STR+10',
+            'Weapon skill damage +10%'
         }
     }
 
@@ -102,14 +102,10 @@ function user_job_setup()
     send_command('bind @\\\\ input /ma "Shell V" <t>')
     send_command('bind !\\\\ input /ma "Reraise" <me>')
     send_command('bind @f10 gs c cycle RecoverMode')
-    send_command(
-        'bind ^r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c weapons Default;gs c set unlockweapons false')
-    send_command(
-        'bind ^q gs c set weapons enspellonly;gs c set unlockweapons true')
-    send_command(
-        'bind !r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c set weapons none')
-    send_command(
-        'bind @r gs c set skipprocweapons false;gs c set weapons DualProcDaggers;gs c set weaponskillmode proc')
+    -- send_command('bind ^r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c weapons Default;gs c set unlockweapons false')
+    -- send_command('bind ^q gs c set weapons enspellonly;gs c set unlockweapons true')
+    -- send_command('bind !r gs c set skipprocweapons true;gs c reset weaponskillmode;gs c set weapons none')
+    -- send_command('bind @r gs c set skipprocweapons false;gs c set weapons DualProcDaggers;gs c set weaponskillmode proc')
 
     select_default_macro_book()
 end
@@ -164,16 +160,16 @@ function init_gear_sets()
     sets.precast.WS = {
         -- range = empty,
         -- ammo = "Ginsen",
-        -- head = "Viti. Chapeau +1",
-        -- neck = "Asperity Necklace",
+        head = "Viti. Chapeau +1",
+        neck = "Asperity Necklace",
         -- left_ear = "Cessance Earring",
-        -- right_ear = "Sherida Earring",
-        -- body = "Ayanmo Corazza +2",
-        -- hands = "Aya. Manopolas +2",
+        right_ear = "Sherida Earring",
+        body = "Ayanmo Corazza +2",
+        hands = "Aya. Manopolas +2",
         -- left_ring = "Petrov Ring",
-        -- right_ring = "Ilabrat Ring",
-        -- back = gear.wsd_jse_back,
-        -- waist = "Windbuffet Belt +1",
+        right_ring = "Ilabrat Ring",
+        back = gear.wsd_jse_back,
+        waist = "Windbuffet Belt",
         -- legs = "Carmine Cuisses +1",
         -- feet = "Carmine Greaves +1"
     }
@@ -185,13 +181,13 @@ function init_gear_sets()
         -- neck = "Combatant's Torque",
         -- left_ear = "Mache Earring +1",
         -- right_ear = "Telos Earring",
-        -- body = "Malignance Tabard",
+        body = "Malignance Tabard",
         -- hands = "Malignance Gloves",
         -- left_ring = "Ramuh Ring +1",
         -- right_ring = "Ramuh Ring +1",
-        -- back = gear.wsd_jse_back,
+        back = gear.wsd_jse_back,
         -- waist = "Olseni Belt",
-        -- legs = "Malignance Tights",
+        legs = "Malignance Tights",
         -- feet = "Malignance Boots"
     }
 
@@ -199,18 +195,18 @@ function init_gear_sets()
     sets.precast.WS['Requiescat'] = {
         -- range = empty,
         -- ammo = "Regal Gem",
-        -- head = "Jhakri Coronal +2",
+        head = "Jhakri Coronal +2",
         -- neck = "Fotia Gorget",
-        -- left_ear = "Moonshade Earring",
-        -- right_ear = "Sherida Earring",
-        -- body = "Jhakri Robe +2",
-        -- hands = "Atrophy Gloves +1",
+        left_ear = "Moonshade Earring",
+        right_ear = "Sherida Earring",
+        body = "Jhakri Robe +2",
+        hands = "Atrophy Gloves +1",
         -- left_ring = "Ifrit Ring +1",
         -- right_ring = "Rufescent Ring",
-        -- back = gear.wsd_jse_back,
+        back = gear.wsd_jse_back,
         -- waist = "Fotia Belt",
-        -- legs = "Jhakri Slops +2",
-        -- feet = "Jhakri Pigaches +2"
+        legs = "Jhakri Slops +2",
+        feet = "Jhakri Pigaches +2"
     }
 
     sets.precast.WS['Chant Du Cygne'] = {
@@ -218,13 +214,13 @@ function init_gear_sets()
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Fotia Gorget",
-        -- left_ear = "Moonshade Earring",
-        -- right_ear = "Sherida Earring",
-        -- body = "Ayanmo Corazza +2",
-        -- hands = "Atrophy Gloves +1",
+        left_ear = "Moonshade Earring",
+        right_ear = "Sherida Earring",
+        body = "Ayanmo Corazza +2",
+        hands = "Atrophy Gloves +1",
         -- left_ring = "Begrudging Ring",
-        -- right_ring = "Ilabrat Ring",
-        -- back = gear.wsd_jse_back,
+        right_ring = "Ilabrat Ring",
+        back = gear.wsd_jse_back,
         -- waist = "Fotia Belt",
         -- legs = "Carmine Cuisses +1",
         -- feet = "Thereoid Greaves"
@@ -235,18 +231,18 @@ function init_gear_sets()
     sets.precast.WS['Savage Blade'] = {
         -- range = empty,
         -- ammo = "Regal Gem",
-        -- head = "Viti. Chapeau +1",
+        head = "Viti. Chapeau +1",
         -- neck = "Caro Necklace",
-        -- left_ear = "Moonshade Earring",
+        left_ear = "Moonshade Earring",
         -- right_ear = "Ishvara Earring",
-        -- body = "Viti. Tabard +1",
-        -- hands = "Atrophy Gloves +1",
+        body = "Viti. Tabard +1",
+        hands = "Atrophy Gloves +1",
         -- left_ring = "Ifrit Ring +1",
         -- right_ring = "Rufescent Ring",
-        -- back = gear.wsd_jse_back,
+        back = gear.wsd_jse_back,
         -- waist = "Sailfi Belt +1",
-        -- legs = "Jhakri Slops +2",
-        -- feet = "Jhakri Pigaches +2"
+        legs = "Jhakri Slops +2",
+        feet = "Jhakri Pigaches +2"
     }
 
     sets.precast.WS['Sanguine Blade'] = {
@@ -254,13 +250,13 @@ function init_gear_sets()
         -- ammo = "Pemphredo Tathlum",
         -- head = "Pixie Hairpin +1",
         -- neck = "Baetyl Pendant",
-        -- left_ear = "Regal Earring",
-        -- right_ear = "Malignance Earring",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
         -- body = gear.merlinic_nuke_body,
-        -- hands = "Jhakri Cuffs +2",
+        hands = "Jhakri Cuffs +2",
         -- left_ring = "Metamor. Ring +1",
-        -- right_ring = "Archon Ring",
-        -- back = gear.nuke_jse_back,
+        right_ring = "Archon Ring",
+        back = gear.nuke_jse_back,
         -- waist = "Refoccilation Stone",
         -- legs = "Merlinic Shalwar",
         -- feet = gear.merlinic_nuke_feet
@@ -271,13 +267,13 @@ function init_gear_sets()
         -- ammo = "Pemphredo Tathlum",
         -- head = gear.merlinic_nuke_head,
         -- neck = "Baetyl Pendant",
-        -- left_ear = "Regal Earring",
-        -- right_ear = "Malignance Earring",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
         -- body = gear.merlinic_nuke_body,
-        -- hands = "Jhakri Cuffs +2",
+        hands = "Jhakri Cuffs +2",
         -- left_ring = "Shiva Ring +1",
         -- right_ring = "Shiva Ring +1",
-        -- back = gear.nuke_jse_back,
+        back = gear.nuke_jse_back,
         -- waist = "Refoccilation Stone",
         -- legs = "Merlinic Shalwar",
         -- feet = gear.merlinic_nuke_feet
@@ -288,13 +284,13 @@ function init_gear_sets()
         -- ammo = "Pemphredo Tathlum",
         -- head = gear.merlinic_nuke_head,
         -- neck = "Baetyl Pendant",
-        -- left_ear = "Regal Earring",
-        -- right_ear = "Malignance Earring",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
         -- body = gear.merlinic_nuke_body,
-        -- hands = "Jhakri Cuffs +2",
+        hands = "Jhakri Cuffs +2",
         -- left_ring = "Metamor. Ring +1",
         -- right_ring = "Shiva Ring +1",
-        -- back = gear.nuke_jse_back,
+        back = gear.nuke_jse_back,
         -- waist = "Refoccilation Stone",
         -- legs = "Merlinic Shalwar",
         -- feet = gear.merlinic_nuke_feet
@@ -319,13 +315,13 @@ function init_gear_sets()
         -- hands = "Amalric Gages +1",
         -- left_ring = "Mujin Band",
         -- legs = "Ea Slops",
-        -- feet = "Jhakri Pigaches +2"
+        feet = "Jhakri Pigaches +2"
     }
 
     sets.midcast.FastRecast = {
         -- main = gear.grioavolr_fc_staff,
         -- sub = "Clerisy Strap +1",
-        -- ammo = "Hasty Pinion +1",
+        ammo = "Hasty Pinion +1",
         head = "Atro. Chapeau +1",
         neck = "Voltsurge Torque",
         -- left_ear = "Enchntr. Earring +1",
@@ -804,19 +800,19 @@ function init_gear_sets()
         -- head = "Pixie Hairpin +1",
         left_ear = "Mendicant's Earring",
         -- right_ear = "Evans Earring",
-        -- body = "Jhakri Robe +2",
-        -- hands = "Jhakri Cuffs +2",
+        body = "Jhakri Robe +2",
+        hands = "Jhakri Cuffs +2",
         -- left_ring = "Mephitas's Ring +1",
         -- right_ring = "Mephitas's Ring",
         -- back = "Swith Cape +1",
         -- legs = "Shedir Seraweels",
-        -- feet = "Jhakri Pigaches +2"
+        feet = "Jhakri Pigaches +2"
     }
 
     sets.HPCure = {
         main = "Daybreak",
         sub = "Sors Shield",
-        -- ammo = "Hasty Pinion +1",
+        ammo = "Hasty Pinion +1",
         -- head = "Gende. Caubeen +1",
         -- neck = "Unmoving Collar +1",
         -- left_ear = "Gifted Earring",
@@ -845,7 +841,7 @@ function init_gear_sets()
         -- neck = "Loricate Torque +1",
         left_ear = "Etiolation Earring",
         -- right_ear = "Ethereal Earring",
-        -- body = "Jhakri Robe +2",
+        body = "Jhakri Robe +2",
         -- hands = gear.merlinic_refresh_hands,
         left_ring = "Defending Ring",
         -- right_ring = "Sheltered Ring",
@@ -925,7 +921,7 @@ function init_gear_sets()
 		sub = "Ammurapi Shield"
 	}
     sets.weapons.Naegling = {
-		-- main = "Naegling", 
+		main = "Kaja sword", -- "Naegling", 
 		sub = "Ammurapi Shield"
 	}
     sets.weapons.Almace = {
