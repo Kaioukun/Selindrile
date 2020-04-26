@@ -2,17 +2,17 @@ function get_sets()
     send_command("@input /macro book 2;wait .1;input /macro set 1")
 
     sets.Idle = {
-        ammo = "Yamarang",
+        ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
         legs = "Malignance Tights",
         feet = "Malignance Boots",
         neck = "Loricate Torque +1",
-        waist = "Windbuffet Belt +1",
-        left_ear = "Sherida Earring",
-        right_ear = "Telos Earring",
-        left_ring = "Ilabrat Ring",
+        waist = "Engraved Belt",
+        left_ear = "Infused Earring",
+        right_ear = "Hearty Earring",
+        left_ring = "Warp Ring",
         right_ring = "Defending Ring",
         back = {
             name = "Toutatis's Cape",
