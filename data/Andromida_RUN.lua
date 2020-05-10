@@ -1,5 +1,5 @@
 function get_sets()
-    send_command("@input /macro book 6;wait .1;input /macro set 1")
+    send_command("input /macro book 6;input /macro set 1;input /lockstyleset 6")
 
     incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 

@@ -1,5 +1,5 @@
 function get_sets()
-    send_command("@input /macro book 2;wait .1;input /macro set 1")
+    send_command("input /macro book 2;input /macro set 1;input /lockstyleset 8")
 
     sets.Idle = {
         ammo = "Staunch Tathlum +1",
