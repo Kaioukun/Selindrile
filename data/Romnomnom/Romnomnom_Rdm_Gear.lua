@@ -399,17 +399,17 @@ function init_gear_sets()
         left_ear = "Etiolation Earring",
         -- hands = "Buremte Gloves",
         -- right_ring = "Kunaji Ring",
-        -- waist = "Gishdubar Sash"
+        waist = "Gishdubar Sash"
     }
     sets.Cure_Received = {
         -- neck = "Phalaina Locket",
         -- hands = "Buremte Gloves",
         -- right_ring = "Kunaji Ring",
-        -- waist = "Gishdubar Sash"
+        waist = "Gishdubar Sash"
     }
     sets.Self_Refresh = {
 		-- back = "Grapevine Cape", 
-		-- waist = "Gishdubar Sash"
+		waist = "Gishdubar Sash"
 	}
 
     sets.midcast['Enhancing Magic'] = {
