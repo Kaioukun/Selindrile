@@ -29,7 +29,7 @@ function get_sets()
     }
     -- sets.Idle.Kite = {}
 
-    sets.Engaged = {mode = "Melee"}
+    sets.Engaged = {mode = "Tank"}
     sets.Engaged.Melee = {
         ammo = "Ginsen",
         head = {
