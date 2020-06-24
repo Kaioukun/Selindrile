@@ -1,6 +1,4 @@
 function get_sets()
-    send_command("input /macro book 6;input /macro set 1;input /lockstyleset 6")
-
     incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 
     sets.Idle = {
@@ -14,7 +12,7 @@ function get_sets()
         waist = "Engraved Belt",
         left_ear = "Genmei Earring",
         right_ear = "Odnowa Earring +1",
-        left_ring = "Vocane Ring",
+        left_ring = "Vocane Ring +1",
         right_ring = "Defending Ring",
         back = {
             name = "Ogma's cape",
@@ -76,7 +74,7 @@ function get_sets()
         waist = "Flume Belt",
         left_ear = "Genmei Earring",
         right_ear = "Odnowa Earring +1",
-        left_ring = "Vocane Ring",
+        left_ring = "Vocane Ring +1",
         right_ring = "Defending Ring",
         back = {
             name = "Ogma's cape",
@@ -99,7 +97,7 @@ function get_sets()
         waist = "Flume Belt",
         left_ear = "Genmei Earring",
         right_ear = "Odnowa Earring +1",
-        left_ring = "Vocane Ring",
+        left_ring = "Vocane Ring +1",
         right_ring = "Defending Ring",
         back = {
             name = "Ogma's cape",
@@ -312,6 +310,8 @@ function get_sets()
     sets.Midcast["Divine Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Dark Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Blue Magic"] = set_combine(sets.Emnity, {})
+
+    send_command("wait 1; input /macro book 6; wait 1; input /macro set 1; wait 1; input /lockstyleset 6")
 end
 
 --[[

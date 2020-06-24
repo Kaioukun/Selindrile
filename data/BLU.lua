@@ -596,5 +596,6 @@ buff_spell_lists = {
 		{Name='Blink',				Buff='Blink',			SpellID=53,		Reapply=false},
 		{Name='Carcharian Verve',	Buff='Aquaveil',		SpellID=745,	Reapply=false},
 		{Name='Memento Mori',		Buff='Magic Atk. Boost',SpellID=538,	Reapply=false},
+		{Name='Aquaveil',			Buff='Aquaveil',		SpellID=55,		Reapply=false},
 	},
 }

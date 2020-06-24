@@ -38,7 +38,8 @@ function user_job_setup()
     state.ResistDefenseMode:options('MEVA')
     state.Weapons:options(
 		'None',
-		'Naegling'
+        'Naegling',
+        'Daybreak'
 		-- 'Sequence', 
 		-- 'DualWeapons',
 		-- 'DualWeaponsAcc', 
@@ -80,8 +81,8 @@ function user_job_setup()
     gear.wsd_jse_back = {
         name = "Sucellos's Cape",
         augments = {
-            'STR+20', 'Accuracy+20 Attack+20', 'STR+10',
-            'Weapon skill damage +10%'
+            -- 'STR+20', 'Accuracy+20 Attack+20', 'STR+10',
+            -- 'Weapon skill damage +10%'
         }
     }
 
@@ -131,8 +132,9 @@ function init_gear_sets()
     sets.precast.FC = {
         -- main = gear.grioavolr_fc_staff,
         -- sub = "Clerisy Strap +1",
+        range = empty,
         -- ammo = "Impatiens",
-        head = "Atro. Chapeau +1",
+        head = "Atro. Chapeau +2",
         neck = "Voltsurge Torque",
         -- left_ear = "Enchntr. Earring +1",
         right_ear = "Malignance Earring",
@@ -197,10 +199,10 @@ function init_gear_sets()
         -- ammo = "Regal Gem",
         head = "Jhakri Coronal +2",
         -- neck = "Fotia Gorget",
-        left_ear = "Moonshade Earring",
+        -- left_ear = "Moonshade Earring",
         right_ear = "Sherida Earring",
         body = "Jhakri Robe +2",
-        hands = "Atrophy Gloves +1",
+        hands = "Atrophy Gloves +2",
         -- left_ring = "Ifrit Ring +1",
         -- right_ring = "Rufescent Ring",
         back = gear.wsd_jse_back,
@@ -214,10 +216,10 @@ function init_gear_sets()
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Fotia Gorget",
-        left_ear = "Moonshade Earring",
+        -- left_ear = "Moonshade Earring",
         right_ear = "Sherida Earring",
         body = "Ayanmo Corazza +2",
-        hands = "Atrophy Gloves +1",
+        hands = "Atrophy Gloves +2",
         -- left_ring = "Begrudging Ring",
         right_ring = "Ilabrat Ring",
         back = gear.wsd_jse_back,
@@ -233,10 +235,10 @@ function init_gear_sets()
         -- ammo = "Regal Gem",
         head = "Viti. Chapeau +1",
         -- neck = "Caro Necklace",
-        left_ear = "Moonshade Earring",
+        -- left_ear = "Moonshade Earring",
         -- right_ear = "Ishvara Earring",
         body = "Viti. Tabard +1",
-        hands = "Atrophy Gloves +1",
+        hands = "Atrophy Gloves +2",
         -- left_ring = "Ifrit Ring +1",
         -- right_ring = "Rufescent Ring",
         back = gear.wsd_jse_back,
@@ -321,8 +323,9 @@ function init_gear_sets()
     sets.midcast.FastRecast = {
         -- main = gear.grioavolr_fc_staff,
         -- sub = "Clerisy Strap +1",
+        range = empty,
         ammo = "Hasty Pinion +1",
-        head = "Atro. Chapeau +1",
+        head = "Atro. Chapeau +2",
         neck = "Voltsurge Torque",
         -- left_ear = "Enchntr. Earring +1",
         right_ear = "Malignance Earring",
@@ -351,7 +354,7 @@ function init_gear_sets()
 			augments = {'Enhances "Chainspell" effect'}
 		},
 		hands = {name = "Viti. Gloves +1", augments = {'Enhancing Magic duration'}},
-		legs = "Atrophy Tights +1",
+		legs = "Atrophy Tights +2",
 		feet = {
 			name = "Vanya Clogs",
 			augments = {
@@ -423,12 +426,12 @@ function init_gear_sets()
 			name = "Telchine Chas.", 
 			augments = {'Enh. Mag. eff. dur. +8'}
 		},
-		hands = "Atrophy Gloves +1",
+		hands = "Atrophy Gloves +2",
 		legs = {
 			name = "Telchine Braconi", 
 			augments = {'Enh. Mag. eff. dur. +9'}
 		},
-		feet = "Leth. Houseaux",
+		feet = "Leth. Houseaux +1",
 		left_ear = "Andoaa Earring",
 		right_ear = "Regal Earring",
 		left_ring = "Stikini Ring",
@@ -449,7 +452,7 @@ function init_gear_sets()
         body = "Lethargy Sayon",
         hands = "Leth. Gantherots",
         legs = "Leth. Fuseau",
-        feet = "Leth. Houseaux"
+        feet = "Leth. Houseaux +1"
     }
 
     -- Red Mage enhancing sets are handled in a different way from most, layered on due to the way Composure works
@@ -462,11 +465,11 @@ function init_gear_sets()
         hands = "Viti. Gloves +1",
         -- back = "Ghostfyre Cape",
         -- waist = "Olympus Sash",
-        legs = "Atrophy Tights +1"
+        legs = "Atrophy Tights +2"
     }
     sets.midcast.Refresh = {
         -- head = "Amalric Coif +1",
-        body = "Atrophy Tabard +1",
+        body = "Atrophy Tabard +2",
         legs = "Leth. Fuseau"
     }
     sets.midcast.Aquaveil = {
@@ -500,49 +503,43 @@ function init_gear_sets()
         -- legs = "Shedir Seraweels"
     }
     sets.midcast.Protect = {
-		-- right_ring = "Sheltered Ring"
+		right_ring = "Sheltered Ring"
 	}
     sets.midcast.Shell = {
-		-- right_ring = "Sheltered Ring"
+		right_ring = "Sheltered Ring"
 	}
 
     sets.midcast['Enfeebling Magic'] = {
-		main = "Daybreak",
-		sub = "Ammurapi Shield",
-		ammo = "Staunch Tathlum",
-		head = {
-			name = "Viti. Chapeau +1",
-			augments = {'Enfeebling Magic duration', 'Magic Accuracy'}
-		},
-		body = "Atrophy Tabard +1",
-		hands = "Aya. Manopolas +2",
-		legs = {
-			name = "Chironic Hose",
-			augments = {'Mag. Acc.+27', '"Conserve MP"+7', 'MND+1'}
-		},
-		feet = {name = "Vitiation Boots +1", augments = {'Immunobreak Chance'}},
-		neck = "Sanctity Necklace",
-		waist = "Luminary Sash",
-		left_ear = "Malignance Earring",
-		right_ear = "Regal Earring",
-		left_ring = "Stikini Ring",
-		right_ring = "Kishar Ring",
-		back = {
-			name = "Sucellos's Cape",
-			augments = {
-				'MND+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'Mag. Acc.+10', 'Enmity-10',
-				'Damage taken-5%'
-			}
-		}
-	}	
+        main = "Daybreak",
+        sub = "Genmei Shield",
+        ammo = "Staunch Tathlum",
+        head = "Jhakri Coronal +2",
+        body = "Jhakri Robe +2",
+        hands = "Aya. Manopolas +2",
+		legs = "Chironic Hose",
+        feet = "Jhakri Pigaches +2",
+        neck = "Sanctity Necklace",
+        waist = "Luminary Sash",
+        left_ear = "Malignance Earring",
+        right_ear = "Regal Earring",
+        left_ring = "Stikini Ring",
+        right_ring = "Kishar Ring",
+        back = {
+            name = "Sucellos's Cape",
+            augments = {
+                'MND+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'Mag. Acc.+10', 'Enmity-10',
+                'Damage taken-5%'
+            }
+        }
+    }
 
     sets.midcast['Enfeebling Magic'].Resistant = sets.midcast['Enfeebling Magic']
 
     sets.midcast.DurationOnlyEnfeebling = set_combine(
 		sets.midcast['Enfeebling Magic'],
 		{
-			body = "Atrophy Tabard +1", 
-			-- range = "Kaja Bow"
+			body = "Atrophy Tabard +2", 
+			range = "Kaja Bow"
 		}
 	)
 
@@ -590,7 +587,7 @@ function init_gear_sets()
     sets.midcast.SkillBasedEnfeebling = set_combine(
 		sets.midcast['Enfeebling Magic'], 
 		{
-            -- left_ear = "Vor Earring",
+            left_ear = "Vor Earring",
             hands = "Leth. Gantherots",
             left_ring = "Stikini Ring",
             legs = "Psycloth Lappas"
@@ -643,10 +640,15 @@ function init_gear_sets()
 		},
 		sets.TreasureHunter
 	)
+    sets.midcast.Dispelga = set_combine(sets.midcast['Enfeebling Magic'], {
+        main = "Daybreak",
+        sub = "Genmei Shield"
+    })
 
     sets.midcast['Elemental Magic'] = {
         main = "Daybreak",
         sub = "Ammurapi Shield",
+        range = empty,
         -- ammo = "Dosis Tathlum",
         -- head = gear.merlinic_nuke_head,
         -- neck = "Baetyl Pendant",
@@ -670,7 +672,7 @@ function init_gear_sets()
         {
             main = empty,
             sub = empty,
-    
+            range = empty,    
             -- ammo = "Impatiens",
             -- head = "Nahtirah Hat",
             neck = "Voltsurge Torque",
@@ -690,6 +692,7 @@ function init_gear_sets()
         set_combine(
 			sets.midcast['Elemental Magic'], 
 			{
+                range = empty,
 				-- ammo = "Pemphredo Tathlum",
 				left_ear = "Regal Earring",
 				-- left_ring = "Metamor. Ring +1"
@@ -716,8 +719,8 @@ function init_gear_sets()
     sets.midcast.Impact = {
         main = "Daybreak",
         sub = "Ammurapi Shield",
-        -- range = "Kaja Bow",
-        -- ammo = empty,
+        range = "Kaja Bow",
+        ammo = empty,
         head = empty,
         neck = "Erra Pendant",
         left_ear = "Regal Earring",
@@ -735,12 +738,12 @@ function init_gear_sets()
     sets.midcast['Dark Magic'] = {
         -- main = "Rubicundity",
         sub = "Ammurapi Shield",
-        -- range = "Kaja Bow",
+        range = "Kaja Bow",
         -- head = "Amalric Coif +1",
         neck = "Erra Pendant",
         left_ear = "Regal Earring",
         right_ear = "Malignance Earring",
-        body = "Atrophy Tabard +1",
+        body = "Atrophy Tabard +2",
         hands = "Leth. Gantherots",
         -- left_ring = "Metamor. Ring +1",
         right_ring = "Stikini Ring",
@@ -753,8 +756,8 @@ function init_gear_sets()
     sets.midcast.Drain = {
         -- main = "Rubicundity",
         sub = "Ammurapi Shield",
-        -- range = "Kaja Bow",
-        -- ammo = empty,
+        range = "Kaja Bow",
+        ammo = empty,
         -- head = "Pixie Hairpin +1",
         neck = "Erra Pendant",
         left_ear = "Regal Earring",
@@ -774,9 +777,9 @@ function init_gear_sets()
     sets.midcast.Stun = {
         main = "Daybreak",
         sub = "Ammurapi Shield",
-        -- range = "Kaja Bow",
-        -- ammo = empty,
-        head = "Atro. Chapeau +1",
+        range = "Kaja Bow",
+        ammo = empty,
+        head = "Atro. Chapeau +2",
         -- neck = "Dls. Torque +2",
         left_ear = "Regal Earring",
         right_ear = "Malignance Earring",
@@ -812,6 +815,7 @@ function init_gear_sets()
     sets.HPCure = {
         main = "Daybreak",
         sub = "Sors Shield",
+        range = empty,
         ammo = "Hasty Pinion +1",
         -- head = "Gende. Caubeen +1",
         -- neck = "Unmoving Collar +1",
@@ -835,7 +839,7 @@ function init_gear_sets()
     sets.resting = {
         -- main = "Chatoyant Staff",
         -- sub = "Oneiros Grip",
-
+        range = empty,
         -- ammo = "Impatiens",
         head = "Viti. Chapeau +1",
         -- neck = "Loricate Torque +1",
@@ -844,7 +848,7 @@ function init_gear_sets()
         body = "Jhakri Robe +2",
         -- hands = gear.merlinic_refresh_hands,
         left_ring = "Defending Ring",
-        -- right_ring = "Sheltered Ring",
+        right_ring = "Sheltered Ring",
         -- back = "Umbra Cape",
         -- waist = "Flume Belt +1",
         -- legs = "Lengo Pants",
@@ -856,17 +860,14 @@ function init_gear_sets()
 		main = "Bolelabunga",
 		sub = "Genmei Shield",
 		ammo = "Staunch Tathlum",
-		head = {
-			name = "Viti. Chapeau +1",
-			augments = {'Enfeebling Magic duration', 'Magic Accuracy'}
-		},
-		body = "Malignance Tabard",
+        head = "Viti. Chapeau +1",
+        body = "Jhakri Robe +2",
 		hands = "Aya. Manopolas +2",
 		legs = "Malignance Tights",
 		feet = "Aya. Gambieras +2",
 		neck = "Twilight Torque",
-		waist = "Witful Belt",
-		left_ear = "Etiolation Earring",
+        waist = "Witful Belt",
+        left_ear = "Moonshade Earring",
 		right_ear = "Genmei Earring",
 		left_ring = "Ayanmo Ring",
 		right_ring = "Defending Ring",
@@ -927,7 +928,12 @@ function init_gear_sets()
     sets.weapons.Almace = {
 		-- main = "Almace", 
 		sub = "Ammurapi Shield"
-	}
+    }
+    
+    sets.weapons.Daybreak = {
+        main = "Daybreak",
+        sub = "Genmei Shield"
+    }
     sets.weapons.DualWeapons = {
 		-- main = "Naegling", 
 		-- sub = "Thibron"
@@ -951,7 +957,8 @@ function init_gear_sets()
     sets.weapons.EnspellOnly = {
         -- main = "Norgish Dagger",
         -- sub = "Chicken Knife II",
-        -- range = "Kaja Bow",
+        range = "Kaja Bow",
+        range = empty,
         -- ammo = "Beetle Arrow"
     }
     sets.weapons.DualClubs = {
@@ -969,11 +976,12 @@ function init_gear_sets()
     sets.weapons.DualBow = {
         -- main = "Naegling",
         -- sub = "Tauret",
-        -- range = "Kaja Bow"
+        range = "Kaja Bow",
+        ammo = empty,
     }
     sets.weapons.BowMacc = {
-		-- range = "Kaja Bow", 
-		-- ammo = empty
+		range = "Kaja Bow", 
+		ammo = empty
 	}
 
     sets.buff.Sublimation = {
@@ -997,6 +1005,7 @@ function init_gear_sets()
     --		back=gear.stp_jse_back,waist="Windbuffet Belt +1",legs="Carmine Cuisses +1",feet="Carmine Greaves +1"}
 
     sets.engaged = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Asperity Necklace",
@@ -1028,6 +1037,7 @@ function init_gear_sets()
     }
 
     sets.engaged.Acc = {
+        range = empty,
         -- ammo = "Regal Gam",
         -- head = "Malignance Chapeau",
         -- neck = "Asperity Necklace",
@@ -1044,6 +1054,7 @@ function init_gear_sets()
     }
 
     sets.engaged.FullAcc = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Asperity Necklace",
@@ -1060,6 +1071,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",
@@ -1076,6 +1088,7 @@ function init_gear_sets()
     }
 
     sets.engaged.Acc.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",
@@ -1092,6 +1105,7 @@ function init_gear_sets()
     }
 
     sets.engaged.FullAcc.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",
@@ -1108,6 +1122,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Anu Torque",
@@ -1124,6 +1139,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.Acc = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Combatant's Torque",
@@ -1140,6 +1156,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.FullAcc = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Combatant's Torque",
@@ -1156,6 +1173,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",
@@ -1172,6 +1190,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.Acc.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",
@@ -1188,6 +1207,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.FullAcc.DT = {
+        range = empty,
         -- ammo = "Ginsen",
         -- head = "Malignance Chapeau",
         -- neck = "Loricate Torque +1",

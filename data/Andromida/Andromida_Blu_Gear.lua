@@ -1082,7 +1082,7 @@ function init_gear_sets()
         body = "Assim. Jubbah +1",
         -- hands = "Hashi. Bazu.",
         ring1 = "Kishar Ring",
-        right2 = "Vocane Ring",
+        right2 = "Vocane Ring +1",
         -- back = "Aurist's Cape +1",
         waist = "Witful Belt",
         legs = "Lengo Pants",
@@ -1154,7 +1154,7 @@ function init_gear_sets()
         left_ear = "Etiolation Earring",
         right_ear = "Loquac. Earring",
         left_ring = "Defending Ring",
-        right_ring = "Vocane Ring",
+        right_ring = "Vocane Ring +1",
         back = {
             name = "Rosmerta's Cape",
             augments = {'Phys. dmg. taken-10%'}
@@ -1174,7 +1174,7 @@ function init_gear_sets()
         body = "Jhakri Robe +2",
         hands = "Malignance Gloves",
         ring1 = "Defending Ring",
-        right2 = "Vocane Ring",
+        right2 = "Vocane Ring +1",
         back = {
             name = "Rosmerta's Cape",
             augments = {'Phys. dmg. taken-10%'}
@@ -1272,8 +1272,8 @@ function init_gear_sets()
 
     -- Weapons sets
     sets.weapons.Tizalmace = {
-        -- main = "Tizona", 
-        -- sub = "Almace"
+        main = "Wightslayer", -- main = "Tizona", 
+        sub="Kaja Sword" -- sub = "Almace"
     }
     sets.weapons.Tizbron = {
         -- main = "Tizona", 
@@ -1297,7 +1297,7 @@ function init_gear_sets()
     }
     sets.weapons.Junk = {
         main="Claidheamh Soluis",
-        sub="Usonmunku"
+        sub="Kaja Sword"
     }
     sets.weapons.MagicWeapons = {
         main = "Nibiru Cudgel", 

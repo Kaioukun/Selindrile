@@ -54,25 +54,20 @@ function get_sets()
 		set_combine(
 		sets.Precast.Haste,
 		{
-			ammo = "Incantor Stone",
+			ammo = "Impatiens",
+			head = "Nahtirah Hat",
 			body = "Inyanga Jubbah +1",
-			ear2 = "Loquac. Earring",
-			ring2 = "Prolix Ring",
-			neck = "Orison Locket",
+			neck = "Voltsurge Torque",
 			waist = "Witful Belt",
-			right_ear = "Loquac. Earring",
-			right_ring = "Prolix Ring",
+			left_ear = "Loquac. Earring",
+			right_ear = "Malignance Earring",
+			left_ring = "Prolix Ring",
+			right_ring = "Kishar Ring",
 			back = {
 				name = "Alaunus's Cape",
-				augments = {
-					"MND+20",
-					"Mag. Acc+20 /Mag. Dmg.+20",
-					"MND+5",
-					'"Fast Cast"+10',
-					"Damage taken-5%"
-				}
+				augments = {'"Fast Cast"+10'}
 			}
-		}
+		}	
 	)
 
 	sets.Precast.Cure =
