@@ -340,6 +340,11 @@ function ignore_spell_type(spell)
 end
 
 function aftercast(spell)
+	if (buffactive["Apogee"] or buffactive["Astral Conduit"]) and spell.type:startswith("BloodPact")  then
+		pet_midcast(spell)
+		return
+	end
+	
 	status_change(player.status)
 end
 

@@ -34,34 +34,40 @@ function get_sets()
 
     sets.Engaged = {mode = "Melee"}
     sets.Engaged.Melee = {
-        ammo = "Yamarang",
+        ammo = "Aurgelmir Orb +1",
         head = {
             name = "Adhemar Bonnet +1",
-            augments = {"DEX+12", "AGI+12", "Accuracy+20"}
+            augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
         },
-        body = "Horos Casaque +3",
+        body = {
+            name = "Horos Casaque +3",
+            augments = {'Enhances "No Foot Rise" effect'}
+        },
         hands = {
             name = "Adhemar Wrist. +1",
-            augments = {"DEX+12", "AGI+12", "Accuracy+20"}
+            augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
         },
-        legs = "Samnuha Tights",
-        feet = "Mummu Gamash. +2",
-        neck = "Etoile gorget +2",
+        legs = {
+            name = "Samnuha Tights",
+            augments = {'STR+10', 'DEX+10', '"Dbl.Atk."+3', '"Triple Atk."+3'}
+        },
+        feet = "Horos T. Shoes +3",
+        neck = "Etoile Gorget +2",
         waist = "Windbuffet Belt +1",
         left_ear = "Sherida Earring",
-        right_ear = "Telos Earring",
-        left_ring = "Ilabrat Ring",
+        right_ear = "Brutal Earring",
+        left_ring = "Epona's Ring",
         right_ring = "Petrov Ring",
         back = {
             name = "Senuna's Mantle",
             augments = {
-                "DEX+20", "Accuracy+20 Attack+20", "DEX+10", '"Store TP"+10',
-                "Phys. dmg. taken-10%"
+                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
+                'Phys. dmg. taken-10%'
             }
         }
     }
 
-    sets.Engaged.AM3 = {
+    sets.Engaged.Am3 = {
         ammo = "Aurgelmir Orb +1",
         head = "Malignance Chapeau",
         body = "Malignance Tabard",
@@ -346,7 +352,10 @@ function ignore_spell_type(spell)
     return spell.type ~= "JobAbility" and not spell.type:startswith("Flourish")
 end
 
-function aftercast(spell, action) status_change(player.status) end
+function aftercast(spell, action)
+    debug("Aftercast")
+    status_change(player.status) 
+end
 
 function status_change(new, old)
     if incapacitated() then return end
@@ -357,22 +366,21 @@ function status_change(new, old)
     if (sets[new]) then equip(sets[new]) end
 end
 
-function incapacitated()
-    if incapacitated_states:find(function(value)
-        return buffactive[value] or false
-    end) then
-        equip(sets.Idle)
-        return true
-    end
-end
-
 function status_change_engaged()
     if sets.Engaged.mode == "Melee" and buffactive["Aftermath: Lv.3"] then
-        equip(sets.Engaged.AM3)
+        equip(sets.Engaged.Am3)
         return
     end
 
-    equip(sets.Engaged[sets.Engaged.Set])
+    debug("Status: Engaged " .. sets.Engaged.mode)
+    equip(sets.Engaged[sets.Engaged.mode])
+end
+
+function incapacitated()
+    if incapacitated_states:find(function(value) return buffactive[value] or false end) then
+        equip(sets.Idle)
+        return true
+    end
 end
 
 function buff_change(name, gain, buff_details)
@@ -381,20 +389,45 @@ function buff_change(name, gain, buff_details)
     debug(name .. " " .. (gain and "on" or "off"))
 end
 
-function debug(s) send_command("@input /echo " .. s) end
+function self_command(argsString)
+    print(T(player).status)
 
-function self_command(command)
-    command = command:lower()
+    args = argsString:lower():split(" ")
 
-    if "dt" == command then
-        DT = not DT
+    if _G["self_command_" .. args[1]] then
+        _G["self_command_" .. args[1]](args:slice(2))
+    end
 
-        windower.add_to_chat(123, "DT: " .. (DT and "on" or "off"))
+    status_change(player.status)
+end
 
-        status_change(player.status, player.status)
+function self_command_dt(args)
+    DT = not DT
 
+    windower.add_to_chat(123, "DT: " .. (DT and "on" or "off"))
+
+    status_change(player.status, player.status)
+end
+
+function self_command_e(args)
+    return self_command_engaged(args)
+end
+
+function self_command_engaged(args)
+    if not args[1] then
+        error("Error: No Engaged Mode Specified")
         return
     end
+
+    local mode = args[1]:ucfirst()
+    if not sets.Engaged[mode] then
+        error("Error: Invalid Engaged Mode: " .. mode)
+        return
+    end
+
+    sets.Engaged.mode = mode
+    status_change(player.status)
+    notice("Engaged Mode Set: " .. mode)
 end
 
 function find_player_in_alliance(name)
@@ -460,4 +493,18 @@ function refine_waltz(spell)
     end
 
     return true
+end
+
+function notice(s)
+    add_to_chat(121, s)
+end
+
+function error(s)
+    add_to_chat(4, s)
+end
+
+function debug(s)
+    if debugMode then
+        notice(s)
+    end
 end

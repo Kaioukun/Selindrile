@@ -1171,7 +1171,7 @@ function init_gear_sets()
         neck = "Loricate Torque +1",
         ear1 = "Etiolation Earring",
         -- ear2 = "Ethereal Earring",
-        body = "Jhakri Robe +2",
+        body = "Malignance Tabard",
         hands = "Malignance Gloves",
         ring1 = "Defending Ring",
         right2 = "Vocane Ring +1",
