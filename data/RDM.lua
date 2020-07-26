@@ -208,9 +208,9 @@ function job_post_midcast(spell, spellMap, eventArgs)
 			equip(sets.buff.ComposureOther)
 		end
 
-		if state.Weapons.value == 'None' and can_dual_wield and sets.midcast[spell.english] and sets.midcast[spell.english].DW then
+		if can_dual_wield and sets.midcast[spell.english] and sets.midcast[spell.english].DW then
 			equip(sets.midcast[spell.english].DW)
-		elseif state.Weapons.value == 'None' and can_dual_wield and sets.midcast[spellMap] and sets.midcast[spellMap].DW then
+		elseif can_dual_wield and sets.midcast[spellMap] and sets.midcast[spellMap].DW then
 			equip(sets.midcast[spellMap].DW)
 		elseif sets.midcast[spell.english] then
 			equip(sets.midcast[spell.english])
@@ -279,22 +279,30 @@ function job_customize_idle_set(idleSet)
         end
     end
 
-    if player.mpp < 51 and (state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere')) then
-		if sets.latent_refresh then
-			idleSet = set_combine(idleSet, sets.latent_refresh)
+    if state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere') then
+		if player.mpp < 51 then
+			if sets.latent_refresh then
+				idleSet = set_combine(idleSet, sets.latent_refresh)
+			end
+			
+			if (state.Weapons.value == 'None' or state.UnlockWeapons.value) and idleSet.main then
+				local main_table = get_item_table(idleSet.main)
+
+				if  main_table and main_table.skill == 12 and sets.latent_refresh_grip then
+					idleSet = set_combine(idleSet, sets.latent_refresh_grip)
+				end
+				
+				if player.tp > 10 and sets.TPEat then
+					idleSet = set_combine(idleSet, sets.TPEat)
+				end
+			end
 		end
-		
-		local available_ws = S(windower.ffxi.get_abilities().weapon_skills)
-		if available_ws:contains(176) and sets.latent_refresh_grip then
-			idleSet = set_combine(idleSet, sets.latent_refresh_grip)
-		end
-    end
+   end
     
     return idleSet
 end
 
 function job_customize_melee_set(meleeSet)
-	windower.add_to_chat(7,enspell)
 	if state.Weapons.value:contains('Enspell') and enspell ~= '' then
 		local enspell_element = data.elements.enspells_lookup[enspell]
 		if sets.element.enspell and sets.element.enspell[enspell_element] then
@@ -615,7 +623,7 @@ buff_spell_lists = {
 		{Name='Phalanx',		Buff='Phalanx',			SpellID=106,	Reapply=false},
 		{Name='Stoneskin',		Buff='Stoneskin',		SpellID=54,		Reapply=false},
 		{Name='Blink',			Buff='Blink',			SpellID=53,		Reapply=false},
-		{Name='Gain-STR',		Buff='STR Boost',		SpellID=479,	Reapply=false},
+		{Name='Gain-STR',		Buff='STR Boost',		SpellID=486,	Reapply=false},
 		{Name='Shell V',		Buff='Shell',			SpellID=52,		Reapply=false},
 		{Name='Protect V',		Buff='Protect',			SpellID=47,		Reapply=false},
 		{Name='Shock Spikes',	Buff='Shock Spikes',	SpellID=251,	Reapply=false},
@@ -638,6 +646,20 @@ buff_spell_lists = {
 		{Name='Barblizzard',	Buff='Barblizzard',		SpellID=61,		Reapply=false},
 		{Name='Barparalyze',	Buff='Barparalyze',		SpellID=74,		Reapply=false},
 	},
+
+	Odin = {
+		{Name='Refresh III',	Buff='Refresh',			SpellID=894,	Reapply=false},
+		{Name='Haste II',		Buff='Haste',			SpellID=511,	Reapply=false},
+		{Name='Phalanx',		Buff='Phalanx',			SpellID=106,	Reapply=false},
+		{Name='Gain-INT',		Buff='INT Boost',		SpellID=490,	Reapply=false},
+		{Name='Temper II',		Buff='Multi Strikes',	SpellID=895,	Reapply=false},
+		{Name='Regen II',		Buff='Regen',			SpellID=110,	Reapply=false},
+		--{Name='Enaero',			Buff='Enaero',			SpellID=102,	Reapply=false},
+		{Name='Enthunder',		Buff='Enthunder',		SpellID=104,	Reapply=false},
+		{Name='Stoneskin',		Buff='Stoneskin',		SpellID=54,		Reapply=false},
+		{Name='Shell V',		Buff='Shell',			SpellID=52,		Reapply=false},
+		{Name='Protect V',		Buff='Protect',			SpellID=47,		Reapply=false},
+	},
 	
 	HybridCleave = {
 		{Name='Refresh III',	Buff='Refresh',			SpellID=894,	Reapply=false},
@@ -648,5 +670,5 @@ buff_spell_lists = {
 		{Name='Temper II',		Buff='Multi Strikes',	SpellID=895,	Reapply=false},
 		{Name='Shell V',		Buff='Shell',			SpellID=52,		Reapply=false},
 		{Name='Protect V',		Buff='Protect',			SpellID=47,		Reapply=false},
-	},	
+	},
 }

@@ -145,6 +145,7 @@ function init_include()
 	state.SkipProcWeapons 	  = M(false, 'Skip Proc Weapons')
 	state.NotifyBuffs		  = M(false, 'Notify Buffs')
 	state.UnlockWeapons		  = M(false, 'Unlock Weapons')
+	state.SelfWarp2Block 	  = M(true, 'Block Warp2 on Self')
 
 	state.AutoBuffMode 		  = M{['description'] = 'Auto Buff Mode','Off','Auto'}
 	state.RuneElement 		  = M{['description'] = 'Rune Element','Ignis','Gelus','Flabra','Tellus','Sulpor','Unda','Lux','Tenebrae'}
@@ -474,7 +475,7 @@ function init_include()
 		
 		gearswap.refresh_globals(false)
 		
-		if (player ~= nil) and (player.status == 'Idle' or player.status == 'Engaged') and not (check_midaction() or moving or buffactive['Sneak'] or buffactive['Invisible'] or silent_check_disable()) then
+		if (player ~= nil) and (player.status == 'Idle' or player.status == 'Engaged') and not (delayed_cast ~= '' or check_midaction() or moving or buffactive['Sneak'] or buffactive['Invisible'] or silent_check_disable()) then
 			if pre_tick then
 				if pre_tick() then return end
 			end
@@ -836,7 +837,8 @@ function precast(spell)
 end
 
 function midcast(spell)
-    handle_actions(spell, 'midcast')
+	if spell.type == 'WeaponSkill' or spell.type == 'JobAbility' then return end
+	handle_actions(spell, 'midcast')
 end
 
 function aftercast(spell)
@@ -947,7 +949,12 @@ function extra_default_filtered_action(spell, eventArgs)
 end
 
 function default_pretarget(spell, spellMap, eventArgs)
-
+	if spell.english == 'Warp II' and spell.target.name == player.name and state.SelfWarp2Block.value then
+		eventArgs.cancel = true
+		cancel_spell()
+		add_to_chat(123,'Blocking Warp2 on self, use Warp instead or disable the SelfWarp2Block state.')
+		return
+	end
 end
 
 function default_precast(spell, spellMap, eventArgs)
@@ -1019,7 +1026,7 @@ function default_post_precast(spell, spellMap, eventArgs)
 				equip(sets.Capacity)
 			end
 			
-			if state.TreasureMode.value ~= 'None' and not info.tagged_mobs[spell.target.id] then
+			if state.TreasureMode.value ~= 'None' and not info.tagged_mobs[spell.target.id] and not TH_WS_exceptions:contains(spell.target.name) then
 				equip(sets.TreasureHunter)
 			end
 			
@@ -1144,7 +1151,7 @@ function default_post_midcast(spell, spellMap, eventArgs)
 end
 
 function default_post_pet_midcast(spell, spellMap, eventArgs)
-	if state.Capacity.value == true then
+	if state.Capacity.value then
 		equip(sets.Capacity)
 	end
 
@@ -1231,9 +1238,11 @@ function default_aftercast(spell, spellMap, eventArgs)
 end
 
 function default_pet_midcast(spell, spellMap, eventArgs)
+	--[[Handling this in aftercast now, commenting out to prevent duplication.
 	if not (type(spell.type) == 'string' and (spell.type:startswith('BloodPact') or spell.type == 'Monster')) then
 		equip(get_pet_midcast_set(spell, spellMap))
 	end
+	]]
 end
 
 function default_pet_aftercast(spell, spellMap, eventArgs)
@@ -1340,20 +1349,20 @@ function cleanup_pet_aftercast(spell, spellMap, eventArgs)
 end
 
 function pre_tick()
+	if check_doomed() then return true end
 	if check_trust() then return true end
 	if check_rune() then return true end
+	if check_shadows() then return true end
+	if check_use_item() then return true end
 	return false
 end
 
 function default_tick()
 	check_lockstyle()
-	if check_doomed() then return true end
-	if check_shadows() then return true end
-	if check_use_item() then return true end
 	if check_sub() then return true end
 	if check_food() then return true end
-	if check_ws() then return true end
 	if check_samba() then return true end
+	if check_ws() then return true end
 	if check_cpring_buff() then return true end
 	if check_cleanup() then return true end
 	if check_nuke() then return true end
@@ -1413,21 +1422,22 @@ end
 -- @param status : The current or new player status that determines what sort of gear to equip.
 function equip_gear_by_status(playerStatus, petStatus)
     if _global.debug_mode then add_to_chat(123,'Debug: Equip gear for status ['..tostring(status)..'], HP='..tostring(player.hp)) end
-
-    playerStatus = playerStatus or player.status or 'Idle'
-    -- If status not defined, treat as idle.
-    -- Be sure to check for positive HP to make sure they're not dead.
-    if (playerStatus == 'Idle' or playerStatus == '') and player.hp > 0 then
-        equip(get_idle_set(petStatus))
-    elseif playerStatus == 'Engaged' then
-		if player.target and player.target.model_size and player.target.distance < (3.2 + player.target.model_size) then
-			equip(get_melee_set(petStatus))
-		else
+	if player.hp > 0 then
+		playerStatus = playerStatus or player.status or 'Idle'
+		-- If status not defined, treat as idle.
+		-- Be sure to check for positive HP to make sure they're not dead.
+		if (playerStatus == 'Idle' or playerStatus == '') then
 			equip(get_idle_set(petStatus))
+		elseif playerStatus == 'Engaged' then
+			if player.target and player.target.model_size and player.target.distance < (5.2 + player.target.model_size) then
+				equip(get_melee_set(petStatus))
+			else
+				equip(get_idle_set(petStatus))
+			end
+		elseif playerStatus == 'Resting' then
+			equip(get_resting_set(petStatus))
 		end
-    elseif playerStatus == 'Resting' then
-        equip(get_resting_set(petStatus))
-    end
+	end
 end
 
 
@@ -1483,6 +1493,10 @@ function get_idle_set(petStatus)
             mote_vars.set_breadcrumbs:append(group)
         end
     end
+
+	if buffactive['Elvorseal'] and sets.buff.Elvorseal then
+		idleSet = set_combine(idleSet, sets.buff.Elvorseal)
+	end
 
 	--Apply time based gear.
     if (state.IdleMode.value == 'Normal' or state.IdleMode.value:contains('Sphere')) and not pet.isvalid then
@@ -1628,6 +1642,10 @@ function get_melee_set()
         meleeSet = user_job_customize_melee_set(meleeSet)
     end
 	
+	if buffactive['Elvorseal'] and sets.buff.Elvorseal then
+		meleeSet = set_combine(meleeSet, sets.buff.Elvorseal)
+	end
+	
     if state.ExtraMeleeMode and state.ExtraMeleeMode.value ~= 'None' then
         meleeSet = set_combine(meleeSet, sets[state.ExtraMeleeMode.value])
     end
@@ -1649,7 +1667,7 @@ function get_melee_set()
 		end
 	end
 	
-	if sets.Reive and buffactive['Reive Mark'] then
+	if buffactive['Reive Mark'] and sets.Reive then
         meleeSet = set_combine(meleeSet, sets.Reive)
     end
 	
@@ -2203,7 +2221,12 @@ function state_change(stateField, newValue, oldValue)
 				state.Weapons:cycle()
 				if startindex == state.Weapons.index then break end
 			end
-			if not state.ReEquip.value then handle_weapons() end
+			
+			if state.Weapons.value == 'None' then
+				enable('main','sub','range','ammo')
+			elseif not state.ReEquip.value then
+				handle_weapons()
+			end
 		elseif sets.weapons[newValue] then
 			if not state.ReEquip.value then equip_weaponset(newValue) end
 		else
