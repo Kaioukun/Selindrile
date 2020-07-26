@@ -226,16 +226,13 @@ function get_sets()
         },
         body = "Meg. Cuirie +2",
         hands = "Mummu Wrists +1",
-        legs = {
-            name = "Lustr. Subligar +1",
-            augments = {'Accuracy+20', 'DEX+8', 'Crit. hit rate+3%'}
-        },
+        legs = "Lustr. Subligar +1",
         feet = "Mummu Gamash. +2",
         neck = "Fotia Gorget",
         waist = "Fotia Belt",
         left_ear = "Sherida Earring",
         right_ear = "Mache Earring +1",
-        left_ring = "Mummu Ring",
+        left_ring = "Ilabrat Ring",
         right_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
@@ -245,21 +242,22 @@ function get_sets()
             }
         }
     }
+    
 
     sets.WeaponSkill["Pyrrhic Kleos"] = {
-        ammo = "Charis Feather",
-        head = "Horos Tiara +3",
-        body = "Horos Casaque +3",
+        ammo = "Aurgelmir Orb +1",
+        head = "Lustratio Cap +1",
+        body = {
+            name = "Adhemar Jacket +1",
+            augments = {'STR+12', 'DEX+12', 'Attack+20'}
+        },
         hands = {
             name = "Adhemar Wrist. +1",
             augments = {'STR+12', 'DEX+12', 'Attack+20'}
         },
         legs = "Samnuha Tights",
-        feet = {
-            name = "Lustra. Leggings +1",
-            augments = {'Attack+20', 'STR+8', '"Dbl.Atk."+3'}
-        },
-        neck = "Fotia Gorget",
+        feet = "Lustra. Leggings +1",
+        neck = "Etoile Gorget +2",
         waist = "Fotia Belt",
         left_ear = "Sherida Earring",
         right_ear = "Mache Earring +1",
@@ -274,7 +272,7 @@ function get_sets()
     }
 
     sets.WeaponSkill["Rudra's Storm"] = {
-        ammo = "Charis Feather",
+        ammo = "Aurgelmir Orb +1",
         head = "Lilitu Headpiece",
         body = {
             name = "Herculean Vest",
@@ -291,7 +289,7 @@ function get_sets()
         },
         neck = "Etoile Gorget +2",
         waist = "Chiner's Belt +1",
-        left_ear = "Ishvara Earring",
+        left_ear = "Sherida Earring",
         right_ear = "Moonshade Earring",
         left_ring = "Ilabrat Ring",
         right_ring = "Regal Ring",
@@ -303,6 +301,15 @@ function get_sets()
             }
         }
     }
+    sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(
+        sets.WeaponSkill["Rudra's Storm"],
+        {
+            ammo = "Charis Feather",
+            head = "Maculele Tiara +1",
+            body = "Meg. Cuirie +2",
+            left_ear = "Ishvara Earring",
+        }
+    )
     sets.WeaponSkill["Shark Bite"] = sets.WeaponSkill["Rudra's Storm"]
 end
 
@@ -316,10 +323,10 @@ function precast(spell)
 
     if "Step" == spell.type then
         local allRecasts = windower.ffxi.get_ability_recasts()
-        local prestoCooldown = allRecasts[236]
+        local prestoAvailable = allRecasts[236] < 1 and not buffactive["Presto"]
         local missingEnoughFM = not buffactive["Finishing Move (6+)"]
 
-        if prestoCooldown < 1 and missingEnoughFM then
+        if prestoAvailable and missingEnoughFM then
             cast_delay(1.1)
             send_command('@input /ja "Presto" <me>')
         end
@@ -329,9 +336,15 @@ function precast(spell)
         return
     end
 
+    if spell.english == "Rudra's Storm" and buffactive["Climactic Flourish"] then
+        equip(sets.WeaponSkill["Climactic Rudra's Storm"])
+        debug("WeaponSkill Climactic Rudra's Storm")
+
+        return
+    end
+
     if sets[spell.type] and sets[spell.type][spell.english] then
         equip(sets[spell.type][spell.english])
-
         debug(spell.type .. " " .. spell.english)
 
         return
@@ -339,7 +352,6 @@ function precast(spell)
 
     if ignore_spell_type(spell) and sets[spell.type] then
         equip(sets[spell.type])
-
         debug(spell.type)
 
         return
