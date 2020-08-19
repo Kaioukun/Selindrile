@@ -1,6 +1,4 @@
 function get_sets()
-    send_command("input /macro book 1;input /macro set 1;input /lockstyleset 1")
-
     incapacitated_states = T {
         "stun", "petrification", "terror", "sleep", "weakness"
     }
@@ -114,6 +112,20 @@ function get_sets()
                 'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
                 'Phys. dmg. taken-10%'
             }
+        }
+    }
+
+    sets.FastCast = {
+        ammo = "Sapience Orb",
+        head = "Herculean Helm",
+        hands = "Leyline Gloves",
+        legs = "Limbo Trousers",
+        left_ear = "Loquac. Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Prolix Ring",
+        back = {
+            name = "Senuna's Mantle",
+            augments = { '"Fast Cast"+10' }
         }
     }
 
@@ -289,7 +301,7 @@ function get_sets()
         },
         neck = "Etoile Gorget +2",
         waist = "Chiner's Belt +1",
-        left_ear = "Sherida Earring",
+        left_ear = "Ishvara Earring",
         right_ear = "Moonshade Earring",
         left_ring = "Ilabrat Ring",
         right_ring = "Regal Ring",
@@ -314,7 +326,10 @@ function get_sets()
 end
 
 function precast(spell)
-    if "Trust" == spell.type then return end
+    if is_magic(spell) then
+        equip(sets.FastCast)
+        return
+    end
 
     if spell.english == "Spectral Jig" and buffactive.Sneak then
         cast_delay(0.2)
@@ -505,6 +520,11 @@ function refine_waltz(spell)
     end
 
     return true
+end
+
+function is_magic(spell)
+    return spell.type:endswith("Magic") or spell.type == "BardSong" or
+               spell.type == "Ninjutsu" or spell.type == "Trust"
 end
 
 function notice(s)
