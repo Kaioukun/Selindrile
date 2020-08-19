@@ -2,6 +2,8 @@ function get_sets()
     incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 
     sets.Idle = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
         body = "Runeist's Coat +3",
@@ -29,6 +31,8 @@ function get_sets()
 
     sets.Engaged = {mode = "Tank"}
     sets.Engaged.Melee = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
         ammo = "Ginsen",
         head = {
             name = "Adhemar Bonnet +1",
@@ -64,6 +68,8 @@ function get_sets()
         }
     }
     sets.Engaged.Parry = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
         body = "Futhark Coat +3",
@@ -87,6 +93,8 @@ function get_sets()
         }
     }
     sets.Engaged.Tank = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
         body = "Runeist's Coat +3",
@@ -271,7 +279,7 @@ function get_sets()
     sets.WeaponSkill["Steel Cyclone"] = sets.WeaponSkill["Dimidiation"]
 
     sets.FastCast = {
-        ammo = "Impatiens",
+        ammo = "Staunch Tathlum +1",
         head = "Rune. Bandeau +3",
         hands = {
             name = "Leyline Gloves",
@@ -310,8 +318,6 @@ function get_sets()
     sets.Midcast["Divine Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Dark Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Blue Magic"] = set_combine(sets.Emnity, {})
-
-    send_command("wait 1; input /macro book 6; wait 1; input /macro set 1; wait 1; input /lockstyleset 6")
 end
 
 --[[
