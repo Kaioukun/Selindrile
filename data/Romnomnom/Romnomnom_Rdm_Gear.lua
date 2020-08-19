@@ -511,19 +511,28 @@ function init_gear_sets()
 
     sets.midcast['Enfeebling Magic'] = {
         main = "Daybreak",
-        sub = "Genmei Shield",
+        sub = "Ammurapi Shield",
         ammo = "Staunch Tathlum",
-        head = "Jhakri Coronal +2",
-        body = "Jhakri Robe +2",
-        hands = "Aya. Manopolas +2",
-		legs = "Chironic Hose",
+        head = {
+            name = "Viti. Chapeau +1",
+            augments = {'Enfeebling Magic duration', 'Magic Accuracy'}
+        },
+        body = "Atrophy Tabard +2",
+        hands = "Jhakri Cuffs +2",
+        legs = {
+            name = "Chironic Hose",
+            augments = {
+                'Mag. Acc.+4', '"Waltz" potency +7%', 'Crit.hit rate+1',
+                'Accuracy+10 Attack+10', 'Mag. Acc.+20 "Mag.Atk.Bns."+20'
+            }
+        },
         feet = "Jhakri Pigaches +2",
-        neck = "Sanctity Necklace",
+        neck = "Henic Torque",
         waist = "Luminary Sash",
-        left_ear = "Malignance Earring",
-        right_ear = "Regal Earring",
+        left_ear = "Snotra Earring",
+        right_ear = "Vor Earring",
         left_ring = "Stikini Ring",
-        right_ring = "Kishar Ring",
+        right_ring = "Stikini Ring",
         back = {
             name = "Sucellos's Cape",
             augments = {
