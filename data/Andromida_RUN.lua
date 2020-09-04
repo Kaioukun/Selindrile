@@ -135,7 +135,7 @@ function get_sets()
                 augments = {"Attack+24", "Weapon skill damage +3%", "DEX+14"}
             },
             neck = "Futhark Torque +2",
-            waist = "Ioskeha Belt",
+            waist = "Ioskeha Belt +1",
             left_ear = "Telos Earring",
             right_ear = "Sherida Earring",
             left_ring = "Niqmaddu Ring",
