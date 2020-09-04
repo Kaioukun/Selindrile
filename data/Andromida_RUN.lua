@@ -29,7 +29,7 @@ function get_sets()
     }
     -- sets.Idle.Kite = {}
 
-    sets.Engaged = {mode = "Tank"}
+    sets.Engaged = {mode = "Hybrid"}
     sets.Engaged.Melee = {
         main = "Epeolatry",
         sub = "Utu Grip",
@@ -44,7 +44,7 @@ function get_sets()
         },
         hands = {
             name = "Adhemar Wrist. +1",
-            augments = {"STR+12", "DEX+12", "Attack+20"}
+            augments = {"DEX+12", "AGI+12", "Accuracy+20"}
         },
         legs = "Samnuha Tights",
         feet = {
@@ -123,7 +123,7 @@ function get_sets()
         sets.Engaged.Melee,
         {
             ammo = "Staunch Tathlum +1",
-            head = "Meghanada Visor +2",
+            head = "Futhark Bandeau +3",
             body = "Ayanmo Corazza +2",
             -- hands={
             --     name="Herculean Gloves",
@@ -176,7 +176,7 @@ function get_sets()
     -- JA Sets --
     sets.JobAbility = {}
 
-    sets.JobAbility["Battuta"] = {head = "Futhark Bandeau +1"}
+    sets.JobAbility["Battuta"] = {head = "Futhark Bandeau +3"}
     sets.JobAbility["Elemental Sforzo"] = {body = "Futhark Coat +3"}
     sets.JobAbility["Gambit"] = {hands = "Runeist mitons +1"}
     sets.JobAbility["Inspiration"] = {legs = "Futhark Trousers +1"}
@@ -275,6 +275,8 @@ function get_sets()
         }
     }
 
+    sets.WeaponSkill["Shockwave"] = sets.WeaponSkill["Resolution"]
+
     sets.WeaponSkill["Fell Cleave"] = sets.WeaponSkill["Resolution"]
     sets.WeaponSkill["Steel Cyclone"] = sets.WeaponSkill["Dimidiation"]
 
@@ -307,7 +309,7 @@ function get_sets()
     }
 
     sets.Midcast["Enhancing Magic"].Phalanx =
-        set_combine(sets.Midcast["Enhancing Magic"], {head = "Futhark Bandeau +1"})
+        set_combine(sets.Midcast["Enhancing Magic"], {head = "Futhark Bandeau +3"})
     sets.Midcast["Enhancing Magic"].Refresh = set_combine(sets.Midcast["Enhancing Magic"], {head = "Erilaz Galea +1"})
     sets.Midcast["Enhancing Magic"].Regen =
         set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
