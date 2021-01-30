@@ -17,19 +17,24 @@ function get_sets()
         back = {
             name = "Smertrios's Mantle",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
-                'Phys. dmg. taken-10%'
+                "DEX+20",
+                "Accuracy+20 Attack+20",
+                "DEX+10",
+                '"Dbl.Atk."+10',
+                "Phys. dmg. taken-10%"
             }
         }
     }
 
     sets.Engaged = {mode = "Melee"}
     sets.Engaged.Melee = {
+        main = "Masamune",
+        sub = "Utu Grip",
         ammo = "Aurgelmir Orb",
         head = "Flam. Zucchetto +2",
-        body = "Flamma Korazin +1",
-        hands = "Wakido Kote +1",
-        legs = "Flamma Dirs +2",
+        body = "Ken. Samue +1",
+        hands = "Wakido Kote +3",
+        legs = "Ken. Hakama +1",
         feet = "Flam. Gambieras +2",
         neck = "Sam. Nodowa +2",
         waist = "Ioskeha Belt +1",
@@ -40,8 +45,37 @@ function get_sets()
         back = {
             name = "Smertrios's Mantle",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
-                'Phys. dmg. taken-10%'
+                "DEX+20",
+                "Accuracy+20 Attack+20",
+                "DEX+10",
+                '"Dbl.Atk."+10',
+                "Phys. dmg. taken-10%"
+            }
+        }
+    }
+    sets.Engaged.Hybrid = {
+        main = "Masamune",
+        sub = "Utu Grip",
+        ammo = "Aurgelmir Orb",
+        head = "Ken. Jinpachi +1",
+        body = "Wakido Domaru +2",
+        hands = "Sakonji Kote +1",
+        legs = "Ken. Hakama +1",
+        feet = "Ken. Sune-Ate +1",
+        neck = "Sam. Nodowa +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Cessance Earring",
+        right_ear = "Brutal Earring",
+        left_ring = "Flamma Ring",
+        right_ring = "Rajas Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {
+                "DEX+20",
+                "Accuracy+20 Attack+20",
+                "DEX+10",
+                '"Dbl.Atk."+10',
+                "Phys. dmg. taken-10%"
             }
         }
     }
@@ -57,27 +91,54 @@ function get_sets()
     -- WS Sets --
     sets.WeaponSkill = {
         equipable = true,
-        ammo = "Aurgelmir Orb",
-        head = "Valorous Mask",
-        body = "Hiza. Haramaki +1",
-        hands = "Valorous Mitts",
-        legs = "Flamma Dirs +2",
-        feet = "Valorous Greaves",
+        main = "Masamune",
+        sub = "Utu Grip",
+        ammo = "Knobkierrie",
+        head = {
+            name = "Valorous Mask",
+            augments = {
+                "Attack+20",
+                "Weapon skill damage +4%",
+                "STR+7",
+                "Accuracy+8"
+            }
+        },
+        body = "Sakonji Domaru +3",
+        hands = {
+            name = "Valorous Mitts",
+            augments = {
+                "Attack+12",
+                "Weapon skill damage +4%",
+                "STR+10",
+            }
+        },
+        legs = "Wakido Haidate +3",
+        feet = {
+            name = "Valorous Greaves",
+            augments = {
+                "Accuracy+8",
+                "Weapon skill damage +4%",
+                "STR+8",
+                "Attack+10"
+            }
+        },
         neck = "Sam. Nodowa +2",
-        waist = "Ioskeha Belt +1",
-        left_ear = "Cessance Earring",
+        waist = "Sailfi Belt +1",
+        left_ear = "Thrud Earring",
         right_ear = "Moonshade Earring",
-        left_ring = "Vehemence Ring",
-        right_ring = "Rajas Ring",
+        left_ring = "Ifrit Ring +1",
+        right_ring = "Karieyh Ring",
         back = {
             name = "Smertrios's Mantle",
             augments = {
-                'STR+20', 'Accuracy+20 Attack+20', 'STR+10',
-                'Weapon skill damage +10%', 'Phys. dmg. taken-10%'
+                "STR+20",
+                "Accuracy+20 Attack+20",
+                "STR+10",
+                "Weapon skill damage +10%",
+                "Phys. dmg. taken-10%"
             }
         }
     }
-    
 
     -- Magic Sets --
     sets.FastCast = {}
@@ -85,10 +146,11 @@ function get_sets()
 end
 
 function precast(spell, action)
-    if incapacitated() then return end
+    if incapacitated() then
+        return
+    end
 
-    if (spell.english == "Spectral Jig" or spell.english == "Sneak") and
-        buffactive.Sneak then
+    if (spell.english == "Spectral Jig" or spell.english == "Sneak") and buffactive.Sneak then
         cast_delay(0.2)
         send_command("cancel Sneak")
     end
@@ -114,12 +176,15 @@ function precast(spell, action)
 end
 
 function midcast(spell, action)
-    if incapacitated() then return end
+    if incapacitated() then
+        return
+    end
 
-    if not is_magic(spell) then return end
+    if not is_magic(spell) then
+        return
+    end
 
-    if sets["Midcast"][spell.skill] and
-        sets["Midcast"][spell.skill][spell.english] then
+    if sets["Midcast"][spell.skill] and sets["Midcast"][spell.skill][spell.english] then
         equip(sets["Midcast"][spell.skill][spell.english])
 
         return
@@ -135,26 +200,41 @@ function midcast(spell, action)
 end
 
 function status_change(new, old)
-    if incapacitated() then return end
+    if incapacitated() then
+        return
+    end
 
-    if _G["status_change_" .. new:lower()] and
-        not _G["status_change_" .. new:lower()]() then return end
+    if _G["status_change_" .. new:lower()] and not _G["status_change_" .. new:lower()]() then
+        return
+    end
 
-    if (sets[new]) then equip(sets[new]) end
+    if (sets[new]) then
+        equip(sets[new])
+    end
 end
 
-function status_change_engaged() equip(sets.Engaged[sets.Engaged.mode]) end
+function status_change_engaged()
+    equip(sets.Engaged[sets.Engaged.mode])
+end
 
-function aftercast(spell, action) status_change(player.status) end
+function aftercast(spell, action)
+    status_change(player.status)
+end
 
 function buff_change(name, gain, buff_details)
-    if incapacitated_states:contains(name) then status_change(player.status) end
+    if incapacitated_states:contains(name) then
+        status_change(player.status)
+    end
 end
 
 function incapacitated()
-    if incapacitated_states:find(function(value)
-        return buffactive[value] or false
-    end) then
+    if
+        incapacitated_states:find(
+            function(value)
+                return buffactive[value] or false
+            end
+        )
+     then
         equip(sets.Idle)
         return true
     end
@@ -172,7 +252,9 @@ function self_command(argsString)
     status_change(player.status)
 end
 
-function self_command_e(args) return self_command_engaged(args) end
+function self_command_e(args)
+    return self_command_engaged(args)
+end
 
 function self_command_engaged(args)
     if not args[1] then
@@ -192,12 +274,19 @@ function self_command_engaged(args)
 end
 
 function is_magic(spell)
-    return spell.type:endswith("Magic") or spell.type == "BardSong" or
-               spell.type == "Ninjutsu" or spell.type == "Trust"
+    return spell.type:endswith("Magic") or spell.type == "BardSong" or spell.type == "Ninjutsu" or spell.type == "Trust"
 end
 
-function notice(s) add_to_chat(121, s) end
+function notice(s)
+    add_to_chat(121, s)
+end
 
-function error(s) add_to_chat(4, s) end
+function error(s)
+    add_to_chat(4, s)
+end
 
-function debug(s) if debugMode then notice(s) end end
+function debug(s)
+    if debugMode then
+        notice(s)
+    end
+end
