@@ -8,16 +8,17 @@ function user_job_setup()
     state.PhysicalDefenseMode:options('PDT')
     state.MagicalDefenseMode:options('MDT')
     state.ResistDefenseMode:options('MEVA')
-    state.Weapons:options( 
-        -- 'Tizalmace', 
-        -- 'Sequence', 
+    state.Weapons:options(
+        -- 'Tizalmace',
+        -- 'Sequence',
         'Junk',
+        'Tizona',
         'None',
         'MagicWeapons'
         -- 'Almace',
-        -- 'MagicWeapons', 
-        -- 'MeleeClubs', 
-        -- 'MaccWeapons', 
+        -- 'MagicWeapons',
+        -- 'MeleeClubs',
+        -- 'MaccWeapons',
         -- 'HybridWeapons'
     )
 
@@ -146,7 +147,7 @@ function init_gear_sets()
     }
 
     sets.Self_Waltz = {
-        -- body = "Passion Jacket", 
+        -- body = "Passion Jacket",
         -- ring1 = "Asklepian Ring"
     }
 
@@ -437,7 +438,7 @@ function init_gear_sets()
     sets.precast.WS['Expiacion'].FullAcc = set_combine(
         sets.precast.WS.FullAcc,
         {
-            body = "Assim. Jubbah +1", 
+            body = "Assim. Jubbah +1",
             hands = "Jhakri Cuffs +2"
         }
     )
@@ -486,11 +487,11 @@ function init_gear_sets()
 
     -- Swap to these on Moonshade using WS if at 3000 TP
     sets.MaxTP = {
-        -- ear1 = "Cessance Earring", 
+        -- ear1 = "Cessance Earring",
         ear2 = "Brutal Earring"
     }
     sets.AccMaxTP = {
-        -- ear1 = "Regal Earring", 
+        -- ear1 = "Regal Earring",
         ear2 = "Telos Earring"
     }
 
@@ -918,7 +919,7 @@ function init_gear_sets()
     sets.midcast.Helix.Resistant = sets.midcast['Elemental Magic'].Resistant
 
     sets.element.Dark = {
-        head = "Pixie Hairpin +1", 
+        head = "Pixie Hairpin +1",
         ring2 = "Archon Ring"
     }
     sets.element.Light = {} -- ring2="Weatherspoon Ring"
@@ -1258,7 +1259,7 @@ function init_gear_sets()
     sets.MP_Knockback = {}
     sets.SuppaBrutal = {ear1 = "Suppanomimi", ear2 = "Brutal Earring"}
     sets.DWEarrings = {
-        -- ear1 = "Dudgeon Earring", 
+        -- ear1 = "Dudgeon Earring",
         -- ear2 = "Heartseeker Earring"
     }
     sets.DWMax = {
@@ -1272,43 +1273,47 @@ function init_gear_sets()
 
     -- Weapons sets
     sets.weapons.Tizalmace = {
-        main = "Wightslayer", -- main = "Tizona", 
+        main = "Wightslayer", -- main = "Tizona",
         sub="Kaja Sword" -- sub = "Almace"
     }
     sets.weapons.Tizbron = {
-        -- main = "Tizona", 
+        -- main = "Tizona",
         -- sub = "Thibron"
     }
     sets.weapons.MeleeClubs = {
-        -- main = "Nehushtan", 
+        -- main = "Nehushtan",
         -- sub = "Nehushtan"
     }
     sets.weapons.Almace = {
-        -- main = "Almace", 
+        -- main = "Almace",
         -- sub = "Sequence"
     }
     sets.weapons.Sequence = {
-        -- main = "Sequence", 
+        -- main = "Sequence",
         -- sub = "Almace"
     }
     sets.weapons.Kaja = {
-        -- main = "Naegling", 
+        -- main = "Naegling",
         -- sub = "Almace"
     }
     sets.weapons.Junk = {
         main="Claidheamh Soluis",
         sub="Kaja Sword"
     }
+    sets.weapons.Tizona = {
+        main="Tizona",
+        sub="Kaja Sword"
+    }
     sets.weapons.MagicWeapons = {
-        main = "Nibiru Cudgel", 
+        main = "Nibiru Cudgel",
         sub = "Nibiru Cudgel"
     }
     sets.weapons.MaccWeapons = {
-        -- main = "Iris", 
+        -- main = "Iris",
         -- sub = "Iris"
     }
     sets.weapons.HybridWeapons = {
-        -- main = "Vampirism", 
+        -- main = "Vampirism",
         -- sub = "Vampirism"
     }
 
@@ -1443,7 +1448,7 @@ function init_gear_sets()
             }
         }
     }
-    
+
     -- sets.engaged.Fodder = {
     --     -- main = "Tizona",
     --     -- sub = "Almace",
@@ -1620,7 +1625,7 @@ function init_gear_sets()
         waist = "Gishdubar Sash"
     }
     sets.Self_Refresh = {
-        -- back = "Grapevine Cape", 
+        -- back = "Grapevine Cape",
         waist = "Gishdubar Sash"
     }
     sets.MagicBurst = {

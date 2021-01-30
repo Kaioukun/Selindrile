@@ -254,7 +254,7 @@ function get_sets()
             }
         }
     }
-    
+
 
     sets.WeaponSkill["Pyrrhic Kleos"] = {
         ammo = "Aurgelmir Orb +1",
@@ -300,7 +300,7 @@ function get_sets()
             augments = {'Attack+24', 'Weapon skill damage +3%', 'DEX+14'}
         },
         neck = "Etoile Gorget +2",
-        waist = "Chiner's Belt +1",
+        waist = "Sailfi Belt +1",
         left_ear = "Ishvara Earring",
         right_ear = "Moonshade Earring",
         left_ring = "Ilabrat Ring",
@@ -381,7 +381,7 @@ end
 
 function aftercast(spell, action)
     debug("Aftercast")
-    status_change(player.status) 
+    status_change(player.status)
 end
 
 function status_change(new, old)
