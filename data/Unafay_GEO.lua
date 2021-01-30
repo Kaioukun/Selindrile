@@ -56,7 +56,7 @@ function init_gear_sets()
     --------------------------------------
 
     -- Precast sets to enhance JAs
-    sets.precast.JA.Bolster = {body="Bagua Tunic +1"}
+    sets.precast.JA.Bolster = {body="Bagua Tunic +3"}
     sets.precast.JA['Life Cycle'] = {head="Azimuth Hood +1", body="Geomancy Tunic +1", back="Nantosuelta's Cape"}
     sets.precast.JA['Full Circle'] = {hands="Bagua Mitaines +1"}
     sets.precast.JA['Radial Arcana'] = {feet="Bagua Sandals +1"}
@@ -83,7 +83,7 @@ function init_gear_sets()
 		ring2="Kishar Ring",
         back="Lifestream Cape",
         waist="Witful Belt",
-        legs="Geomancy Pants +1",
+        legs="Volte brais",
         feet="Regal pumps +1",
     }
 
@@ -353,7 +353,7 @@ function init_gear_sets()
     main={ name="Grioavolr", augments={'Enfb.mag. skill +16','Mag. Acc.+18','"Mag.Atk.Bns."+25',}},
     sub="Enki Strap",
     ammo="Pemphredo Tathlum",
-    head="Bagua galero +1",
+    head="Bagua galero +2",
     body="Jhakri Robe +2",
     hands="Geo. Mitaines +2",
     legs="Jhakri Slops +2",
@@ -370,7 +370,7 @@ function init_gear_sets()
     main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="Bagua galero +1",
+    head="Bagua galero +2",
     body="Geo. Tunic +1",
     hands="Geo. Mitaines +2",
     legs="Azimuth Tights +1",
@@ -388,7 +388,7 @@ function init_gear_sets()
     main={ name="Rubicundity", augments={'Mag. Acc.+10','"Mag.Atk.Bns."+10','Dark magic skill +10','"Conserve MP"+7',}},
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="Bagua galero +1",
+    head="Bagua galero +2",
     body="Geo. Tunic +1",
     hands="Geo. Mitaines +2",
     legs="Azimuth Tights +1",
@@ -415,7 +415,7 @@ function init_gear_sets()
 	
 	main="Gada",
 	sub="Ammurapi shield",
-	head="Bagua galero +1",
+	head="Bagua galero +2",
 	body="Telchine chasuble",
 	hands="Telchine gloves",
 	legs="Telchine braconi",
@@ -426,7 +426,7 @@ function init_gear_sets()
 	
 	main="Gada",
 	sub="Ammurapi shield",
-	head="Bagua galero +1",
+	head="Bagua galero +2",
 	body="Telchine chasuble",
 	hands="Telchine gloves",
 	legs="Telchine braconi",
@@ -474,7 +474,7 @@ function init_gear_sets()
     head="Azimuth hood +1",
     body="Witching Robe",
     hands="Geo. Mitaines +2",
-    legs="Assiduity pants +1",
+    legs="Volte brais",
     feet="Azimuth gaiters +1",
     neck="Loricate torque +1",
     waist="Fucho-no-Obi",
@@ -577,7 +577,7 @@ function init_gear_sets()
     main="Sucellus",
     sub="Genmei Shield",
     range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-    head="Bagua galero +1",
+    head="Bagua galero +2",
     body="Jhakri Robe +2",
     hands="Geo. Mitaines +2",
     legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
@@ -613,7 +613,7 @@ function init_gear_sets()
         ear1="Bladeborn Earring",
         ear2="Steelflash Earring",
         body="Azimuth Coat +1",
-        head="Bagua galero +1",
+        head="Bagua galero +2",
         hands="Geomancy Mitaines +2",
         ring1="Rajas Ring",
         ring2="K'ayres Ring",

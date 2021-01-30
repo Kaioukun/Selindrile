@@ -17,12 +17,12 @@ Gear_Debug = 0
 -- Gear Sets
 function get_sets()
 		
-	sets.aftercast_Idle_refresh = 
-		{main="Bolelabunga",
-		sub="Genbu's Shield",
+	sets.aftercast_Idle_refresh = 		
+		{main="Malignance pole",
+		sub="Mensch strap",
 		ammo="Homiliary",
 		head="Vanya Hood",
-		neck="Loricate torque",
+		neck="Twilight torque",
 		ear1="Moonshade earring",
 		ear2="Etiolation Earring",
 		body="Piety briault +3",
@@ -31,7 +31,7 @@ function get_sets()
 		ring2="Defending Ring",
 		back="Moonbeam cape",
 		waist="Luminary sash",
-		legs="Assiduity pants +1",
+		legs="Volte brais",
 		feet="Ayanmo gambieras +2"}
 	
 	sets.aftercast_Move = sets.aftercast_Idle_refresh
@@ -52,7 +52,7 @@ function get_sets()
 		ring2="Weatherspoon Ring",
 		back="Alaunus's cape",
 		waist="Witful belt",
-		legs="Ayanmo cosciales +2",
+		legs="Volte brais",
 		feet="Regal pumps +1"}
 	
 	sets.precast_Haste = 
@@ -69,7 +69,7 @@ function get_sets()
 		ring2="Prolix Ring",
 		back="Ogapeopo cape",
 		waist="Witful belt",
-		legs="Artsieq hose",
+		legs="Volte brais",
 		feet=""}
 		
 	sets.midcast_Haste = 
@@ -86,7 +86,7 @@ function get_sets()
 		ring2="Prolix Ring",
 		back="",
 		waist="",
-		legs="",
+		legs="Volte brais",
 		feet=""}
 	
 	sets.precast_Devotion = {}
@@ -95,18 +95,18 @@ function get_sets()
 		{main="Boonwell staff",
 		sub="",
 		ammo="Homiliary",
-		head="Befouled crown",
+		head="Oracle's cap",
 		neck="",
 		ear1="",
 		ear2="Moonshade Earring",
-		body="Piety briault +3",
-		hands="",
+		body="Oracle's robe",
+		hands="Oracle's gloves",
 		ring1="Stikini ring +1",
 		ring2="Stikini ring",
 		back="",
 		waist="Cleric's belt",
-		legs="Assiduity Pants +1",
-		feet=""}
+		legs="Oracle's braconi",
+		feet="Avocat pigaches"}
 	
 	sets.midcast_EnfeeblingMagic = 
 		{main="Gada", 
@@ -136,31 +136,32 @@ function get_sets()
 		legs={ name="Piety Pantaln. +3", augments={'Enhances "Shellra V" effect',}},
 		feet={ name="Piety Duckbills +3", augments={'Enhances "Protectra V" effect',}},
 		neck="Incanter's Torque",
-		waist="Cascade Belt",
+		waist="Embla sash",
 		left_ear="Andoaa Earring",
 		right_ear="Etiolation Earring",
 		left_ring="Stikini Ring +1",
 		right_ring="Stikini Ring",
-		back="Fi follet cape +1",}
+		back="Mending cape",}
 		
 	sets.midcast_Barspells_noSolace = sets.midcast_BarSpells_Solace
 
-	sets.midcast_EnhancingMagic = 
-		{main="Gada",
-		sub="Ammurapi shield",
+	sets.midcast_EnhancingMagic ={
+		main={ name="Gada", augments={'Enh. Mag. eff. dur. +5','VIT+1','"Mag.Atk.Bns."+12','DMG:+1',}},
+		sub="Ammurapi Shield",
 		ammo="Incantor Stone",
-		head="Telchine cap",
-		neck="Incanter's torque",
-		ear1="Andoaa earring",
-		ear2="",
-		body="Telchine chasuble",
-		hands="Telchine gloves",
-		ring1="Stikini ring +1",
-		ring2="Prolix Ring",
-		back="Fi follet cape +1",
-		waist="Cascade belt",
-		legs="Piety pantaloons +3",
-		feet="Telchine pigaches"}
+		head={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +10',}},
+		body={ name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +9',}},
+		hands={ name="Telchine Gloves", augments={'Enh. Mag. eff. dur. +10',}},
+		legs={ name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}},
+		feet={ name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +9',}},
+		neck="Incanter's Torque",
+		waist="Embla Sash",
+		left_ear="Andoaa Earring",
+		right_ear="Etiolation Earring",
+		left_ring="Stikini Ring +1",
+		right_ring="Stikini Ring",
+		back={ name="Mending Cape", augments={'Healing magic skill +9','Enha.mag. skill +10',}},
+}
 	
 	sets.midcast_MAB = 
 		{main="Venabulum",
@@ -183,13 +184,13 @@ function get_sets()
 		{main="Gada",
 		sub="Ammurapi shield",
 		ammo="Incantor Stone",
-		head="Telchine cap",
+		head="Inyanga Tiara +2",
 		body={ name="Piety Briault +3", augments={'Enhances "Benediction" effect',}},
 		hands="Ebers Mitts +1",
 		legs="Th. Pant. +3",
 		feet={ name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +9',}},
 		neck="Incanter's Torque",
-		waist="Cascade belt",
+		waist="Embla sash",
 		left_ear="Enchntr. Earring +1",
 		right_ear="Etiolation Earring",
 		left_ring="Stikini Ring +1",
@@ -201,7 +202,7 @@ function get_sets()
 		{feet="Piety Duckbills +3"}
 		
 	sets.midcast_Shellra = 
-		{legs="Piety Pantaloons +2"}
+		{legs="Piety Pantaloons +3"}
 	
 	sets.midcast_Auspice = {feet="Piety Duckbills +3"}
 		
@@ -248,7 +249,7 @@ function get_sets()
 		ear1="Nourishing earring",
 		ear2="Glorious earring",
 		body="Theophany briault +3",
-		hands="Piety mitts +1",
+		hands="Piety mitts +3",
 		ring1="Lebeche ring",
 		ring2="Persis ring",
 		back="Mending Cape",
@@ -280,7 +281,7 @@ function get_sets()
 		sub="Sors shield",
 		ammo="Incantor Stone",	
 		head="Vanya hood",
-		neck="Malison medallion",
+		neck="Malison medallion",	
 		ear1="Nourishing earring",
 		ear2="Glorious earring",
 		body="Ebers bliaud +1",
