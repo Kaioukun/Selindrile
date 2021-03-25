@@ -1,285 +1,384 @@
 function get_sets()
-	debug("Andromida>> <3")
-	
-	sets.status = {}
+    debug('Rommi>> <3')
     -- Idle Sets --
-    sets.status.Idle = {}
+    sets.Idle = {
+        main = "Carnwenhan",
+        sub = "Genmei Shield",
+        head = "",
+        neck = "Loricate torque +1",
+        ear1 = "Mendicant's Earring",
+        ear2 = "Etiolation earring",
+        body = "",
+        hands = "",
+        ring1 = "Dark Ring",
+        ring2 = "Defending ring",
+        back = "Intarabus cape",
+        waist = "Flume belt",
+        legs = "",
+        feet = ""
+    }
 
-    sets.status.Resting = {}
-
-    -- Melee --
-    sets.status.Engaged = {}
+    sets.Resting = {
+        main = "Boonwell Staff",
+        sub = "",
+        range = "Gjallarhorn",
+        head = "",
+        body = "",
+        hands = "",
+        legs = "",
+        feet = "",
+        neck = "Loricate torque +1",
+        waist = "Flume Belt",
+        left_ear = "Moonshade Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "",
+        right_ring = "",
+        back = "Intarabus Cape"
+    }
 
     -- JA Sets --
-    sets.JobAbility = {}
-    sets.JobAbility.Nightingale = {
-        feet = "Bihu Slippers +3"
+    sets.JA = {}
+    sets.JA.Nightingale = {
+        feet = "Bihu Slippers"
     }
-    sets.JobAbility.Troubadour = {
-        body = "Bihu Justaucorps +3"
+    sets.JA.Troubadour = {
+        body = "Bihu Justaucorps"
     }
-    sets.JobAbility["Soul Voice"] = {
-        legs = "Bihu cannions +2"
-	}
-	
-    -- WS Sets --
-    sets.WeaponSkill = {}
-    -- sets.WeaponSkill["Wasp Sting"] = {}
-    -- sets.WeaponSkill["Gust Slash"] = {}
-    -- sets.WeaponSkill["Shadowstitch"] = {}
-    -- sets.WeaponSkill["Viper Bite"] = {}
-    -- sets.WeaponSkill["Cyclone"] = {}
-    -- sets.WeaponSkill["Energy Steal"] = {}
-    -- sets.WeaponSkill["Energy Drain"] = {}
-    -- sets.WeaponSkill["Evisceration"] = {}
-    -- sets.WeaponSkill["Aeolian Edge"] = {}
-    -- sets.WeaponSkill["Exenterator"] = {}
-    -- sets.WeaponSkill["Mercy Stroke"] = {}
-    -- sets.WeaponSkill["Rudra's Storm"] = {}
-    -- sets.WeaponSkill["Mordant Rime"] = {}
-
-    -- Song precast Set --
-    sets.precast = {
-        --equipable = true,
+    sets.JA["Soul Voice"] = {
+        legs = "Bihu cannions"
     }
 
-    sets.precast.BardSong = {
-        equipable = true,
-        range = "Gjallarhorn"
+    -- Song Precast Set --
+    sets.Precast = {}
+    sets.Precast.SongCast = {
+        main = "",
+        head = "Fili Calot +1",
+        neck = "Loricate torque +1",
+        ear1 = "Etiolation earring",
+        ear2 = "Enchanter Earring +1",
+        body = "Inyanga jubbah +2",
+        hands = "Brioso cuffs +2",
+        ring1 = "Kishar ring",
+        ring2 = "Defending ring",
+        back = "Intarabus cape",
+        waist = "Flume belt",
+        legs = "Ayanmo cosciales +2",
+        feet = "Fili cothurnes +1"
     }
 
-    sets.precast.BardSong["Honor March"] = set_combine(sets.precast.BardSong, {
-        range = "Marsyas"
-    })
-    sets.precast.BardSong["Knight's Minne"] = {
-        range = "Terpander"
+    -- Fastcast Set --
+    sets.Precast.FastCast = {
+        main = "Felibre's Dague",
+        sub = "Genmei Shield",
+        range = "Gjallarhorn",
+        head = "",
+        body = "Inyanga Jubbah +2",
+        hands = "Gende. Gages +1",
+        legs = "",
+        feet = "",
+        neck = "Orunmila's Torque",
+        waist = "",
+        left_ear = "Enchanter earring +1",
+        right_ear = "Etiolation Earring",
+        left_ring = "Kishar Ring",
+        right_ring = "",
+        back = ""
     }
-    sets.precast.BardSong["Knight's Minne II"] = sets.precast.BardSong["Knight's Minne"]
 
-    -- Cure precast Set --
-    sets.precast.Cure = {}
+    -- Cure Precast Set --
+    sets.Precast.Cure = {
+        main = "Carnwenhan",
+        sub = "Genbu's Shied",
+        range = "Gjallarhorn",
+        head = "",
+        body = "",
+        hands = "",
+        legs = "Doyen pants",
+        feet = "",
+        neck = "Bard's Charm +1",
+        waist = "Luminary Sash",
+        left_ear = "Mendi. Earring",
+        right_ear = "Beatific Earring",
+        left_ring = "Karka Ring",
+        right_ring = "Ephedra Ring",
+        back = "Pahtli Cape"
+    }
 
-    sets.precast["Cure II"] = sets.precast.Cure
-    sets.precast["Cure III"] = sets.precast.Cure
-    sets.precast["Cure IV"] = sets.precast.Cure
-    sets.precast.Curaga = sets.precast.Cure
-    sets.precast["Curaga II"] = sets.precast.Cure
-
-    sets.midcast = {}
+    sets.Midcast = {}
 
     -- Song Debuff Set --
-    sets.midcast.Singing = {
-        --equipable = true,
+    sets.Midcast.Wind = {
+        main = "Carnwenhan",
+        sub = "Ammurapi shield",
+        range = "Gjallarhorn",
+        head = "",
+        neck = "Moonbow Whistle",
+        ear1 = "",
+        ear2 = "Dignitary's earring",
+        body = "Brioso justaucorps +2",
+        hands = "Leyline gloves",
+        ring1 = "Stikini ring",
+        ring2 = "",
+        back = "Rhapsode's cape",
+        waist = "Luminary sash",
+        legs = "Brioso cannions +2",
+        feet = "Brioso slippers +2"
     }
 
     -- Song Buff Set --
-    sets.midcast.Singing.Buff = {}
+    sets.Midcast.WindBuff = {
+        main = "Carnwenhan",
+        range = "",
+        head = "Fili calot +1",
+        neck = "Moonbow Whistle",
+        ear1 = "",
+        ear2 = "Aoidos' Earring",
+        body = "Fili hongreline +1",
+        hands = "Fili manchettes +1",
+        ring1 = "Dawnsoul ring",
+        back = "Kumbira cape",
+        waist = "Ovate rope",
+        legs = "Inyanga Shalwar +2",
+        feet = "Brioso Slippers +2"
+    }
 
-    sets.midcast.Singing.March = set_combine(sets.midcast.Singing.Buff, {
+    sets.Midcast.March = {
         hands = "Fili manchettes +1"
-    })
-    sets.midcast.Singing.Minuet = set_combine(sets.midcast.Singing.Buff, {
+    }
+    sets.Midcast.Minuet = {
         body = "Fili hongreline +1"
-    })
-    sets.midcast.Singing.Madrigal = set_combine(sets.midcast.Singing.Buff, {
+    }
+    sets.Midcast.Madrigal = {
         head = "Fili calot +1"
-    })
-    sets.midcast.Singing.Ballad = set_combine(sets.midcast.Singing.Buff, {
+    }
+    sets.Midcast.Ballad = {
         legs = "Fili rhingrave +1"
-    })
-    sets.midcast.Singing.Scherzo = set_combine(sets.midcast.Singing.Buff, {
+    }
+    sets.Midcast.Scherzo = {
         feet = "Fili cothurnes +1"
-    })
-    sets.midcast.Singing.Mazurka = set_combine(sets.midcast.Singing.Buff, {
-        head = "Nahtirah hat"
-    })
-    sets.midcast.Singing.Paeon = set_combine(sets.midcast.Singing.Buff, {
+    }
+    sets.Midcast.Mazurka = {
+        head = ""
+    }
+    sets.Midcast.Paeon = {
         head = "Brioso Roundlet +2"
-    })
-    sets.midcast.Singing.Finale = set_combine(sets.midcast.Singing.Buff, {})
-    sets.midcast.Singing.Lullaby = set_combine(sets.midcast.Singing.Buff, {
-        hands = "Brioso cuffs +3"
-    })
-    sets.midcast.Singing["Honor March"] = set_combine(sets.midcast.Singing.March, {
-        range = "Marsyas"
-    })
+    }
+    sets.Midcast.Finale = {}
+    sets.Midcast.Lullaby = {
+        hands = "Brioso cuffs +2"
+    }
 
     -- Cure Set --
-    sets.midcast.Cure = {}
-
-	sets.midcast["Cure II"] = sets.midcast.Cure
-	sets.midcast["Cure III"] = sets.midcast.Cure
-	sets.midcast["Cure IV"] = sets.midcast.Cure
+    sets.Midcast.Cure = {
+        main = "Serenity",
+        sub = "Achaq grip",
+        head = {
+            name = "Vanya Hood",
+            augments = {'MP+50', '"Cure" potency +7%', 'Enmity-6'}
+        },
+        neck = "Colossus's torque",
+        ear1 = "Loquac. Earring",
+        ear2 = "Beatific earring",
+        body = "Kaykaus bliaut",
+        hands = "Revealer's mitts",
+        ring1 = "Ephedra ring",
+        ring2 = "Sirona's ring",
+        back = "Pahtli cape",
+        waist = "Cascade belt",
+        legs = "Kaykaus tights",
+        feet = "Medium's sabots"
+    }
 
     -- Curaga Set --
-    sets.midcast.Curaga = {}
-
-	sets.midcast["Curaga II"] = sets.midcast.Curaga
+    sets.Midcast.Curaga = {
+        main = "Serenity",
+        sub = {
+            name = "Genbu's Shield",
+            augments = {'"Cure" potency +4%', '"Cure" spellcasting time -8%'}
+        },
+        range = "Gjallarhorn",
+        head = {
+            name = "Vanya Hood",
+            augments = {'MP+50', '"Cure" potency +7%', 'Enmity-6'}
+        },
+        body = "Kaykaus Bliaut",
+        hands = "Revealer's Mitts",
+        legs = "Doyen pants",
+        feet = "Kaykaus Boots",
+        neck = "Bard's Charm +1",
+        waist = "Luminary Sash",
+        left_ear = "Mendi. Earring",
+        right_ear = "Beatific Earring",
+        left_ring = "Karka Ring",
+        right_ring = "Ephedra Ring",
+        back = "Pahtli Cape"
+    }
 
     -- Haste Set --
-    sets.midcast.Haste = {}
+    sets.Midcast.Haste = set_combine(sets.Precast.FastCast, {
+        head = "Nahtirah Hat",
+        neck = "Moonbow Whistle +1",
+        ear1 = "Loquac. Earring",
+        body = "",
+        hands = "Gendewitha Gages +1",
+        ring1 = "Prolix Ring",
+        ring2 = "Weatherspoon ring",
+        back = "Swith Cape +1",
+        waist = "Witful belt",
+        legs = "Bihu Cannions +2",
+        feet = "Brioso Slippers +2"
+    })
 
     -- Cursna Set --
-    sets.midcast.Cursna = {}
+    sets.Midcast.Cursna = {
+        main = "Queller rod",
+        sub = "Sors shield",
+        ammo = "Incantor Stone",
+        head = "Vanya hood",
+        neck = "Malison medallion",
+        ear1 = "Nourishing earring",
+        ear2 = "Glorious earring",
+        body = "",
+        hands = "Fanatic gloves",
+        ring1 = "Haoma's ring",
+        ring2 = "Haoma's ring",
+        back = "Alaunus's cape",
+        waist = "Channeler's stone",
+        legs = "",
+        feet = "Gende. Galosh. +1"
+    }
 
     -- Stoneskin Set --
-    sets.midcast.Stoneskin = set_combine(sets.midcast.Haste)
+    sets.Midcast.Stoneskin = set_combine(sets.Midcast.Haste)
+
+    -- Melee --
+    sets.TP = {
+        main = "Carnwenhan",
+        sub = "Taming Sari",
+        range = "Linos",
+        head = "Aya. Zucchetto +2",
+        body = "Reiki osode",
+        hands = "Volte mittens",
+        legs = "Aya. Cosciales +2",
+        feet = "Aya. Gambieras +1",
+        neck = "Bard's Charm +1",
+        waist = "Windbuffet belt +1",
+        left_ear = "Telos Earring",
+        right_ear = "Balder earring +1",
+        left_ring = "Chirich ring +1",
+        right_ring = "Petrov Ring",
+        back = "Intarabus's cape"
+    }
+
 end
 
-function precast(spell)
-    debug("Precast " .. spell.name)
-    if incapacitated() then
-        return
-    end
-
-    if (spell.english == "Spectral Jig" or spell.english == "Sneak") and buffactive.Sneak then
+function precast(spell, action)
+    if spell.type:endswith('Magic') or spell.type == "BardSong" or spell.type == "Ninjutsu" then
+        if buffactive.silence then -- Cancel Magic or Ninjutsu or BardSong If You Are Silenced or Out of Range --
+            cancel_spell()
+            debug(spell.name .. ' Canceled: [Silence has fallen]')
+            return
+        else
+            if spell.type == 'BardSong' then
+                if buffactive.nightingale then
+                    song_equip(spell)
+                    return
+                else
+                    equip(sets.Precast.SongCast)
+                    debug('Precast: Song')
+                end
+            elseif string.find(spell.english, 'Cur') and spell.english ~= "Cursna" then
+                equip(sets.Precast.Cure)
+                debug('Precast: Cure')
+            else
+                equip(sets.Precast.FastCast)
+                debug('Precast: Fast Cast')
+            end
+        end
+    elseif spell.english == 'Spectral Jig' and buffactive.Sneak then
         cast_delay(0.2)
-        send_command("cancel Sneak")
+        send_command('cancel Sneak')
+    elseif spell.type == "JobAbility" then
+        if sets.JA[spell.english] then
+            equip(sets.JA[spell.english])
+            debug('Precast: ' .. spell.english)
+        end
     end
-
-    if hook_method("precast", spell) then
-        debug("Precast hook controlling")
-        return
-    end
-
-    if sets.precast[spell.type] and sets.precast[spell.type][spell.english] then
-        debug("Equiping precast." .. spell.type .. "." .. spell.english)
-        equip(sets.precast[spell.type][spell.english])
-        return
-    end
-
-    if sets.precast[spell.type] and sets.precast[spell.type].equipable then
-        debug("Equiping precast." .. spell.type)
-        equip(sets.precast[spell.type])
-        return
-    end
-
-    debug("No set for precast." .. spell.type .. "." .. spell.english)
 end
 
-function is_magic(spell)
-	return spell.type:endswith("Magic") 
-		or spell.type == "BardSong" 
-		or spell.type == "Ninjutsu" 
-		or spell.type == "Trust"
-end
-
-function midcast(spell)
-    if incapacitated() then
+function midcast(spell, action)
+    if sets.Midcast[spell.english] then
+        equip(sets.Midcast[spell.english])
+        debug('Midcast: ' .. spell.english)
         return
+
+    elseif spell.type:endswith('Magic') or spell.type == 'Ninjutsu' or spell.type == "BardSong" then
+
+        if spell.type == "BardSong" then
+            song_equip(spell)
+        elseif string.find(spell.english, 'Cure') then
+            equip(sets.Midcast.Cure)
+            debug('Midcast: Cure')
+        elseif string.find(spell.english, 'Cura') then
+            equip(sets.Midcast.Curaga)
+            debug('Midcast: Curaga')
+        end
+
     end
-
-    if hook_method("midcast", spell) then
-        return
-    end
-
-    if sets.midcast[spell.skill] and sets.midcast[spell.skill][spell.english] then
-        equip(sets.midcast[spell.skill][spell.english])
-
-        return
-    end
-
-    if sets.midcast[spell.skill] and sets.midcast[spell.skill].equipable then
-        equip(sets.midcast[spell.skill])
-
-        return
-    end
-
-    debug("No set for midcast." .. spell.skill .. "." .. spell.english)
 end
 
-hook = {}
-
-hook.status = {}
-
-hook.precast = {}
-hook.precast.Singing = function(spell)
-    if buffactive.nightingale then
-        debug("Nightingale")
-        song_equip(spell)
-        return true
-    end
-
-    return false
-end
-
-hook.midcast = {}
-hook.midcast.Singing = function(spell)
-    if spell.target.type == "MONSTER" then
-        return false
-    end
-
-    if "Daurdabla" == player.equipment.range then
-        equip(sets.status.Idle)
-        debug("midcast: Dummy Song")
-        return true
-    end
-
-	song_equip(spell)
-	return true
-end
-
-function hook_method(prefix, spell)
-    debug("Hook: " .. prefix .. "." .. spell.skill .. "." .. spell.english)
-
-	if not hook[prefix] and not hook[prefix][spell.skill] then
-		return false
-	end
-
-	if type(hook[prefix][spell.skill]) == "function" then
-		return hook[prefix][spell.skill](spell)
-    end
-
-	if hook[prefix][spell.skill][spell.english] then
-		return hook[prefix][spell.skill][spell.english](spell)
-	end
-
-	return false
-end
-
-function aftercast(spell)
-    status_change(player.status, player.status)
+function aftercast(spell, action)
+    status_change(player.status)
 end
 
 function status_change(new, old)
-    if incapacitated() then
-        return
-    end
-
-    if hook.status[new] and hook.status[new](new, old) then
-        return
-    end
-
-    if sets.status[new] then
-        equip(sets.status[new])
-    end
-end
-
-incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
-function incapacitated()
-    if incapacitated_states:find(function(value)
-        return buffactive[value] or false
-    end) then
+    if new == 'Idle' then
         equip(sets.Idle)
-        return true
+        debug('Aftercast: Idle')
+    elseif new == 'Resting' then
+        equip(sets.Resting)
+        debug('Aftercast: Resting')
+    elseif new == 'Engaged' then
+        equipSet = sets.TP
+        equip(equipSet)
+    else
+        equipSet = sets.Idle
+        if equipSet[IdleArray[IdleIndex]] then
+            equipSet = equipSet[IdleArray[IdleIndex]]
+        end
+        if equipSet[WeaponArray[WeaponIndex]] then
+            equipSet = equipSet[WeaponArray[WeaponIndex]]
+        end
+        equip(equipSet)
     end
 end
 
 song_set_names = {'Finale', 'Lullaby', 'March', 'Minuet', 'Madrigal', 'Ballad', 'Scherzo', 'Mazurka', 'Paeon'}
 function song_equip(spell)
+    if spell.target.type == 'MONSTER' then
+        equip(sets.Midcast.Wind)
+        debug('Midcast: Wind')
+    else
+        if 'Daurdabla' == player.equipment.range then
+            debug('Midcast: Dummy Song')
+            return
+        end
+
+        equip(sets.Midcast.WindBuff)
+        debug('Midcast: WindBuff')
+    end
+
     for _, song in ipairs(song_set_names) do
         if string.find(spell.english, song) then
-            if sets.midcast.Singing[song] then
-                equip(sets.midcast.Singing[song])
-                debug('midcast: ' .. song)
-                return
+            if sets.Midcast[song] then
+                equip(sets.Midcast[song])
+                debug('Midcast: ' .. song)
+                break
             end
         end
     end
-
-    equip(sets.midcast.Singing.Buff)
 end
 
 function debug(s)
-    print(s)
+    send_command('@input /echo ' .. s)
 end
