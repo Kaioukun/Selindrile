@@ -2,11 +2,11 @@ function get_sets()
     incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 
     sets.Idle = {
-        head = "Malignance Chapeau",
-        body = "Meg. Cuirie +1",
-        hands = "Meg. Gloves +1",
-        legs = "Meg. Chausses +1",
-        feet = "Meg. Jam. +1",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
         neck = "Comm. Charm +2",
         waist = "Sailfi Belt +1",
         left_ear = "Telos Earring",
@@ -20,7 +20,7 @@ function get_sets()
         ammo = "Chrono Bullet",
         head = "Malignance Chapeau",
         body = "Mummu Jacket +1",
-        hands = "Meg. Gloves +1",
+        hands = "Meg. Gloves +2",
         legs = "Mummu Kecks +1",
         feet = "Mummu Gamash. +1",
         neck = {
@@ -35,7 +35,10 @@ function get_sets()
         right_ear = "Cessance Earring",
         left_ring = "Ilabrat Ring",
         right_ring = "Petrov Ring",
-        back = "Aptitude Mantle"
+        back = {
+            name = "Camulus's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dual Wield"+10', 'Phys. dmg. taken-10%'}
+        }
     }
 
     sets.Misc = {}
@@ -51,7 +54,32 @@ function get_sets()
     }
 
     sets.WeaponSkill = {}
-    sets.WeaponSkill["Savage Blade"] = {}
+    sets.WeaponSkill["Savage Blade"] = {
+        head = "Meghanada Visor +2",
+        body = "Meg. Cuirie +2",
+        hands = "Meg. Gloves +2",
+        legs = "Meg. Chausses +2",
+        feet = "Lanun Bottes +3",
+        neck = {
+            name = "Comm. Charm +2",
+            augments = {'Path: A'}
+        },
+        waist = {
+            name = "Sailfi Belt +1",
+            augments = {'Path: A'}
+        },
+        left_ear = "Telos Earring",
+        right_ear = {
+            name = "Moonshade Earring",
+            augments = {'Accuracy+4', 'TP Bonus +250'}
+        },
+        left_ring = "Ifrit Ring +1",
+        right_ring = "Karieyh Ring",
+        back = {
+            name = "Camulus's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'Weapon skill damage +10%'}
+        }
+    }
 
     sets.WeaponSkill["Last Stand"] = {}
     sets.WeaponSkill["Detonator"] = sets.WeaponSkill["Last Stand"]
@@ -63,24 +91,43 @@ function get_sets()
     sets.WeaponSkill["Wildfire"] = {}
     sets.WeaponSkill["Leaden Salute"] = {
         head = "Pixie Hairpin +1",
-        body = "Lanun Frac +3",
+        body = {
+            name = "Lanun Frac +3",
+            augments = {'Enhances "Loaded Deck" effect'}
+        },
         hands = {
             name = "Carmine Fin. Ga. +1",
             augments = {'Rng.Atk.+20', '"Mag.Atk.Bns."+12', '"Store TP"+6'}
         },
-        legs = "Herculean Trousers",
-        feet = "Lanun Bottes +3",
-        neck = "Comm. Charm +2",
+        legs = {
+            name = "Herculean Trousers",
+            augments = {'Mag. Acc.+3', '"Mag.Atk.Bns."+23', 'Mag. Acc.+20 "Mag.Atk.Bns."+20'}
+        },
+        feet = {
+            name = "Lanun Bottes +3",
+            augments = {'Enhances "Wild Card" effect'}
+        },
+        neck = {
+            name = "Comm. Charm +2",
+            augments = {'Path: A'}
+        },
         waist = "Eschan Stone",
         left_ear = "Friomisi Earring",
-        right_ear = "Moonshade Earring",
+        right_ear = {
+            name = "Moonshade Earring",
+            augments = {'Accuracy+4', 'TP Bonus +250'}
+        },
         left_ring = "Dingir Ring",
-        right_ring = "Karieyh Ring"
+        right_ring = "Karieyh Ring",
+        back = {
+            name = "Camulus's Mantle",
+            augments = {'AGI+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'AGI+10', 'Weapon skill damage +10%'}
+        }
     }
 
     sets.CorsairRoll = {
         equipable = true,
-        head = "Lanun Tricorne +1",
+        head = "Lanun Tricorne +3",
         hands = "Chasseur's Gants +1",
         legs = "Chas. Culottes +1",
         feet = "Chass. Bottes +1",

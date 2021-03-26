@@ -26,6 +26,7 @@ function get_sets()
 			augments = {
 				"MND+20",
 				"Mag. Acc+20 /Mag. Dmg.+20",
+				
 				"MND+5",
 				'"Fast Cast"+10',
 				"Damage taken-5%"
@@ -34,41 +35,46 @@ function get_sets()
 	}
 
 	sets.JobAbility = {}
+	sets.Precast = {}
+	sets.Midcast = {}
 
 	sets.JobAbility.Benediction = {
 		body = "Piety Briault +2"
 	}
 
-	sets.Precast = {}
-
-	sets.Precast.Haste = {
-		head = "Theophany Cap +2",
-		body = "Shango Robe",
-		hands = "Inyan. Dastanas +2",
-		legs = "Chironic Hose",
-		feet = "Ebers Duckbills +1",
-		waist = "Witful Belt"
-	}
+	sets.Precast.Haste = 
+		{main="Bolelabunga",
+		sub="Genbu shield",
+		ammo="Incantor Stone",		
+		head="Cath palug crown",
+		neck="Cleric's torque +1",
+		ear1="Loquacious earring",
+		ear2="Malignance Earring",
+		body="Inyanga jubbah +2",
+		hands="Gendewitha gages +1",
+		ring1="Kishar Ring",
+		ring2="Prolix Ring",
+		back="Perimede cape",
+		waist="Witful belt",
+		legs="Volte brais",
+		feet="Volte boots"}
 
 	sets.Precast.FastCast =
-		set_combine(
-		sets.Precast.Haste,
-		{
-			ammo = "Impatiens",
-			head = "Nahtirah Hat",
-			body = "Inyanga Jubbah +1",
-			neck = "Voltsurge Torque",
-			waist = "Witful Belt",
-			left_ear = "Loquac. Earring",
-			right_ear = "Malignance Earring",
-			left_ring = "Prolix Ring",
-			right_ring = "Kishar Ring",
-			back = {
-				name = "Alaunus's Cape",
-				augments = {'"Fast Cast"+10'}
-			}
-		}	
-	)
+		{main="Sucellus",
+		sub="Genbu shield",
+		ammo="Incantor Stone",
+		head="Cath palug crown",
+		neck="Cleric's torque +1",
+		ear1="Malignance earring",
+		ear2="Enchanter Earring +1",
+		body="Inyanga jubbah +2",
+		hands="Gendewitha gages +1",
+		ring1="Kishar Ring",
+		ring2="Weatherspoon Ring",
+		back="Alaunus's cape",
+		waist="Embla sash",
+		legs="Volte brais",
+		feet="Navon crackows"}
 
 	sets.Precast.Cure =
 		set_combine(
@@ -94,8 +100,6 @@ function get_sets()
 			}
 		}
 	)
-
-	sets.Midcast = {}
 
 	sets.Midcast.Cure = {
 		main = {
@@ -197,18 +201,20 @@ end
 
 function precast(spell, action)
 	if is_magic(spell) then
-		if buffactive.silence then
-			cancel_spell()
-			send_command('@input /item "Echo Drops" <me>')
-			debug(spell.name .. " Canceled: [Silence has fallen]")
-			return
-		end
+        if buffactive.silence then
+            cancel_spell()
+            send_command('@input /item "Echo Drops" <me>')
+            debug(spell.name .. " Canceled: [Silence has fallen]")
+            return
+        end
 
-		if spell.english:startswith("Cur") and spell.english ~= "Cursna" then
-			equip(sets.Precast.Cure)
-			debug("Precast: Cure")
-			return
-		end
+        equip(sets.Precast.FastCast)
+
+        if spell.english:startswith("Cur") and spell.english ~= "Cursna" then
+            equip(sets.Precast.Cure)
+            debug("Precast: Cure")
+            return
+        end
 	end
 
 	if sets[spell.type] and sets[spell.type][spell.english] then
@@ -275,11 +281,21 @@ function midcast(spell, action)
 	end
 end
 
+function status_change(new, old)
+    if _G["status_change_" .. new:lower()] and not _G["status_change_" .. new:lower()]() then
+        return
+    end
+
+    if (sets[new]) then
+        equip(sets[new])
+    end
+end
+
 function aftercast(spell, action)
 	debug("Idle")
 	equip(sets.Idle)
 end
 
 function debug(s)
-	-- windower.add_to_chat(123, s)
+	windower.add_to_chat(123, s)
 end

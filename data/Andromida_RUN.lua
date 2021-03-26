@@ -5,25 +5,25 @@ function get_sets()
         main = "Epeolatry",
         sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
-        head = "Turms Cap +1",
-        body = "Runeist's Coat +3",
-        hands = "Turms Mittens +1",
-        legs = "Eri. Leg Guards +1",
-        feet = "Erilaz Greaves +1",
-        neck = "Futhark Torque +2",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Warder's Charm +1",
         waist = "Engraved Belt",
-        left_ear = "Genmei Earring",
-        right_ear = "Odnowa Earring +1",
+        left_ear = "Hearty Earring",
+        right_ear = "Etiolation Earring",
         left_ring = "Vocane Ring +1",
-        right_ring = "Defending Ring",
+        right_ring = "Shadow Ring",
         back = {
-            name = "Ogma's cape",
+            name = "Ogma's Cape",
             augments = {
-                "HP+60",
-                "Eva.+20 /Mag. Eva.+20",
-                "Mag. Evasion+10",
-                "Enmity+10",
-                "Phys. dmg. taken-10%"
+                'HP+60', 
+                'Eva.+20 /Mag. Eva.+20', 
+                'Mag. Evasion+10', 
+                'Enmity+10', 
+                'Phys. dmg. taken-10%'
             }
         }
     }
@@ -92,32 +92,33 @@ function get_sets()
             }
         }
     }
-    sets.Engaged.Tank = {
-        main = "Epeolatry",
-        sub = "Utu Grip",
-        ammo = "Staunch Tathlum +1",
-        head = "Turms Cap +1",
-        body = "Runeist's Coat +3",
-        hands = "Turms Mittens +1",
-        legs = "Eri. Leg Guards +1",
-        feet = "Turms Leggings +1",
-        neck = "Futhark Torque +2",
-        waist = "Flume Belt",
-        left_ear = "Genmei Earring",
-        right_ear = "Odnowa Earring +1",
-        left_ring = "Vocane Ring +1",
-        right_ring = "Defending Ring",
-        back = {
-            name = "Ogma's cape",
-            augments = {
-                "HP+60",
-                "Eva.+20 /Mag. Eva.+20",
-                "Mag. Evasion+10",
-                "Enmity+10",
-                "Phys. dmg. taken-10%"
-            }
-        }
-    }
+    sets.Engaged.Tank = sets.Idle
+    -- {
+    --     main = "Epeolatry",
+    --     sub = "Utu Grip",
+    --     ammo = "Staunch Tathlum +1",
+    --     head = "Turms Cap +1",
+    --     body = "Runeist's Coat +3",
+    --     hands = "Turms Mittens +1",
+    --     legs = "Eri. Leg Guards +1",
+    --     feet = "Turms Leggings +1",
+    --     neck = "Futhark Torque +2",
+    --     waist = "Engraved Belt",
+    --     left_ear = "Hearty Earring",
+    --     right_ear = "Odnowa Earring +1",
+    --     left_ring = "Vocane Ring +1",
+    --     right_ring = "Defending Ring",
+    --     back = {
+    --         name = "Ogma's cape",
+    --         augments = {
+    --             "HP+60",
+    --             "Eva.+20 /Mag. Eva.+20",
+    --             "Mag. Evasion+10",
+    --             "Enmity+10",
+    --             "Phys. dmg. taken-10%"
+    --         }
+    --     }
+    -- }
     sets.Engaged.Hybrid =
         set_combine(
         sets.Engaged.Melee,
@@ -203,7 +204,7 @@ function get_sets()
     -- sets.WeaponSkill['Herculean Slash'] = {}
 
     sets.WeaponSkill["Resolution"] = {
-        ammo = "Knobkierrie", -- Seething +1
+        ammo="Aurgelmir Orb +1",
         head = {
             name = "Adhemar Bonnet +1",
             augments = {"DEX+12", "AGI+12", "Accuracy+20"}
@@ -304,15 +305,13 @@ function get_sets()
         hands = "Runeist Mitons +1",
         legs = "Futhark Trousers +1",
         waist = "Olympus Sash",
-        left_ear = "Andoaa Earring",
-        back = "Merciful Cape"
+        left_ear = "Andoaa Earring"
     }
 
     sets.Midcast["Enhancing Magic"].Phalanx =
         set_combine(sets.Midcast["Enhancing Magic"], {head = "Futhark Bandeau +3"})
     sets.Midcast["Enhancing Magic"].Refresh = set_combine(sets.Midcast["Enhancing Magic"], {head = "Erilaz Galea +1"})
-    sets.Midcast["Enhancing Magic"].Regen =
-        set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
+    sets.Midcast["Enhancing Magic"].Regen = set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
     sets.Midcast["Enhancing Magic"]["Regen II"] = sets.Midcast["Enhancing Magic"].Regen
     sets.Midcast["Enhancing Magic"]["Regen III"] = sets.Midcast["Enhancing Magic"].Regen
     sets.Midcast["Enhancing Magic"]["Regen IV"] = sets.Midcast["Enhancing Magic"].Regen
@@ -339,6 +338,50 @@ function precast(spell, action)
     if (spell.english == "Spectral Jig" or spell.english == "Sneak") and buffactive.Sneak then
         cast_delay(0.2)
         send_command("cancel Sneak")
+    end
+
+    if spell.english == 'Warp' then
+		useItem = true
+		useItemName = 'Warp Ring'
+		useItemSlot = 'ring2'
+		add_to_chat(217,"You can't cast warp, attempting to use Warp Ring instead, /heal to cancel.")
+		cancel_spell()
+		eventArgs.cancel = true
+	elseif spell.english == 'Retrace' then
+		useItem = true
+		useItemName = 'Instant Retrace'
+		useItemSlot = 'item'
+		add_to_chat(217,"You can't cast Retrace, attempting to use a Retrace Scroll instead, /heal to cancel.")
+		cancel_spell()
+		eventArgs.cancel = true
+	elseif spell.english == 'Teleport-Holla' then
+		useItem = true
+		useItemName = 'Dim. Ring (Holla)'
+		useItemSlot = 'ring2'
+		add_to_chat(217,"You can't cast Teleport-Holla, attempting to use Dimensional Ring instead, /heal to cancel.")
+		cancel_spell()
+		eventArgs.cancel = true
+	elseif spell.english == 'Reraise' then
+		useItem = true
+		useItemName = 'Dusty Reraise'
+		useItemSlot = 'item'
+		add_to_chat(217,"You can't cast Reraise, attempting to use Instant Reraise instead, /heal to cancel.")
+		cancel_spell()
+		eventArgs.cancel = true
+	elseif spell.english == 'Teleport-Dem' then
+		useItem = true
+		useItemName = 'Dim. Ring (Dem)'
+		useItemSlot = 'ring2'
+		add_to_chat(217,"You can't cast Teleport-Dem, attempting to use Dimensional Ring instead, /heal to cancel.")
+		cancel_spell()
+		eventArgs.cancel = true
+	elseif spell.english == 'Teleport-Mea' then
+		useItem = true
+		useItemName = 'Dim. Ring (Mea)'
+		useItemSlot = 'ring2'
+		add_to_chat(217,"You can't cast Teleport-Mea, attempting to use Dimensional Ring instead, /heal to cancel.")
+		cancel_spell()
+        eventArgs.cancel = true
     end
 
     if sets[spell.type] and sets[spell.type][spell.english] then
@@ -453,13 +496,13 @@ end
 
 function self_command_engaged(args)
     if not args[1] then
-        error(4, "Error: No Engaged Mode Specified")
+        error("Error: No Engaged Mode Specified")
         return
     end
 
     local mode = args[1]:ucfirst()
     if not sets.Engaged[mode] then
-        error(4, "Error: Invalid Engaged Mode: " .. mode)
+        error("Error: Invalid Engaged Mode: " .. mode)
         return
     end
 
