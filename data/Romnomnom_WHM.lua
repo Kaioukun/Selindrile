@@ -11,7 +11,7 @@ function get_sets()
 		sub = "Genmei Shield",
 		ammo = "Staunch Tathlum",
 		head = "Aya. Zucchetto +2",
-		body = "Theo. Briault +3",
+		body = "Theo. Bliaut +3",
 		hands = "Aya. Manopolas +2",
 		legs = "Assiduity Pants +1",
 		feet = "Aya. Gambieras +2",
@@ -39,42 +39,44 @@ function get_sets()
 	sets.Midcast = {}
 
 	sets.JobAbility.Benediction = {
-		body = "Piety Briault +2"
+		body = "Piety Bliaut +3"
 	}
 
-	sets.Precast.Haste = 
-		{main="Bolelabunga",
+	sets.Precast.Haste = {
+		main="Bolelabunga",
 		sub="Genbu shield",
 		ammo="Incantor Stone",		
 		head="Cath palug crown",
-		neck="Cleric's torque +1",
+		neck="Cleric's torque",
 		ear1="Loquacious earring",
 		ear2="Malignance Earring",
-		body="Inyanga jubbah +2",
+		body="Inyanga jubbah +1",
 		hands="Gendewitha gages +1",
 		ring1="Kishar Ring",
 		ring2="Prolix Ring",
 		back="Perimede cape",
 		waist="Witful belt",
-		legs="Volte brais",
-		feet="Volte boots"}
+		-- legs="Volte brais",
+		-- feet="Volte boots"
+	}
 
-	sets.Precast.FastCast =
-		{main="Sucellus",
+	sets.Precast.FastCast = {
+		main="Sucellus",
 		sub="Genbu shield",
 		ammo="Incantor Stone",
 		head="Cath palug crown",
-		neck="Cleric's torque +1",
+		neck="Cleric's torque",
 		ear1="Malignance earring",
 		ear2="Enchanter Earring +1",
-		body="Inyanga jubbah +2",
+		body="Inyanga jubbah +1",
 		hands="Gendewitha gages +1",
 		ring1="Kishar Ring",
-		ring2="Weatherspoon Ring",
+		-- ring2="Weatherspoon Ring",
 		back="Alaunus's cape",
-		waist="Embla sash",
-		legs="Volte brais",
-		feet="Navon crackows"}
+		-- waist="Embla sash",
+		-- legs="Volte brais",
+		-- feet="Navon crackows"
+	}
 
 	sets.Precast.Cure =
 		set_combine(
@@ -82,7 +84,7 @@ function get_sets()
 		{
 			main = "Queller Rod",
 			sub = "Sors Shield",
-			head = "Theophany Cap +2",
+			head = "Theophany Cap +3",
 			neck = "Cleric's Torque",
 			body = "Heka's Kalasiris",
 			ear1 = "Nourish. Earring +1",
@@ -111,7 +113,7 @@ function get_sets()
 			}
 		}, -- 10/2
 		sub = "Sors Shield", -- 3/0
-		head = "Theophany Cap +2", -- 11/0
+		head = "Theophany Cap +3", -- 11/0
 		neck = "Cleric's Torque", -- 5/0
 		body = "Heka's Kalasiris", -- 15/0
 		hands = "Theophany Mitts +2", -- 0/2
@@ -172,7 +174,7 @@ function get_sets()
 		set_combine(
 		sets.Midcast["Enhancing Magic"],
 		{
-			body = "Piety Briault +2",
+			body = "Piety Bliaut +3",
 			hands = "Ebers Mitts +1",
 			legs = "Th. Pantaloons +2"
 		}

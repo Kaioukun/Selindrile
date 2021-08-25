@@ -1,5 +1,174 @@
+local engaged_mode = "Normal"
+
+local incapacitated_states = T {"stun", "petrification", "terror", "sleep", "defense down"}
+
+local tutle_mobs = T {
+    -- Ody NMs
+    "Asena",
+    "Bygul",
+    "Chaos Steward",
+    "Dabbat al-Ard",
+    "Kurmajara",
+    "Lotanu",
+    "Wayra Tata",
+
+    -- Ody Holo 
+    "Agon Heretic",
+    "Agon Marquess",
+    "Agon Monarch",
+    "Agon Viscount",
+    "Agon Vizier",
+
+    -- Ody Mobs
+    "Nostos Apkalu",
+    "Nostos Bhoot",
+    "Nostos Black Pudding",
+    "Nostos Clot",
+    "Nostos Ghoul",
+    "Nostos Imp",
+    "Nostos Korrigan",
+    "Nostos Rarab",
+    "Nostos Sapling",
+    "Nostos Scorpion",
+    "Nostos Spider",
+    "Nostos Wasp",
+
+    -- Dyna Sandy
+    "Halphas",
+    "Ravager Leader",
+    "Ravager Commander",
+    "Mendicant Leader",
+    "Mendicant Commander",
+    "Cutpurse Leader",
+    "Cutpurse Commander",
+    "Invoker Leader",
+    "Invoker Commander",
+    "Warlock Leader",
+    "Warlock Commander",
+    "Stalwart Leader",
+    "Stalwart Commander",
+    "Hunter Leader",
+    "Hunter Commander",
+    "Priest Leader",
+    "Priest Commander",
+    "Minstrel Leader",
+    "Minstrel Commander",
+    "Kagemusha Leader",
+    "Kagemusha Commander",
+    "Canoneer Leader",
+    "Canoneer Commander",
+    "Squadron Pugilist",
+    "Regiment Pugilist",
+    "Squadron Tamer",
+    "Regiment Tamer",
+    "Squadron Shinobi",
+    "Regiment Shinobi",
+}
+
+-- https://www.ffxiah.com/forum/topic/54555/the-odyssey-strategy-and-discussion/152/#3590215
+local mob_weapon_damage_type = T {
+    -- Ody Lamia
+    ["Agon Adjudicator"] = "Piercing",
+    ["Agon Dignitary"] = "Piercing",
+    ["Agon Marksman"] = "Piercing",
+    ["Agon Rabblerouser"] = "Piercing",
+    ["Agon Scallywag"] = "Piercing",
+    ["Agon Vizier"] = "Piercing",
+    ["Agon Yojimbo"] = "Piercing",
+    ["Agon Monarch"] = "Piercing",
+ 
+    -- Ody Trolls
+    ["Agon Clearmind"] = "Piercing",
+    ["Agon Defender"] = "Piercing",
+    ["Agon Footsoldier"] = "Piercing",
+    ["Agon Infidel"] = "Piercing",
+    ["Agon Ritualist"] = "Piercing",
+    ["Agon Sharpshooter"] = "Piercing",
+    ["Agon Shieldsaint"] = "Piercing",
+    ["Agon Viscount"] = "Piercing",
+
+    -- Ody Mamool
+    ["Agon Cleric"] = "Slashing",
+    ["Agon Heretic"] = "Slashing",
+    ["Agon Initiate"] = "Slashing",
+    ["Agon Instigator"] = "Slashing",
+    ["Agon Marquess"] = "Slashing",
+    ["Agon Phalanx"] = "Slashing",
+    ["Agon Pilferer"] = "Slashing",
+    ["Agon Praetor"] = "Slashing",
+ 
+    -- Ody NMs
+    ["Asena"] = "Slashing",
+    ["Bygul"] = "Slashing",
+    ["Chaos Steward"] = "Slashing",
+    ["Dabbat al-Ard"] = "Slashing",
+    ["Kurmajara"] = "Piercing",
+    ["Lotanu"] = "Slashing",
+    ["Wayra Tata"] = "Slashing",
+ 
+    -- Ody Mobs
+    ["Nostos Ameretat"] = "Slashing",
+    ["Nostos Apkallu"] = "Slashing",
+    ["Nostos Bat"] = "Slashing",
+    ["Nostos Bats"] = "Slashing",
+    ["Nostos Bhoot"] = "Piercing",
+    ["Nostos Bigbird"] = "Slashing",
+    ["Nostos Black Pudding"] = "Slashing",
+    ["Nostos Bugard"] = "Slashing",
+    ["Nostos Chigoe"] = "Slashing",
+    ["Nostos Clot"] = "Slashing",
+    ["Nostos Cluster"] = "Slashing",
+    ["Nostos Colibri"] = "Slashing",
+    ["Nostos Crab"] = "Piercing",
+    ["Nostos Dahak"] = "Slashing",
+    ["Nostos Defoliator"] = "Slashing",
+    ["Nostos Diremite"] = "Slashing",
+    ["Nostos Draugar"] = "Slashing",
+    ["Nostos Flytrap"] = "Slashing",
+    ["Nostos Funguar"] = "Slashing",
+    ["Nostos Gaganabo"] = "Slashing",
+    ["Nostos Goobbue"] = "Slashing",
+    ["Nostos Imp"] = "Slashing",
+    ["Nostos Jagil"] = "Piercing",
+    ["Nostos Karakul"] = "Slashing",
+    ["Nostos Korrigan"] = "Slashing",
+    ["Nostos Leech"] = "Slashing",
+    ["Nostos Leopard"] = "Slashing",
+    ["Nostos Manticore"] = "Slashing",
+    ["Nostos Marid"] = "Slashing",
+    ["Nostos Puk"] = "Slashing",
+    ["Nostos Qutrub"] = "Piercing",
+    ["Nostos Ram"] = "Slashing",
+    ["Nostos Raptor"] = "Slashing",
+    ["Nostos Rarab"] = "Slashing",
+    ["Nostos Sapling"] = "Slashing",
+    ["Nostos Scorpion"] = "Slashing",
+    ["Nostos Soulflayer"] = "Slashing",
+    ["Nostos Spider"] = "Slashing",
+    ["Nostos Tiger"] = "Slashing",
+    ["Nostos Treant"] = "Slashing",
+    ["Nostos Vulture"] = "Slashing",
+    ["Nostos Wamoura"] = "Slashing",
+    ["Nostos Wamouracampa"] = "Slashing",
+    ["Nostos Wasp"] = "Slashing",
+    ["Nostos Weapon"] = "Slashing",
+    ["Nostos Worm"] = "Slashing",
+    ["Nostos Wyvern"] = "Slashing",
+    ["Nostos Ziz"] = "Slashing",
+}
+
+
 function get_sets()
-    incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
+    sets.Weapons = {
+        Piercing = {
+            main = "Shining One",
+            sub = "Utu Grip",
+        },
+        Slashing = {
+            main = "Masamune",
+            sub = "Utu Grip",
+        },
+    }
 
     sets.Idle = {
         ammo = "Aurgelmir Orb",
@@ -16,69 +185,68 @@ function get_sets()
         right_ring = "Rajas Ring",
         back = {
             name = "Smertrios's Mantle",
-            augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+10",
-                '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
-            }
+            augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", '"Dbl.Atk."+10', "Phys. dmg. taken-10%"}
         }
     }
 
-    sets.Engaged = {mode = "Melee"}
-    sets.Engaged.Melee = {
-        main = "Masamune",
-        sub = "Utu Grip",
+    sets.Engaged = {}
+    sets.Engaged.Normal = {
         ammo = "Aurgelmir Orb",
         head = "Flam. Zucchetto +2",
         body = "Ken. Samue +1",
         hands = "Wakido Kote +3",
         legs = "Ken. Hakama +1",
-        feet = "Flam. Gambieras +2",
+        feet = "Ken. Sune-Ate +1",
         neck = "Sam. Nodowa +2",
-        waist = "Ioskeha Belt +1",
+        waist = "Sailfi Belt +1",
         left_ear = "Cessance Earring",
         right_ear = "Brutal Earring",
-        left_ring = "Flamma Ring",
-        right_ring = "Rajas Ring",
+        left_ring = "Ilabrat Ring",
+        right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
-            augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+10",
-                '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
         }
     }
     sets.Engaged.Hybrid = {
-        main = "Masamune",
-        sub = "Utu Grip",
         ammo = "Aurgelmir Orb",
         head = "Mpaca's Cap",
         body = "Mpaca's Doublet",
         hands = "Mpaca's Gloves",
         legs = "Mpaca's Hose",
         feet = "Mpaca's Boots",
-        neck = {
-            name = "Sam. Nodowa +2",
-            augments = {'Path: A'}
-        },
+        neck = "Sam. Nodowa +2",
         waist = "Ioskeha Belt +1",
         left_ear = "Cessance Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Flamma Ring",
-        right_ring = "Rajas Ring",
+        right_ear = "Telos Earring",
+        left_ring = "Ilabrat Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+    sets.Engaged.Turtle = {
+        ammo = "Aurgelmir Orb",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Wakido Kote +3",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sam. Nodowa +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Dedition Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
             augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+10",
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
                 '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
+                'Phys. dmg. taken-10%'
             }
         }
     }
@@ -94,36 +262,58 @@ function get_sets()
     -- WS Sets --
     sets.WeaponSkill = {
         equipable = true,
-        main = "Masamune",
         sub = "Utu Grip",
         ammo = "Knobkierrie",
-        head = {
-            name = "Valorous Mask",
-            augments = {
-                "Attack+20",
-                "Weapon skill damage +4%",
-                "STR+7",
-                "Accuracy+8"
-            }
-        },
+        head = "Nyame Helm",
+        body = "Sakonji Domaru +3",
+        hands = "Nyame Gauntlets",
+        legs = "Wakido Haidate +3",
+        feet = "Nyame Sollerets",
+        neck = "Sam. Nodowa +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Thrud Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Karieyh Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {"STR+20", "Accuracy+20 Attack+20", "STR+10", "Weapon skill damage +10%", "Phys. dmg. taken-10%"}
+        }
+    }
+    sets.WeaponSkill["Tachi: Jinpu"] = {
+        ammo = "Knobkierrie",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sam. Nodowa +2",
+        waist = "Orpheus's Sash",
+        left_ear = "Moonshade Earring",
+        right_ear = "Friomisi Earring",
+        left_ring = "Karieyh Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {'Weapon skill damage +10%'}
+        }
+    }
+    sets.WeaponSkill["Tachi: Kagero"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
+    sets.WeaponSkill["Tachi: Koki"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
+
+    sets.WeaponSkill["Impulse Drive"] = {
+        sub = "Utu Grip",
+        ammo = "Knobkierrie",
+        head = "Mpaca's Cap",
         body = "Sakonji Domaru +3",
         hands = {
-            name = "Valorous Mitts",
-            augments = {
-                "Attack+12",
-                "Weapon skill damage +4%",
-                "STR+10",
-            }
+            name = "Ryuo Tekko +1",
+            augments = {'DEX+12', 'Accuracy+25', '"Dbl.Atk."+4'}
         },
         legs = "Wakido Haidate +3",
         feet = {
             name = "Valorous Greaves",
-            augments = {
-                "Accuracy+8",
-                "Weapon skill damage +4%",
-                "STR+8",
-                "Attack+10"
-            }
+            augments = {'Weapon skill damage +4%', 'STR+8', 'Accuracy+8', 'Attack+10'}
         },
         neck = "Sam. Nodowa +2",
         waist = "Sailfi Belt +1",
@@ -134,14 +324,16 @@ function get_sets()
         back = {
             name = "Smertrios's Mantle",
             augments = {
-                "STR+20",
-                "Accuracy+20 Attack+20",
-                "STR+10",
-                "Weapon skill damage +10%",
-                "Phys. dmg. taken-10%"
+                'STR+20',
+                'Accuracy+20 Attack+20',
+                'STR+10',
+                'Weapon skill damage +10%',
+                'Phys. dmg. taken-10%'
             }
         }
     }
+
+    sets.WeaponSkill.Stardiver = sets.WeaponSkill["Impulse Drive"]
 
     -- Magic Sets --
     sets.FastCast = {}
@@ -217,7 +409,16 @@ function status_change(new, old)
 end
 
 function status_change_engaged()
-    equip(sets.Engaged[sets.Engaged.mode])
+    if mob_weapon_damage_type[player.target.name] then
+       equip(sets.Weapons[mob_weapon_damage_type[player.target.name]])
+    end
+
+    if tutle_mobs:contains(player.target.name) then
+        equip(sets.Engaged.Turtle)
+        return
+    end
+
+    equip(sets.Engaged[engaged_mode])
 end
 
 function aftercast(spell, action)
@@ -231,14 +432,10 @@ function buff_change(name, gain, buff_details)
 end
 
 function incapacitated()
-    if
-        incapacitated_states:find(
-            function(value)
-                return buffactive[value] or false
-            end
-        )
-     then
-        equip(sets.Idle)
+    if incapacitated_states:find(function(value)
+        return buffactive[value] or false
+    end) then
+        equip(sets.Engaged.Turtle)
         return true
     end
 end
@@ -271,7 +468,7 @@ function self_command_engaged(args)
         return
     end
 
-    sets.Engaged.mode = mode
+    engaged_mode = mode
     status_change(player.status)
     notice("Engaged Mode Set: " .. mode)
 end

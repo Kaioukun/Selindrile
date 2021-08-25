@@ -2,8 +2,9 @@ function get_sets()
     sets.Idle = {
         main = "Queller Rod",
         sub = "Sors Shield",
+        ammo = "Homiliary",
         head = "Bunzi's Hat",
-        body = "Ebers Bliaud",
+        body = "Annoint. Kalasiris",
         hands = "Bunzi's Gloves",
         legs = "Bunzi's Pants",
         feet = "Bunzi's Sabots",

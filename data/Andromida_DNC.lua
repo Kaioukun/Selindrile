@@ -4,29 +4,29 @@ function get_sets()
     }
 
     sets.Idle = {
+        main = {
+            name = "Terpsichore",
+            augments = {'Path: A'}
+        },
+        sub = {
+            name = "Twashtar",
+            augments = {'Path: A'}
+        },
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
-        body = "Horos Casaque +3",
-        hands = {
-            name = "Herculean Gloves",
-            augments = {
-                'Phys. dmg. taken -5%', 'STR+10', 'Accuracy+7', 'Attack+7'
-            }
-        },
-        legs = "Mummu Kecks +2",
+        body = "Gleti's Cuirass",
+        hands = "Gleti's Gauntlets",
+        legs = "Gleti's Breeches",
         feet = "Turms Leggings +1",
-        neck = "Loricate Torque +1",
+        neck = "Warder's Charm +1",
         waist = "Engraved Belt",
         left_ear = "Hearty Earring",
-        right_ear = "Genmei Earring",
-        left_ring = "Moonlight Ring",
-        right_ring = "Defending Ring",
+        right_ear = "Infused Earring",
+        left_ring = "Chirich Ring +1",
+        right_ring = "Chirich Ring +1",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
-                'Phys. dmg. taken-10%'
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
         }
     }
 
@@ -137,7 +137,7 @@ function get_sets()
 
     sets.JobAbility["No Foot Rise"] = {body = "Horos Casaque +3"}
 
-    sets.Jig = {legs = "Horos Tights +3", feet = "Maxixi Toeshoes +2"}
+    sets.Jig = {legs = "Horos Tights +3", feet = "Maxixi Toe shoes +2"}
 
     sets.Flourish = {}
     sets.Flourish["Violent Flourish"] = {body = "Horos Casaque +3"}
@@ -173,7 +173,7 @@ function get_sets()
         body = "Macu. Casaque +1",
         hands = "Macu. Bangles +1",
         legs = "Maculele Tights +1",
-        feet = "Macu. Toeshoes +1"
+        feet = "Macu. Toe shoes +1"
     }
 
     sets.Step = {
@@ -322,7 +322,7 @@ function get_sets()
             left_ear = "Ishvara Earring",
         }
     )
-    sets.WeaponSkill["Shark Bite"] = sets.WeaponSkill["Rudra's Storm"]
+    sets.WeaponSkill["Shark Bite"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {})
 end
 
 function precast(spell)

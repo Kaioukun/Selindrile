@@ -6,7 +6,7 @@ function get_sets()
         head = "Gleti's Mask",
         body = "Gleti's Cuirass",
         hands = "Gleti's Gauntlets",
-        legs = "Gleti's Greaves",
+        legs = "Carmine cuisses +1",
         feet = "Gleti's Boots",
         neck = "Loricate Torque +1",
         waist = "Flume Belt",
@@ -26,10 +26,8 @@ function get_sets()
         }
     }
 
-    sets.Engaged = {mode = "Melee"}
+    sets.Engaged = {mode = "Hybrid"}
     sets.Engaged.Melee = {
-        main= "Ryunohige",
-        sub = "Utu Grip",
         ammo = "Aurgelmir Orb +1",
         head = "Flam. Zucchetto +2",
         body = "Flamma Korazin +2",
@@ -109,7 +107,7 @@ function get_sets()
         head = "Gleti's Mask",
         body = "Gleti's Cuirass",
         hands = "Gleti's Gauntlets",
-        legs = "Gleti's Greaves",
+        legs = "Gleti's Breeches",
         feet = "Gleti's Boots",
         neck = {
             name = "Dgn. Collar +2",
@@ -139,10 +137,14 @@ function get_sets()
         body = "Vishap Mail +2",
         hands = "Vis. Fng. Gaunt. +2"
     }
-    sets.JobAbility["Soul Jump"] = sets.JobAbility["Jump"]
+    sets.JobAbility["Soul Jump"] = set_combine(sets.JobAbility["Jump"], {})
     sets.JobAbility["Spirit Jump"] = set_combine(sets.JobAbility["Soul Jump"], {feet = "Pelt. Schyn. +1"})
     sets.JobAbility["High Jump"] = set_combine(sets.JobAbility["Jump"], {legs = "Pteroslaver Brais +3"})
     sets.JobAbility["Spirit Link"] = {}
+
+    sets.JobAbility["Ancient Circle"] = {
+        legs = "Vishap brais +3",
+    }
 
     sets.JobAbility.Hasso = {}
     sets.JobAbility.Meditate = {}
@@ -159,7 +161,7 @@ function get_sets()
             augments = {'Enhances "Angon" effect'}
         },
         legs = "Pelt. Cuissots +1",
-        feet = "Gleti's Boots",
+        feet = "Nyame Sollerets",
         neck = {
             name = "Dgn. Collar +2",
             augments = {'Path: A'}
@@ -232,7 +234,35 @@ function get_sets()
             augments = {"STR+20", "Accuracy+20 Attack+20", '"Dbl.Atk."+10'}
         }
     }
-    sets.WeaponSkill["Sonic Thrust"] = sets.WeaponSkill["Camlann's Torment"]
+    sets.WeaponSkill["Impulse Drive"] = {
+        ammo = "Knobkierrie",
+        head = "Gleti's Mask",
+        body = "Gleti's Cuirass",
+        hands = "Gleti's Gauntlets",
+        legs = "Gleti's Breeches",
+        feet = "Gleti's Boots",
+        neck = {
+            name = "Dgn. Collar +2",
+            augments = {'Path: A'}
+        },
+        waist = {
+            name = "Sailfi Belt +1",
+            augments = {'Path: A'}
+        },
+        left_ear = {
+            name = "Moonshade Earring",
+            augments = {'Attack+4', 'TP Bonus +250'}
+        },
+        right_ear = "Sherida Earring",
+        left_ring = "Epaminondas's Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.WeaponSkill["Sonic Thrust"] = set_combine(sets.WeaponSkill["Camlann's Torment"], {})
 
     sets.WeaponSkill["Leg Sweep"] = {
         head = "Flam. Zucchetto +2",
@@ -258,14 +288,14 @@ function get_sets()
     sets.WeaponSkill["Savage Blade"] = {
         main = "Naegling",
         ammo = "Knobkierrie",
-        head = "Gleti's Mask",
-        body = "Gleti's Cuirass",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
         hands = {
             name = "Ptero. Fin. G. +3",
             augments = {'Enhances "Angon" effect'}
         },
         legs = "Vishap Brais +3",
-        feet = "Sulev. Leggings +2",
+        feet = "Nyame Sollerets",
         neck = {
             name = "Dgn. Collar +2",
             augments = {'Path: A'}
@@ -295,7 +325,7 @@ function get_sets()
 
     sets.WeaponSkill.Retribution = {
         ammo = "Knobkierrie",
-        head = "Gleti's Mask",
+        head = "Nyame Helm",
         body = "Gleti's Cuirass",
         hands = {
             name = "Ptero. Fin. G. +3",
@@ -463,6 +493,10 @@ function self_command_tp(args)
     }
 
     local recasts = windower.ffxi.get_ability_recasts()
+
+    if recasts[162] and pet.isvalid and (pet.tp > 500 or pet.hpp < 70) then
+        windower.send_command("input /ja 'Spirit Link' <me>")
+    end
 
     for _, ability in ipairs(order) do
         if recasts[ability.id] == 0 then

@@ -1,6 +1,4 @@
 function get_sets()
-	send_command("@input /macro book 5;wait .1;input /macro set 1")
-
 	sets.Idle = {
 		main = "Gridarvor",
 		sub = "Elan Strap +1",
@@ -43,7 +41,7 @@ function get_sets()
 	}
 
 	DT = false
-	sets.PDT = sets.Idle
+	sets.PDT = set_combine(sets.Idle, {})
 
 	sets.FastCast = {
 		legs = "Lengo Pants",
@@ -61,7 +59,7 @@ function get_sets()
 		hands="Glyphic Bracers +2",
 		feet="Glyph. Pigaches +2",
 	}
-	sets.BloodPactWard = sets.BloodPactRage
+	sets.BloodPactWard = set_combine(sets.BloodPactRage, {})
 
 	sets.Pet = {}
 	sets.Pet.BloodPact = {}
@@ -244,44 +242,44 @@ function get_sets()
 		back="Conveyance Cape",
 	}
 
-	sets.Pet.BloodPactRage = sets.Pet.BloodPact.Hybrid
+	sets.Pet.BloodPactRage = set_combine(sets.Pet.BloodPact.Hybrid, {})
 
 	-- Garuda
-	sets.Pet.BloodPactRage["Claw"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Aero II"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Aero IV"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Predator Claws"] = sets.Pet.BloodPact.Physical
+	sets.Pet.BloodPactRage["Claw"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Aero II"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Aero IV"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Predator Claws"] = set_combine(sets.Pet.BloodPact.Physical, {})
 	-- Ifrit
-	sets.Pet.BloodPactRage["Punch"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Fire II"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Burning Strike"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Double Punch"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Fire IV"] = sets.Pet.BloodPact.Magic
+	sets.Pet.BloodPactRage["Punch"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Fire II"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Burning Strike"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Double Punch"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Fire IV"] = set_combine(sets.Pet.BloodPact.Magic, {})
 	sets.Pet.BloodPactRage["Flaming Crush"] = sets.Pet.BloodPact.Hybrid
-	sets.Pet.BloodPactRage["Conflag Strike"] = sets.Pet.BloodPact.Physical
+	sets.Pet.BloodPactRage["Conflag Strike"] = set_combine(sets.Pet.BloodPact.Physical, {})
 	-- Ramuh
-	sets.Pet.BloodPactRage["Shock Strike"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Thunder II"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Thunderspark"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Thunder IV"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Chaotic Strike"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Volt Strike"] = sets.Pet.BloodPact.Magic
+	sets.Pet.BloodPactRage["Shock Strike"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Thunder II"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Thunderspark"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Thunder IV"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Chaotic Strike"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Volt Strike"] = set_combine(sets.Pet.BloodPact.Magic, {})
 	-- Shiva
-	sets.Pet.BloodPactRage["Axe Kick"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Blizzard II"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Double Slap"] = sets.Pet.BloodPact.Physical
-	sets.Pet.BloodPactRage["Blizzard IV"] = sets.Pet.BloodPact.Magic
-	sets.Pet.BloodPactRage["Rush"] = sets.Pet.BloodPact.Physical
+	sets.Pet.BloodPactRage["Axe Kick"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Blizzard II"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Double Slap"] = set_combine(sets.Pet.BloodPact.Physical, {})
+	sets.Pet.BloodPactRage["Blizzard IV"] = set_combine(sets.Pet.BloodPact.Magic, {})
+	sets.Pet.BloodPactRage["Rush"] = set_combine(sets.Pet.BloodPact.Physical, {})
 
 	-- Meritted
-	sets.Pet.BloodPactRage["Meteor Strike"] = sets.Pet.BloodPact.Merit
-	sets.Pet.BloodPactRage["Geocrush"] = sets.Pet.BloodPact.Merit
-	sets.Pet.BloodPactRage["Grand Fall"] = sets.Pet.BloodPact.Merit
-	sets.Pet.BloodPactRage["Wind Blade"] = sets.Pet.BloodPact.Merit
-	sets.Pet.BloodPactRage["Heavenly Strike"] = sets.Pet.BloodPact.Merit
-	sets.Pet.BloodPactRage["Thunderstorm"] = sets.Pet.BloodPact.Merit
+	sets.Pet.BloodPactRage["Meteor Strike"] = set_combine(sets.Pet.BloodPact.Merit, {})
+	sets.Pet.BloodPactRage["Geocrush"] = set_combine(sets.Pet.BloodPact.Merit, {})
+	sets.Pet.BloodPactRage["Grand Fall"] = set_combine(sets.Pet.BloodPact.Merit, {})
+	sets.Pet.BloodPactRage["Wind Blade"] = set_combine(sets.Pet.BloodPact.Merit, {})
+	sets.Pet.BloodPactRage["Heavenly Strike"] = set_combine(sets.Pet.BloodPact.Merit, {})
+	sets.Pet.BloodPactRage["Thunderstorm"] = set_combine(sets.Pet.BloodPact.Merit, {})
 
-	sets.Pet.BloodPactWard = sets.Pet.BloodPact.Skill
+	sets.Pet.BloodPactWard = set_combine(sets.Pet.BloodPact.Skill, {})
 
 	sets.SummonerPact = {}
 

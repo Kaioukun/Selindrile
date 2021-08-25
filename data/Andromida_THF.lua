@@ -1,13 +1,11 @@
 function get_sets()
-    send_command("input /macro book 2;input /macro set 1;input /lockstyleset 8")
-
     sets.Idle = {
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
-        body = "Malignance Tabard",
-        hands = "Malignance Gloves",
-        legs = "Malignance Tights",
-        feet = "Malignance Boots",
+        body = "Gleti's Cuirass",
+        hands = "Turms Mittens +1",
+        legs = "Gleti's Breeches",
+        feet = "Turms Leggings +1",
         neck = "Loricate Torque +1",
         waist = "Engraved Belt",
         left_ear = "Infused Earring",
@@ -17,7 +15,10 @@ function get_sets()
         back = {
             name = "Toutatis's Cape",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10',
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dbl.Atk."+10',
                 'Damage taken-5%'
             }
         }
@@ -146,6 +147,30 @@ function get_sets()
                 "DEX+10",
                 "Weapon skill damage +10%",
                 "Phys. dmg. taken-10%"
+            }
+        }
+    }
+
+    sets.WeaponSkill["Aeolian Edge"] = {
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sanctity Necklace",
+        waist = "Eschan Stone",
+        left_ear = "Friomisi Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Epaminondas's Ring",
+        right_ring = "Acumen Ring",
+        back = {
+            name = "Toutatis's Cape",
+            augments = {
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                'Weapon skill damage +10%',
+                'Phys. dmg. taken-10%'
             }
         }
     }

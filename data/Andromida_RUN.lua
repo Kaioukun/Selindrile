@@ -8,7 +8,7 @@ function get_sets()
         head = "Nyame Helm",
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
-        legs = "Nyame Flanchard",
+        legs = "Carmine cuisses +1",
         feet = "Nyame Sollerets",
         neck = "Warder's Charm +1",
         waist = "Engraved Belt",
@@ -179,7 +179,7 @@ function get_sets()
 
     sets.JobAbility["Battuta"] = {head = "Futhark Bandeau +3"}
     sets.JobAbility["Elemental Sforzo"] = {body = "Futhark Coat +3"}
-    sets.JobAbility["Gambit"] = {hands = "Runeist mitons +1"}
+    sets.JobAbility["Gambit"] = {hands = "Runeist's mitons +3"}
     sets.JobAbility["Inspiration"] = {legs = "Futhark Trousers +1"}
     sets.JobAbility["Liement"] = {body = "Futhark Coat +3"}
     sets.JobAbility["Pflug"] = {feet = "Runeist Bottes +1"}
@@ -244,11 +244,8 @@ function get_sets()
 
     sets.WeaponSkill["Dimidiation"] = {
         ammo = "Knobkierrie",
-        head = "Lilitu Headpiece",
-        body = {
-            name = "Adhemar Jacket +1",
-            augments = {"STR+12", "DEX+12", "Attack+20"}
-        },
+        head = "Nyame Helm",
+        body = "Nyame Mail",
         hands = "Meg. Gloves +2",
         legs = {
             name = "Lustr. Subligar +1",
@@ -276,10 +273,10 @@ function get_sets()
         }
     }
 
-    sets.WeaponSkill["Shockwave"] = sets.WeaponSkill["Resolution"]
+    sets.WeaponSkill["Shockwave"] = set_combine(sets.WeaponSkill["Resolution"], {})
 
-    sets.WeaponSkill["Fell Cleave"] = sets.WeaponSkill["Resolution"]
-    sets.WeaponSkill["Steel Cyclone"] = sets.WeaponSkill["Dimidiation"]
+    sets.WeaponSkill["Fell Cleave"] = set_combine(sets.WeaponSkill["Resolution"], {})
+    sets.WeaponSkill["Steel Cyclone"] = set_combine(sets.WeaponSkill["Dimidiation"], {})
 
     sets.FastCast = {
         ammo = "Staunch Tathlum +1",
@@ -302,14 +299,31 @@ function get_sets()
 
     sets.Midcast["Enhancing Magic"] = {
         equipable = true,
-        hands = "Runeist Mitons +1",
+        hands = "Runeist's Mitons +3",
         legs = "Futhark Trousers +1",
         waist = "Olympus Sash",
-        left_ear = "Andoaa Earring"
+        left_ring = "Stikini Ring +1",
+        right_ring = "Stikini Ring +1",
+        left_ear = "Andoaa Earring",
+        right_ear = "Mimir Earring"
     }
 
     sets.Midcast["Enhancing Magic"].Phalanx =
-        set_combine(sets.Midcast["Enhancing Magic"], {head = "Futhark Bandeau +3"})
+        set_combine(sets.Midcast["Enhancing Magic"], {
+            head = "Futhark Bandeau +3",
+            hands = {
+                name="Herculean Gloves",
+                augments={'Phalanx +2'}
+            },
+            legs = {
+                name="Herculean Trousers",
+                augments={'Phalanx +2'}
+            },
+            feet = {
+                name="Herculean Boots",
+                augments={'Phalanx +5'}
+            },
+        })
     sets.Midcast["Enhancing Magic"].Refresh = set_combine(sets.Midcast["Enhancing Magic"], {head = "Erilaz Galea +1"})
     sets.Midcast["Enhancing Magic"].Regen = set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
     sets.Midcast["Enhancing Magic"]["Regen II"] = sets.Midcast["Enhancing Magic"].Regen
@@ -321,15 +335,6 @@ function get_sets()
     sets.Midcast["Blue Magic"] = set_combine(sets.Emnity, {})
 end
 
---[[
-    Healing Breeze
-    Refueling
-    Cacoon
-    Sheep Song
-    Blank Gaze
-    Geist Wall
-    Jettatura
-]]
 function precast(spell, action)
     if incapacitated() then
         return

@@ -1,36 +1,76 @@
+local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
+
 function get_sets()
-    incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
-
-    sets.Idle = {}
-    -- sets.Idle.Kite = {}
-
-    sets.Engaged = {mode = "Tank"}
-    sets.Engaged.Melee = {}
-    sets.Engaged.Parry = {}
-    sets.Engaged.Tank = {}
-    sets.Engaged.Hybrid = {}
-
-    sets.Emnity = {
-        equipable = true,
-        head = "Loess Barbuta",
-        body = "Souv. Cuirass +1",
-        legs = "Odyssean Cuisses",
-        waist = "Creed Baudrier",
+    sets.Idle = {
+        ammo = "Staunch Tathlum",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Orunmila's Torque",
+        waist = "Dynamic Belt +1",
+        left_ear = "Etiolation Earring",
+        right_ear = "Ethereal Earring",
+        left_ring = "Shadow Ring",
+        right_ring = "Defending Ring",
         back = {
             name = "Rudianos's Mantle",
             augments = {'Enmity+10'}
         }
     }
 
-    sets.Rune = {}
-    sets.Ward = {}
+    sets.Engaged = {mode = "Tank"}
+    sets.Engaged.Tank = {
+        ammo = "Staunch Tathlum",
+        head = "Sakpata's Helm",
+        body = "Sakpata's Plate",
+        hands = "Sakpata's Gauntlets",
+        legs = "Sakpata's Cuisses",
+        feet = "Sakpata's Leggings",
+        neck = "Loricate Torque +1",
+        waist = "Dynamic Belt +1",
+        left_ear = "Telos Earring",
+        right_ear = "Brutal Earring",
+        left_ring = "Petrov Ring",
+        right_ring = "Regal Ring",
+        back = {
+            name = "Rudianos's Mantle"
+        }
+    }
+
+    -- Ammo: Sapience Orb
+    -- Cryptic Earring
+    -- Tuisto Earring
+    -- Eihwaz Ring
+    sets.Emnity = {
+        equipable = true,
+        head = "Loess Barbuta +1",
+        body = "Souv. Cuirass +1",
+        hands = {
+            name = "Yorium Gauntlets",
+            augments = {'Enmity+9'}
+        },
+        legs = "Souv. Diechlings +1",
+        feet = {
+            name = "Eschite Greaves",
+            augments = {'HP+80', 'Enmity+7', 'Phys. dmg. taken -4'}
+        },
+        neck = "Moonlight Necklace",
+        waist = "Creed Baudrier",
+        left_ring = "Apeile Ring +1",
+        back = {
+            name = "Rudianos's Mantle",
+            augments = {'Enmity+10'}
+        }
+    }
 
     -- JA Sets --
     sets.JobAbility = {}
 
     -- WS Sets --
     sets.WeaponSkill = {}
-    -- sets.WeaponSkill['Hard Slash'] = {}
+    sets.WeaponSkill["Atonement"] = sets.Emnity
 
     sets.FastCast = {
         ammo = "Incantor Stone",
@@ -45,13 +85,10 @@ function get_sets()
     sets.Midcast = {}
 
     sets.Midcast["Enhancing Magic"] = {
-        equipable = true
+        -- equipable = true
     }
 
     sets.Midcast["Enhancing Magic"].Phalanx =
-        set_combine(sets.Midcast["Enhancing Magic"], {})
-
-    sets.Midcast["Enhancing Magic"].Flash =
         set_combine(sets.Midcast["Enhancing Magic"], {})
 
     sets.Midcast["Divine Magic"] = set_combine(sets.Emnity, {})
@@ -95,7 +132,7 @@ function precast(spell, action)
         return
     end
 
-    debug("No set for " .. spell.type .. "." .. spell.english)
+    notice("No set for " .. spell.type .. "." .. spell.english)
 end
 
 function midcast(spell, action)
@@ -119,7 +156,8 @@ function midcast(spell, action)
         return
     end
 
-    debug("No set for Midcast." .. spell.skill .. "." .. spell.english)
+    notice("No set for Midcast." .. spell.skill .. "." .. spell.english .. " using Emnity")
+    equip(sets.Emnity)
 end
 
 function status_change(new, old)
@@ -137,11 +175,6 @@ function status_change(new, old)
 end
 
 function status_change_engaged()
-    if sets.Engaged.mode == "Tank" and buffactive["Battuta"] then
-        equip(sets.Engaged.Parry)
-        return
-    end
-
     equip(sets.Engaged[sets.Engaged.mode])
 end
 
@@ -151,10 +184,6 @@ end
 
 function buff_change(name, gain, buff_details)
     if incapacitated_states:contains(name) then
-        status_change(player.status)
-    end
-
-    if name == "Battuta" then
         status_change(player.status)
     end
 end
@@ -190,13 +219,13 @@ end
 
 function self_command_engaged(args)
     if not args[1] then
-        error(4, "Error: No Engaged Mode Specified")
+        error("Error: No Engaged Mode Specified")
         return
     end
 
     local mode = args[1]:ucfirst()
     if not sets.Engaged[mode] then
-        error(4, "Error: Invalid Engaged Mode: " .. mode)
+        error("Error: Invalid Engaged Mode: " .. mode)
         return
     end
 
@@ -206,7 +235,10 @@ function self_command_engaged(args)
 end
 
 function is_magic(spell)
-    return spell.type:endswith("Magic") or spell.type == "BardSong" or spell.type == "Ninjutsu" or spell.type == "Trust"
+    return spell.type:endswith("Magic")
+        or spell.type == "BardSong"
+        or spell.type == "Ninjutsu"
+        or spell.type == "Trust"
 end
 
 function notice(s)
