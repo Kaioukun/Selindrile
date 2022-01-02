@@ -20,7 +20,7 @@ function get_sets()
         back = "Aptitude Mantle"
     }
 
-    sets.Engaged = { mode = "Normal" }
+    sets.Engaged = {}
     sets.Engaged.Normal = {
         ammo = "Chrono Bullet",
         head = "Malignance Chapeau",
@@ -64,6 +64,13 @@ function get_sets()
     }
     sets.JobAbility["Random Deal"] = {
         body = "Lanun Frac +3"
+    }
+    sets.JobAbility["Snake Eye"] = {
+        legs = "Lanun Trews +1"
+    }
+    sets.JobAbility["Double-Up"] = {
+        legs = "Lanun Trews +1",
+        right_ring = "Luzaf's Ring"
     }
 
     sets.WeaponSkill = {}
@@ -423,6 +430,10 @@ function self_command(argsString)
     status_change(player.status)
 end
 
+function status_change_engaged()
+    equip(sets.Engaged[engagedMode])
+end
+
 function self_command_e(args)
     return self_command_engaged(args)
 end
@@ -439,7 +450,7 @@ function self_command_engaged(args)
         return
     end
 
-    sets.Engaged.mode = mode
+    engagedMode = mode
     notice("Engaged Mode Set: " .. mode)
 end
 

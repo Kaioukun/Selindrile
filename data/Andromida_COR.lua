@@ -21,6 +21,8 @@ function get_sets()
     }
 
     sets.Engaged = {
+        main = "Naegling",
+        ranged = "Anarchy +2",
         head = "Malignance Chapeau",
         body = "Malignance Tabard",
         hands = "Malignance Gloves",
@@ -49,7 +51,7 @@ function get_sets()
     sets.WeaponSkill = {
         head = "Lilitu Headpiece",
         body = "Meg. Cuirie +2",
-        hands = "Mummu Wrists +1",
+        hands = "Mummu Wrists +2",
         legs = "Meg. Chausses +2",
         feet = {
             name = "Herculean Boots",
@@ -126,11 +128,9 @@ function get_sets()
     )
 
     sets.CorsairRoll = {
-        range="Compensator",
-        head = {
-            name = "Lanun Tricorne",
-            augments = {'Enhances "Winning Streak" effect'}
-        },
+        main = "Lanun Knife",
+        range = "Compensator",
+        head = "Lanun Tricorne",
         neck = "Regal necklace",
         hands = "Chasseur's Gants +1",
         right_ring = "Luzaf's Ring",
@@ -139,12 +139,15 @@ function get_sets()
             augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+5", '"Dbl.Atk."+10', "System: 1 ID: 1155 Val: 4"}
         }
     }
-    -- sets.CorsairRoll["Fighter's Roll"] = {}
+    sets.JobAbility["Double-Up"] = {
+        legs = "Lanun Trews",
+        right_ring = "Luzaf's Ring",
+    }
 
     sets.CorsairShot = {
-        head="Mummu Bonnet +1",
+        head="Mummu Bonnet +2",
         body="Mummu Jacket +2",
-        hands="Mummu Wrists +1",
+        hands="Mummu Wrists +2",
         legs="Mummu Kecks +2",
         feet="Mummu Gamash. +2",
         neck="Sanctity Necklace",
@@ -155,10 +158,6 @@ function get_sets()
         right_ring="Archon Ring",
     }
     sets.CorsairShot = sets.WeaponSkill["Wildfire"]
-
-    sets.ConserveMP = {}
-    sets.Precast = {}
-    sets.Midcast = {}
 end
 
 function precast(spell, action)
