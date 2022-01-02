@@ -1,6 +1,5 @@
+local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 function get_sets()
-    incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
-
     sets.Idle = {
         main = "Epeolatry",
         sub = "Utu Grip",
@@ -150,13 +149,13 @@ function get_sets()
 
     sets.Emnity = {
         equipable = true,
-        ammo = "Aqreqaq Bomblet",
+        ammo = "Sapience orb",
         head = "Halitus Helm",
         body = "Emet Harness +1",
         hands = "Kurys Gloves",
         legs = "Eri. Leg Guards +1",
         feet = "Ahosi Leggings",
-        neck = "Futhark Torque +2",
+        neck = "Moonlight Necklace",
         waist = "Trance Belt",
         left_ear = "Trux Earring",
         right_ear = "Cryptic Earring",
@@ -275,7 +274,7 @@ function get_sets()
 
     sets.WeaponSkill["Shockwave"] = set_combine(sets.WeaponSkill["Resolution"], {})
 
-    sets.WeaponSkill["Fell Cleave"] = set_combine(sets.WeaponSkill["Resolution"], {})
+    sets.WeaponSkill["Fell Cleave"] = set_combine(sets.WeaponSkill["Dimidiation"], {})
     sets.WeaponSkill["Steel Cyclone"] = set_combine(sets.WeaponSkill["Dimidiation"], {})
 
     sets.FastCast = {
@@ -285,7 +284,7 @@ function get_sets()
             name = "Leyline Gloves",
             augments = {'"Fast Cast"+3'}
         },
-        legs = "Aya. Cosciales +2",
+        legs = "Agwu's Slops",
         feet = "Carmine Greaves +1",
         neck = "Futhark Torque +2",
         waist = "Flume Belt",
@@ -308,22 +307,38 @@ function get_sets()
         right_ear = "Mimir Earring"
     }
 
-    sets.Midcast["Enhancing Magic"].Phalanx =
-        set_combine(sets.Midcast["Enhancing Magic"], {
-            head = "Futhark Bandeau +3",
-            hands = {
-                name="Herculean Gloves",
-                augments={'Phalanx +2'}
-            },
-            legs = {
-                name="Herculean Trousers",
-                augments={'Phalanx +2'}
-            },
-            feet = {
-                name="Herculean Boots",
-                augments={'Phalanx +5'}
-            },
-        })
+    sets.Midcast["Enhancing Magic"].Phalanx = {
+        main={ name="Epeolatry", augments={'Path: A',}},
+        sub="Utu Grip",
+        ammo="Staunch Tathlum +1",
+        head="Agwu's Cap",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Regal Gauntlets",
+        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck="Moonlight Necklace",
+        waist="Audumbla Sash",
+        left_ear="Magnetic Earring",
+        right_ear="Halasz Earring",
+        left_ring="Vocane Ring +1",
+        right_ring="Shadow Ring",
+        back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},
+    }
+        -- set_combine(sets.Midcast["Enhancing Magic"], {
+        --     head = "Futhark Bandeau +3",
+        --     hands = {
+        --         name="Herculean Gloves",
+        --         augments={'Phalanx +2'}
+        --     },
+        --     legs = {
+        --         name="Herculean Trousers",
+        --         augments={'Phalanx +2'}
+        --     },
+        --     feet = {
+        --         name="Herculean Boots",
+        --         augments={'Phalanx +5'}
+        --     },
+        -- })
     sets.Midcast["Enhancing Magic"].Refresh = set_combine(sets.Midcast["Enhancing Magic"], {head = "Erilaz Galea +1"})
     sets.Midcast["Enhancing Magic"].Regen = set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
     sets.Midcast["Enhancing Magic"]["Regen II"] = sets.Midcast["Enhancing Magic"].Regen
@@ -338,55 +353,6 @@ end
 function precast(spell, action)
     if incapacitated() then
         return
-    end
-
-    if (spell.english == "Spectral Jig" or spell.english == "Sneak") and buffactive.Sneak then
-        cast_delay(0.2)
-        send_command("cancel Sneak")
-    end
-
-    if spell.english == 'Warp' then
-		useItem = true
-		useItemName = 'Warp Ring'
-		useItemSlot = 'ring2'
-		add_to_chat(217,"You can't cast warp, attempting to use Warp Ring instead, /heal to cancel.")
-		cancel_spell()
-		eventArgs.cancel = true
-	elseif spell.english == 'Retrace' then
-		useItem = true
-		useItemName = 'Instant Retrace'
-		useItemSlot = 'item'
-		add_to_chat(217,"You can't cast Retrace, attempting to use a Retrace Scroll instead, /heal to cancel.")
-		cancel_spell()
-		eventArgs.cancel = true
-	elseif spell.english == 'Teleport-Holla' then
-		useItem = true
-		useItemName = 'Dim. Ring (Holla)'
-		useItemSlot = 'ring2'
-		add_to_chat(217,"You can't cast Teleport-Holla, attempting to use Dimensional Ring instead, /heal to cancel.")
-		cancel_spell()
-		eventArgs.cancel = true
-	elseif spell.english == 'Reraise' then
-		useItem = true
-		useItemName = 'Dusty Reraise'
-		useItemSlot = 'item'
-		add_to_chat(217,"You can't cast Reraise, attempting to use Instant Reraise instead, /heal to cancel.")
-		cancel_spell()
-		eventArgs.cancel = true
-	elseif spell.english == 'Teleport-Dem' then
-		useItem = true
-		useItemName = 'Dim. Ring (Dem)'
-		useItemSlot = 'ring2'
-		add_to_chat(217,"You can't cast Teleport-Dem, attempting to use Dimensional Ring instead, /heal to cancel.")
-		cancel_spell()
-		eventArgs.cancel = true
-	elseif spell.english == 'Teleport-Mea' then
-		useItem = true
-		useItemName = 'Dim. Ring (Mea)'
-		useItemSlot = 'ring2'
-		add_to_chat(217,"You can't cast Teleport-Mea, attempting to use Dimensional Ring instead, /heal to cancel.")
-		cancel_spell()
-        eventArgs.cancel = true
     end
 
     if sets[spell.type] and sets[spell.type][spell.english] then
