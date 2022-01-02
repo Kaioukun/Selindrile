@@ -129,6 +129,10 @@ function get_sets()
             }
         }
     }
+    sets.Engaged.Mdt = set_combine(sets.Engaged.Hybrid, {
+        right_ring = "Defending Ring",
+        feet = "Nyame Sollerets",
+    })
 
     -- JA Sets --
     sets.JobAbility = {}
