@@ -2,6 +2,9 @@ local engaged_mode = "Normal"
 
 local incapacitated_states = T {"stun", "petrification", "terror", "sleep", "defense down"}
 
+-- kegero puk clusters
+-- jinpu bats marid qutrub ziz
+
 local tutle_mobs = T {
     -- Ody NMs
     "Asena",
@@ -20,7 +23,7 @@ local tutle_mobs = T {
     "Agon Vizier",
 
     -- Ody Mobs
-    "Nostos Apkalu",
+    "Nostos Apkallu",
     "Nostos Bhoot",
     "Nostos Black Pudding",
     "Nostos Clot",
@@ -78,14 +81,14 @@ local mob_weapon_damage_type = T {
     ["Agon Monarch"] = "Piercing",
  
     -- Ody Trolls
-    ["Agon Clearmind"] = "Piercing",
-    ["Agon Defender"] = "Piercing",
-    ["Agon Footsoldier"] = "Piercing",
-    ["Agon Infidel"] = "Piercing",
-    ["Agon Ritualist"] = "Piercing",
-    ["Agon Sharpshooter"] = "Piercing",
-    ["Agon Shieldsaint"] = "Piercing",
-    ["Agon Viscount"] = "Piercing",
+    ["Agon Clearmind"] = "Slashing",
+    ["Agon Defender"] = "Slashing",
+    ["Agon Footsoldier"] = "Slashing",
+    ["Agon Infidel"] = "Slashing",
+    ["Agon Ritualist"] = "Slashing",
+    ["Agon Sharpshooter"] = "Slashing",
+    ["Agon Shieldsaint"] = "Slashing",
+    ["Agon Viscount"] = "Slashing",
 
     -- Ody Mamool
     ["Agon Cleric"] = "Slashing",
@@ -137,7 +140,7 @@ local mob_weapon_damage_type = T {
     ["Nostos Manticore"] = "Slashing",
     ["Nostos Marid"] = "Slashing",
     ["Nostos Puk"] = "Slashing",
-    ["Nostos Qutrub"] = "Piercing",
+    ["Nostos Qutrub"] = "Slashing",
     ["Nostos Ram"] = "Slashing",
     ["Nostos Raptor"] = "Slashing",
     ["Nostos Rarab"] = "Slashing",
@@ -155,6 +158,23 @@ local mob_weapon_damage_type = T {
     ["Nostos Worm"] = "Slashing",
     ["Nostos Wyvern"] = "Slashing",
     ["Nostos Ziz"] = "Slashing",
+}
+
+local mob_ws = T {
+    ["Nostos Cluster"] = "Tachi: Kagero",
+    ["Nostos Puk"] = "Tachi: Kagero",
+    ["Nostos Draugar"] = "Tachi: Kagero",
+
+    ["Nostos Bat"] = "Tachi: Jinpu",
+    ["Nostos Bats"] = "Tachi: Jinpu",
+    ["Nostos Dahak"] = "Tachi: Jinpu",
+    ["Nostos Wyvern"] = "Tachi: Jinpu",
+    ["Nostos Karakul"] = "Tachi: Jinpu",
+    ["Nostos Rarab"] = "Tachi: Jinpu",
+    ["Nostos Bugard"] = "Tachi: Jinpu",
+    ["Nostos Ziz"] = "Tachi: Jinpu",
+    ["Nostos Leopard"] = "Tachi: Jinpu",
+    ["Nostos Ram"] = "Tachi: Jinpu",
 }
 
 
@@ -264,7 +284,7 @@ function get_sets()
         equipable = true,
         sub = "Utu Grip",
         ammo = "Knobkierrie",
-        head = "Nyame Helm",
+        head = "Mpaca's cap",
         body = "Sakonji Domaru +3",
         hands = "Nyame Gauntlets",
         legs = "Wakido Haidate +3",
@@ -302,34 +322,23 @@ function get_sets()
     sets.WeaponSkill["Tachi: Koki"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
 
     sets.WeaponSkill["Impulse Drive"] = {
+        main = "Shining One",
         sub = "Utu Grip",
         ammo = "Knobkierrie",
         head = "Mpaca's Cap",
-        body = "Sakonji Domaru +3",
-        hands = {
-            name = "Ryuo Tekko +1",
-            augments = {'DEX+12', 'Accuracy+25', '"Dbl.Atk."+4'}
-        },
-        legs = "Wakido Haidate +3",
-        feet = {
-            name = "Valorous Greaves",
-            augments = {'Weapon skill damage +4%', 'STR+8', 'Accuracy+8', 'Attack+10'}
-        },
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
         neck = "Sam. Nodowa +2",
         waist = "Sailfi Belt +1",
         left_ear = "Thrud Earring",
         right_ear = "Moonshade Earring",
-        left_ring = "Ifrit Ring +1",
+        left_ring = "Defending Ring",
         right_ring = "Karieyh Ring",
         back = {
             name = "Smertrios's Mantle",
-            augments = {
-                'STR+20',
-                'Accuracy+20 Attack+20',
-                'STR+10',
-                'Weapon skill damage +10%',
-                'Phys. dmg. taken-10%'
-            }
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
 
@@ -350,6 +359,10 @@ function precast(spell, action)
         send_command("cancel Sneak")
     end
 
+    if override_weaponskill(spell) then
+        return
+    end
+
     if sets[spell.type] and sets[spell.type][spell.english] then
         equip(sets[spell.type][spell.english])
 
@@ -368,6 +381,20 @@ function precast(spell, action)
     end
 
     debug("No set for " .. spell.type .. "." .. spell.english)
+end
+
+function override_weaponskill(spell)
+    if spell.type ~= "WeaponSkill" then return end
+    if player.equipment.main ~= sets.Weapons.Slashing.main then return end
+
+    local newWS = mob_ws[player.target.name]
+
+    if not newWS then return end
+    if newWS == spell.english then return end
+
+    cancel_spell()
+    send_command('@input /ws "' .. newWS .. '" ' .. tostring(spell.target.raw))
+    return true
 end
 
 function midcast(spell, action)
