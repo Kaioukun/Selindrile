@@ -1,3 +1,8 @@
+-- sam/drk
+-- pld/casters
+-- 
+
+
 function get_sets()
     sets.Idle = {
         head = "Nyame Helm",
@@ -122,18 +127,37 @@ function get_sets()
             augments = {"AGI+20", "Rng.Acc.+20 Rng.Atk.+20", "AGI+10", "Weapon skill damage +10%"}
         }
     }
-    sets.WeaponSkill["Leaden Salute"] = set_combine(
-        sets.WeaponSkill["Wildfire"],
-        {head = "Pixie Hairpin +1"}
-    )
+    sets.WeaponSkill["Leaden Salute"] = {
+        main = "Naegling",
+        sub = "Blurred Knife +1",
+        range = "Fomalhaut",
+        ammo = "Chrono Bullet",
+        head = "Pixie Hairpin +1",
+        body = "Lanun Frac +3",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Lanun Bottes +2",
+        neck = "Warder's Charm +1",
+        waist = "Eschan Stone",
+        left_ear = "Friomisi Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Archon Ring",
+        right_ring = "Acumen Ring",
+        back = {
+            name = "Camulus's Mantle",
+            augments = {'AGI+20', 'Rng.Acc.+20 Rng.Atk.+20', 'AGI+10', 'Weapon skill damage +10%'}
+        }
+    }
 
     sets.CorsairRoll = {
         main = "Lanun Knife",
         range = "Compensator",
         head = "Lanun Tricorne",
         neck = "Regal necklace",
+        body = "Chasseur's Frac +1",
         hands = "Chasseur's Gants +1",
-        right_ring = "Luzaf's Ring",
+        legs = "Chasseur's Culottes",
+        --right_ring = "Luzaf's Ring",
         back = {
             name = "Camulus's Mantle",
             augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+5", '"Dbl.Atk."+10', "System: 1 ID: 1155 Val: 4"}
@@ -141,23 +165,21 @@ function get_sets()
     }
     sets.JobAbility["Double-Up"] = {
         legs = "Lanun Trews",
-        right_ring = "Luzaf's Ring",
+        --right_ring = "Luzaf's Ring",
     }
 
     sets.CorsairShot = {
-        head="Mummu Bonnet +2",
-        body="Mummu Jacket +2",
-        hands="Mummu Wrists +2",
-        legs="Mummu Kecks +2",
-        feet="Mummu Gamash. +2",
-        neck="Sanctity Necklace",
-        waist="Eschan Stone",
-        left_ear="Digni. Earring",
-        right_ear="Gwati Earring",
-        left_ring="Vertigo Ring",
-        right_ring="Archon Ring",
+        head = "Malignance Chapeau",
+        body = "Malignance Tabard",
+        hands = "Malignance Gloves",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots",
+        left_ear = "Telos Earring",
+        right_ear = "Dedition Earring",
+        left_ring = "Chirich Ring +1",
+        right_ring = "Chirich Ring +1"
     }
-    sets.CorsairShot = sets.WeaponSkill["Wildfire"]
+    --sets.CorsairShot = sets.WeaponSkill["Wildfire"]
 end
 
 function precast(spell, action)
