@@ -84,10 +84,7 @@ function get_sets()
         right_ear = "Etiolation Earring", -- 1
         left_ring = "Kishar Ring", -- 4
         right_ring = "Weather. Ring", -- 5
-        back = {
-            name = "Intarabus's Cape",
-            augments = {'"Fast Cast"+10'}
-        }
+        back = "Intarabus's Cape"
     }
 
     -- Cure Precast Set --
@@ -116,7 +113,7 @@ function get_sets()
         main = "Carnwenhan",
         sub = "Ammurapi shield",
         range = "",
-        head = "Cath palug crown",
+        head = "Brioso roundlet +3",
         neck = "Moonbow Whistle +1",
         ear1 = "Regal earring",
         ear2 = "Dignitary's earring",
@@ -170,17 +167,28 @@ function get_sets()
     }
     sets.Midcast.Finale = {}
     sets.Midcast.Lullaby = {
-        hands = "Brioso cuffs +3"
+        main = "Carnwenhan",
+        sub = "Ammurapi",
+        range = "Daurdabla",
+        head = "Brioso roundlet +3",
+        neck = "Moonbow whistle +1",
+        ear1 = "Dignitary's earring",
+        ear2 = "Regal earring",
+        body = "Fili hongreline +1",
+        hands = "Brioso cuffs +3",
+        ring1 = "Stikini ring +1",
+        ring2 = "Stikini ring +1",
+        back = "Intarabus cape",
+        waist = "Acuity Belt +1",
+        legs = "Inyanga shalwar +2",
+        feet = "Brioso slippers +3"
     }
 
     -- Cure Set --
     sets.Midcast.Cure = {
         main = "Serenity",
         sub = "Achaq grip",
-        head = {
-            name = "Vanya Hood",
-            augments = {'MP+50', '"Cure" potency +7%', 'Enmity-6'}
-        },
+        head = "Vanya Hood",
         neck = "Colossus's torque",
         ear1 = "Loquac. Earring",
         ear2 = "Beatific earring",
@@ -197,15 +205,9 @@ function get_sets()
     -- Curaga Set --
     sets.Midcast.Curaga = {
         main = "Serenity",
-        sub = {
-            name = "Genbu's Shield",
-            augments = {'"Cure" potency +4%', '"Cure" spellcasting time -8%'}
-        },
+        sub = "Genbu's Shield",
         range = "Gjallarhorn",
-        head = {
-            name = "Vanya Hood",
-            augments = {'MP+50', '"Cure" potency +7%', 'Enmity-6'}
-        },
+        head = "Vanya Hood",
         body = "Kaykaus Bliaut",
         hands = "Revealer's Mitts",
         legs = "Doyen pants",
@@ -257,15 +259,15 @@ function get_sets()
     sets.Midcast.Stoneskin = set_combine(sets.Midcast.Haste)
 
     -- Melee --
-    sets.TP = {
-        main = "Carnwenhan",
+    sets.Engaged = {
+        main = "Nageling",
         sub = "Taming Sari",
         range = "Linos",
-        head = "Volte tiara",
+        head = "Nyame helm",
         body = "Ashera harness",
-        hands = "Volte mittens",
+        hands = "Nyame gauntlets",
         legs = "Volte tights",
-        feet = "Volte spats",
+        feet = "Nyame sollerets",
         neck = "Bard's Charm +1",
         waist = "Windbuffet belt +1",
         left_ear = "Telos Earring",
@@ -277,82 +279,55 @@ function get_sets()
 
     sets.WeaponSkill = {}
     sets.WeaponSkill["Rudra's Storm"] = {
-        main = "Carnwenhan",
+        main = "",
         sub = "Taming Sari",
         range = "Linos",
-        head = "Volte tiara",
+        head = "Lustratio cap +1",
         body = "Ashera harness",
-        hands = "Volte mittens",
-        legs = "Aya. Cosciales +2",
-        feet = "Aya. Gambieras +2",
+        hands = "Lustratio mittens +1",
+        legs = "Lustratio subligar +1",
+        feet = "Lustratio leggings +1",
         neck = "Bard's Charm +1",
-        waist = "Windbuffet belt +1",
-        left_ear = "Telos Earring",
+        waist = "Kentarch belt",
+        left_ear = "Mache earring +1",
         right_ear = "Balder earring +1",
-        left_ring = "Chirich ring +1",
+        left_ring = "Ilabrat ring",
         right_ring = "Petrov Ring",
         back = "Intarabus's cape"
     }
     sets.WeaponSkill["Mordant Rime"] = {
         main = "Carnwenhan",
-        sub = {
-            name = "Taming Sari",
-            augments = {'STR+10', 'DEX+10', 'DMG:+15', '"Treasure Hunter"+1'}
-        },
-        range = {
-            name = "Linos",
-            augments = {'Accuracy+15 Attack+15', '"Dbl.Atk."+3', 'Quadruple Attack +2'}
-        },
-        head = {
-            name = "Bihu Roundlet +3",
-            augments = {'Enhances "Con Anima" effect'}
-        },
-        body = {
-            name = "Bihu Jstcorps. +3",
-            augments = {'Enhances "Troubadour" effect'}
-        },
-        hands = {
-            name = "Bihu Cuffs +3",
-            augments = {'Enhances "Con Brio" effect'}
-        },
-        legs = {
-            name = "Bihu Cannions +3",
-            augments = {'Enhances "Soul Voice" effect'}
-        },
-        feet = {
-            name = "Bihu Slippers +3",
-            augments = {'Enhances "Nightingale" effect'}
-        },
-        neck = {
-            name = "Bard's Charm +1",
-            augments = {'Path: A'}
-        },
+        sub = "Taming Sari",
+        range = "Linos",
+        head = "Bihu Roundlet +3",
+        body = "Bihu Jstcorps. +3",
+        hands = "Bihu Cuffs +3",
+        legs = "Bihu Cannions +3",
+        feet = "Bihu Slippers +3",
+        neck = "Bard's Charm +1",
         waist = "Kentarch Belt",
         left_ear = "Regal Earring",
         right_ear = "Telos Earring",
-        left_ring = "Metamorph Ring",
-        right_ring = "Dawnsoul Ring",
-        back = {
-            name = "Intarabus's Cape",
-            augments = {'CHR+20', 'Accuracy+20 Attack+20', 'Mag. Acc.+5', 'Weapon skill damage +10%'}
-        }
+        left_ring = "Carbuncle ring +1",
+        right_ring = "Dawnsoul ring",
+        back = "Intarabus's Cape"
     }
     sets.WeaponSkill["Savage Blade"] = {
-        main = "Carnwenhan",
+        main = "Nageling",
         sub = "Taming Sari",
         range = "Linos",
-        head = "Volte tiara",
-        body = "Ashera harness",
-        hands = "Volte mittens",
-        legs = "Aya. Cosciales +2",
-        feet = "Aya. Gambieras +2",
+        head = "Bihu Roundlet +3",
+        body = "Bihu Jstcorps. +3",
+        hands = "Bihu Cuffs +3",
+        legs = "Bihu Cannions +3",
+        feet = "Bihu Slippers +3",
         neck = "Bard's Charm +1",
-        waist = "Windbuffet belt +1",
-        left_ear = "Telos Earring",
-        right_ear = "Balder earring +1",
-        left_ring = "Chirich ring +1",
-        right_ring = "Petrov Ring",
-        back = "Intarabus's cape"
+        waist = "Sailfi belt +1",
+        left_ear = "Balder earring +1",
+        right_ear = "Telos Earring",
+        left_ring = "Epaminondas's Ring",
+        right_ring = "Ifrit Ring",
+        back = "Intarabus's Cape"
     }
 
 end
@@ -400,24 +375,8 @@ function aftercast(spell, action)
 end
 
 function status_change(new, old)
-    if new == 'Idle' then
-        equip(sets.Idle)
-        debug('Aftercast: Idle')
-    elseif new == 'Resting' then
-        equip(sets.Resting)
-        debug('Aftercast: Resting')
-    elseif new == 'Engaged' then
-        equipSet = sets.TP
-        equip(equipSet)
-    else
-        equipSet = sets.Idle
-        if equipSet[IdleArray[IdleIndex]] then
-            equipSet = equipSet[IdleArray[IdleIndex]]
-        end
-        if equipSet[WeaponArray[WeaponIndex]] then
-            equipSet = equipSet[WeaponArray[WeaponIndex]]
-        end
-        equip(equipSet)
+    if (sets[new]) then
+        equip(sets[new])
     end
 end
 
@@ -449,4 +408,25 @@ end
 
 function debug(s)
     send_command('@input /echo ' .. s)
+end
+
+function midcast(spell, action)
+    if sets.Midcast[spell.english] then
+        equip(sets.Midcast[spell.english])
+        debug('Midcast: ' .. spell.english)
+        return
+
+    elseif spell.type:endswith('Magic') or spell.type == 'Ninjutsu' or spell.type == "BardSong" then
+
+        if spell.type == "BardSong" then
+            song_equip(spell)
+        elseif string.find(spell.english, 'Cure') then
+            equip(sets.Midcast.Cure)
+            debug('Midcast: Cure')
+        elseif string.find(spell.english, 'Cura') then
+            equip(sets.Midcast.Curaga)
+            debug('Midcast: Curaga')
+        end
+
+    end
 end

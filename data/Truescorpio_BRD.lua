@@ -3,19 +3,19 @@ function get_sets()
     -- Idle Sets --
     sets.Idle = {
         main = "Carnwenhan",
-        sub = "Genmei Shield",
-        head = "",
+        sub = "Genbu's Shield",
+        head = "Nyame helm",
         neck = "Loricate torque +1",
         ear1 = "Mendicant's Earring",
         ear2 = "Etiolation earring",
-        body = "",
-        hands = "",
+        body = "Nyame mail",
+        hands = "Nyame gauntlets",
         ring1 = "Dark Ring",
         ring2 = "Defending ring",
         back = "Intarabus cape",
         waist = "Flume belt",
-        legs = "",
-        feet = ""
+        legs = "Nyame flanchard",
+        feet = "Nyame sollerets"
     }
 
     sets.Resting = {
@@ -39,28 +39,28 @@ function get_sets()
     -- JA Sets --
     sets.JA = {}
     sets.JA.Nightingale = {
-        feet = "Bihu Slippers"
+        feet = "Bihu Slippers +3"
     }
     sets.JA.Troubadour = {
-        body = "Bihu Justaucorps"
+        body = "Bihu Justaucorps +3"
     }
     sets.JA["Soul Voice"] = {
-        legs = "Bihu cannions"
+        legs = "Bihu cannions +3"
     }
 
     -- Song Precast Set --
     sets.Precast = {}
     sets.Precast.SongCast = {
-        main = "",
+        main = "Kali",
         head = "Fili Calot +1",
         neck = "Loricate torque +1",
         ear1 = "Etiolation earring",
-        ear2 = "Enchanter Earring +1",
+        ear2 = "Enchanter's earring +1",
         body = "Inyanga jubbah +2",
         hands = "Brioso cuffs +2",
         ring1 = "Kishar ring",
         ring2 = "Defending ring",
-        back = "Intarabus cape",
+        back = "Intarabus's cape",
         waist = "Flume belt",
         legs = "Ayanmo cosciales +2",
         feet = "Fili cothurnes +1"
@@ -68,17 +68,16 @@ function get_sets()
 
     -- Fastcast Set --
     sets.Precast.FastCast = {
-        main = "Felibre's Dague",
+        main = "Kali",
         sub = "Genmei Shield",
-        range = "Gjallarhorn",
-        head = "",
+        head = "Fili calot +1",
         body = "Inyanga Jubbah +2",
         hands = "Gende. Gages +1",
-        legs = "",
-        feet = "",
+        legs = "Doyen pants",
+        feet = "Bihu slippers +3",
         neck = "Orunmila's Torque",
-        waist = "",
-        left_ear = "Enchanter earring +1",
+        waist = "Witful belt",
+        left_ear = "Enchanter's earring +1",
         right_ear = "Etiolation Earring",
         left_ring = "Kishar Ring",
         right_ring = "",
@@ -89,12 +88,11 @@ function get_sets()
     sets.Precast.Cure = {
         main = "Carnwenhan",
         sub = "Genbu's Shied",
-        range = "Gjallarhorn",
-        head = "",
-        body = "",
-        hands = "",
+        head = "Vanya Hood",
+        body = "Kaykaus Bliaut",
+        hands = "Revealer's Mitts",
         legs = "Doyen pants",
-        feet = "",
+        feet = "Kaykaus Boots",
         neck = "Bard's Charm +1",
         waist = "Luminary Sash",
         left_ear = "Mendi. Earring",
@@ -110,13 +108,12 @@ function get_sets()
     sets.Midcast.Wind = {
         main = "Carnwenhan",
         sub = "Ammurapi shield",
-        range = "Gjallarhorn",
         head = "",
-        neck = "Moonbow Whistle",
+        neck = "Moonbow Whistle +1",
         ear1 = "",
         ear2 = "Dignitary's earring",
         body = "Brioso justaucorps +2",
-        hands = "Leyline gloves",
+        hands = "",
         ring1 = "Stikini ring",
         ring2 = "",
         back = "Rhapsode's cape",
@@ -128,18 +125,18 @@ function get_sets()
     -- Song Buff Set --
     sets.Midcast.WindBuff = {
         main = "Carnwenhan",
-        range = "",
         head = "Fili calot +1",
-        neck = "Moonbow Whistle",
-        ear1 = "",
-        ear2 = "Aoidos' Earring",
         body = "Fili hongreline +1",
         hands = "Fili manchettes +1",
-        ring1 = "Dawnsoul ring",
-        back = "Kumbira cape",
-        waist = "Ovate rope",
         legs = "Inyanga Shalwar +2",
-        feet = "Brioso Slippers +2"
+        feet = "Brioso Slippers +2",
+        neck = "Moonbow Whistle +1",
+        waist = "Ovate rope",
+        ear1 = "",
+        ear2 = "Aoidos' Earring",
+        ring1 = "Dawnsoul ring",
+        back = "Kumbira cape"
+
     }
 
     sets.Midcast.March = {
@@ -170,7 +167,7 @@ function get_sets()
 
     -- Cure Set --
     sets.Midcast.Cure = {
-        main = "Serenity",
+        main = "Daybreak",
         sub = "Achaq grip",
         head = {
             name = "Vanya Hood",
@@ -192,10 +189,7 @@ function get_sets()
     -- Curaga Set --
     sets.Midcast.Curaga = {
         main = "Serenity",
-        sub = {
-            name = "Genbu's Shield",
-            augments = {'"Cure" potency +4%', '"Cure" spellcasting time -8%'}
-        },
+        sub = "Genbu's Shield",
         range = "Gjallarhorn",
         head = {
             name = "Vanya Hood",
@@ -225,7 +219,7 @@ function get_sets()
         ring2 = "Weatherspoon ring",
         back = "Swith Cape +1",
         waist = "Witful belt",
-        legs = "Bihu Cannions +2",
+        legs = "Bihu Cannions +3",
         feet = "Brioso Slippers +2"
     })
 
@@ -253,7 +247,6 @@ function get_sets()
 
     -- Melee --
     sets.TP = {
-        main = "Carnwenhan",
         sub = "Taming Sari",
         range = "Linos",
         head = "Aya. Zucchetto +2",
