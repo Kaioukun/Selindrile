@@ -1,10 +1,9 @@
 local engagedMode = "Normal"
 local rangedMode = "Normal"
+local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
+local debugMode = true
 
 function get_sets()
-    incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
-    debugMode = true
-
     sets.Idle = {
         head = "Nyame Helm",
         body = "Nyame Mail",
@@ -133,21 +132,21 @@ function get_sets()
         back = {
             name = "Camulus's Mantle",
             augments = {
-                'AGI+20', 
-                'Mag. Acc+20 /Mag. Dmg.+20', 
-                'AGI+10', 
+                'AGI+20',
+                'Mag. Acc+20 /Mag. Dmg.+20',
+                'AGI+10',
                 'Weapon skill damage +10%'
             }
         }
     }
-    
+
     sets.WeaponSkill["Leaden Salute"] = {
         ammo = "Living Bullet",
         head = "Pixie Hairpin +1",
-        body = "Lanun Frac +3",
+        body = "Nyame Mail",
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
-        feet = "Lanun Bottes +3",
+        feet = "Nyame Sollerets",
         neck = "Comm. Charm +2",
         waist = "Orpheus's Sash",
         left_ear = "Friomisi Earring",
@@ -186,6 +185,10 @@ function get_sets()
 
     sets.CorsairRoll = {
         equipable = true,
+        main = {
+            name="Rostam",
+            augments={'Path: C',}
+        },
         head = "Lanun Tricorne +3",
         hands = "Chasseur's Gants +1",
         legs = "Chas. Culottes +1",
