@@ -17,10 +17,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Dbl.Atk."+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dbl.Atk."+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -121,10 +121,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Dbl.Atk."+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dbl.Atk."+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -149,12 +149,50 @@ function get_sets()
     sets.JobAbility["Ancient Circle"] = {
         legs = "Vishap brais +3",
     }
+    sets.JobAbility["Call Wyvern"] = {
+        neck = "Dgn. Collar +2",
+        body = "Ptero. Mail +3",
+        left_ring = "Dreki Ring",
+    }
 
     sets.JobAbility.Hasso = {}
     sets.JobAbility.Meditate = {}
 
     -- WS Sets --
-    sets.WeaponSkill = {}
+    sets.WeaponSkill = {
+        main = "Naegling",
+        ammo = "Knobkierrie",
+        head = "Gleti's Mask",
+        body = "Nyame Mail",
+        hands = "Gleti's Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = {
+            name = "Dgn. Collar +2",
+            augments = {'Path: A'}
+        },
+        waist = {
+            name = "Sailfi Belt +1",
+            augments = {'Path: A'}
+        },
+        left_ear = {
+            name = "Moonshade Earring",
+            augments = {'Attack+4', 'TP Bonus +250'}
+        },
+        right_ear = "Thrud Earring",
+        left_ring = "Regal Ring",
+        right_ring = "Epaminondas's Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {
+                'STR+20',
+                'Accuracy+20 Attack+20',
+                'STR+10',
+                'Weapon skill damage +10%',
+                'Phys. dmg. taken-10%'
+            }
+        }
+    }
 
     sets.WeaponSkill.Drakesbane = {
         ammo = "Knobkierrie",
@@ -292,13 +330,10 @@ function get_sets()
     sets.WeaponSkill["Savage Blade"] = {
         main = "Naegling",
         ammo = "Knobkierrie",
-        head = "Nyame Helm",
+        head = "Gleti's Mask",
         body = "Nyame Mail",
-        hands = {
-            name = "Ptero. Fin. G. +3",
-            augments = {'Enhances "Angon" effect'}
-        },
-        legs = "Vishap Brais +3",
+        hands = "Gleti's Gauntlets",
+        legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = {
             name = "Dgn. Collar +2",
@@ -318,10 +353,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'STR+20', 
+                'STR+20',
                 'Accuracy+20 Attack+20',
-                'STR+10', 
-                'Weapon skill damage +10%', 
+                'STR+10',
+                'Weapon skill damage +10%',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -355,10 +390,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'STR+20', 
+                'STR+20',
                 'Accuracy+20 Attack+20',
-                'STR+10', 
-                'Weapon skill damage +10%', 
+                'STR+10',
+                'Weapon skill damage +10%',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -380,10 +415,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Dbl.Atk."+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dbl.Atk."+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -406,6 +441,12 @@ function precast(spell, action)
 
     if sets[spell.type] and sets[spell.type][spell.english] then
         equip(sets[spell.type][spell.english])
+
+        return
+    end
+
+    if spell.type == "WeaponSkill" then
+        equip(sets["WeaponSkill"])
 
         return
     end
