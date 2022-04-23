@@ -15,7 +15,7 @@ local tutle_mobs = T {
     "Lotanu",
     "Wayra Tata",
 
-    -- Ody Holo 
+    -- Ody Holo
     "Agon Heretic",
     "Agon Marquess",
     "Agon Monarch",
@@ -79,7 +79,7 @@ local mob_weapon_damage_type = T {
     ["Agon Vizier"] = "Piercing",
     ["Agon Yojimbo"] = "Piercing",
     ["Agon Monarch"] = "Piercing",
- 
+
     -- Ody Trolls
     ["Agon Clearmind"] = "Slashing",
     ["Agon Defender"] = "Slashing",
@@ -99,7 +99,7 @@ local mob_weapon_damage_type = T {
     ["Agon Phalanx"] = "Slashing",
     ["Agon Pilferer"] = "Slashing",
     ["Agon Praetor"] = "Slashing",
- 
+
     -- Ody NMs
     ["Asena"] = "Slashing",
     ["Bygul"] = "Slashing",
@@ -108,7 +108,7 @@ local mob_weapon_damage_type = T {
     ["Kurmajara"] = "Piercing",
     ["Lotanu"] = "Slashing",
     ["Wayra Tata"] = "Slashing",
- 
+
     -- Ody Mobs
     ["Nostos Ameretat"] = "Slashing",
     ["Nostos Apkallu"] = "Slashing",
@@ -167,7 +167,6 @@ local mob_ws = T {
 
     ["Nostos Bat"] = "Tachi: Jinpu",
     ["Nostos Bats"] = "Tachi: Jinpu",
-    ["Nostos Dahak"] = "Tachi: Jinpu",
     ["Nostos Wyvern"] = "Tachi: Jinpu",
     ["Nostos Karakul"] = "Tachi: Jinpu",
     ["Nostos Rarab"] = "Tachi: Jinpu",
