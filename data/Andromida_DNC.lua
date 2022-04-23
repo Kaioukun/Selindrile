@@ -1,17 +1,7 @@
-function get_sets()
-    incapacitated_states = T {
-        "stun", "petrification", "terror", "sleep", "weakness"
-    }
+local incapacitated_states = T {"stun", "petrification", "terror", "sleep", "weakness"}
 
+function get_sets()
     sets.Idle = {
-        main = {
-            name = "Terpsichore",
-            augments = {'Path: A'}
-        },
-        sub = {
-            name = "Twashtar",
-            augments = {'Path: A'}
-        },
         ammo = "Staunch Tathlum +1",
         head = "Turms Cap +1",
         body = "Gleti's Cuirass",
@@ -26,21 +16,20 @@ function get_sets()
         right_ring = "Chirich Ring +1",
         back = {
             name = "Senuna's Mantle",
-            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
+            augments = {'Phys. dmg. taken-10%'}
         }
     }
 
-    sets.Engaged = {mode = "Melee"}
-    sets.Engaged.Melee = {
+    sets.Engaged = {
+        mode = "Turtle"
+    }
+    sets.Engaged.Fodder = {
         ammo = "Aurgelmir Orb +1",
         head = {
             name = "Adhemar Bonnet +1",
             augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
         },
-        body = {
-            name = "Horos Casaque +3",
-            augments = {'Enhances "No Foot Rise" effect'}
-        },
+        body = "Horos Casaque +3",
         hands = {
             name = "Adhemar Wrist. +1",
             augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
@@ -59,7 +48,10 @@ function get_sets()
         back = {
             name = "Senuna's Mantle",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
+                'DEX+20', 
+                'Accuracy+20 Attack+20', 
+                'DEX+10', 
+                '"Store TP"+10', 
                 'Phys. dmg. taken-10%'
             }
         }
@@ -81,35 +73,35 @@ function get_sets()
         back = {
             name = "Senuna's Mantle",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
+                'DEX+20', 
+                'Accuracy+20 Attack+20', 
+                'DEX+10', 
+                '"Store TP"+10', 
                 'Phys. dmg. taken-10%'
             }
         }
     }
 
-    DT = false
-    sets.PDT = {
+    sets.Engaged.Turtle = {
         ammo = "Staunch Tathlum +1",
-        head = "Turms Cap +1",
-        body = "Horos Casaque +3",
-        hands = {
-            name = "Herculean Gloves",
-            augments = {
-                'Phys. dmg. taken -5%', 'STR+10', 'Accuracy+7', 'Attack+7'
-            }
-        },
-        legs = "Mummu Kecks +2",
-        feet = "Turms Leggings +1",
-        neck = "Loricate Torque +1",
+        head = "Malignance Chapeau",
+        body = "Malignance Tabard",
+        hands = "Malignance Gloves",
+        legs = "Malignance Tights",
+        feet = "Malignance Boots",
+        neck = "Etoile Gorget +2",
         waist = "Engraved Belt",
-        left_ear = "Hearty Earring",
-        right_ear = "Genmei Earring",
-        left_ring = "Moonlight Ring",
+        left_ear = "Sherida Earring",
+        right_ear = "Brutal Earring",
+        left_ring = "Vocane Ring +1",
         right_ring = "Defending Ring",
         back = {
             name = "Senuna's Mantle",
             augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10',
+                'DEX+20', 
+                'Accuracy+20 Attack+20', 
+                'DEX+10', 
+                '"Store TP"+10', 
                 'Phys. dmg. taken-10%'
             }
         }
@@ -117,7 +109,6 @@ function get_sets()
 
     sets.FastCast = {
         ammo = "Sapience Orb",
-        head = "Herculean Helm",
         hands = "Leyline Gloves",
         legs = "Limbo Trousers",
         left_ear = "Loquac. Earring",
@@ -125,35 +116,42 @@ function get_sets()
         left_ring = "Prolix Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = { '"Fast Cast"+10' }
+            augments = {'"Fast Cast"+10'}
         }
     }
 
     -- JA Sets --
     sets.JobAbility = {}
-    sets.JobAbility["Saber Dance"] = {legs = "Horos Tights +3"}
+    sets.JobAbility["Saber Dance"] = {
+        legs = "Horos Tights +3"
+    }
 
-    sets.JobAbility["Fan Dance"] = {hands = "Horos Bangles +1"}
+    sets.JobAbility["Fan Dance"] = {
+        hands = "Horos Bangles +1"
+    }
 
-    sets.JobAbility["No Foot Rise"] = {body = "Horos Casaque +3"}
+    sets.JobAbility["No Foot Rise"] = {
+        body = "Horos Casaque +3"
+    }
 
-    sets.Jig = {legs = "Horos Tights +3", feet = "Maxixi Toe shoes +2"}
+    sets.Jig = {
+        legs = "Horos Tights +3",
+        feet = "Maxixi Toe shoes +2"
+    }
 
     sets.Flourish = {}
-    sets.Flourish["Violent Flourish"] = {body = "Horos Casaque +3"}
+    sets.Flourish["Violent Flourish"] = {
+        body = "Horos Casaque +3"
+    }
 
     sets.Flourish2 = {}
-    sets.Flourish2["Reverse Flourish"] =
-        {
-            hands = "Macu. Bangles +1",
-            back = {
-                name = "Toetapper Mantle",
-                augments = {
-                    '"Store TP"+2', '"Rev. Flourish"+29',
-                    "Weapon skill damage +1%"
-                }
-            }
+    sets.Flourish2["Reverse Flourish"] = {
+        hands = "Macu. Bangles +1",
+        back = {
+            name = "Toetapper Mantle",
+            augments = {'"Store TP"+2', '"Rev. Flourish"+29', "Weapon skill damage +1%"}
         }
+    }
 
     sets.Flourish3 = {}
 
@@ -186,10 +184,7 @@ function get_sets()
         left_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                "DEX+20", "Accuracy+20 Attack+20", "DEX+10",
-                "Weapon skill damage +10%"
-            }
+            augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", "Weapon skill damage +10%"}
         }
     }
 
@@ -198,16 +193,11 @@ function get_sets()
         ammo = "Charis Feather",
         head = {
             name = "Lilitu Headpiece",
-            augments = {
-                "STR+10", "DEX+10", "Attack+15", "Weapon skill damage +3%"
-            }
+            augments = {"STR+10", "DEX+10", "Attack+15", "Weapon skill damage +3%"}
         },
         body = {
             name = "Herculean Vest",
-            augments = {
-                'MND+9', 'Attack+29', 'Weapon skill damage +6%',
-                'Accuracy+15 Attack+15'
-            }
+            augments = {'MND+9', 'Attack+29', 'Weapon skill damage +6%', 'Accuracy+15 Attack+15'}
         },
         hands = "Maxixi Bangles +3",
         legs = "Horos Tights +3",
@@ -223,10 +213,7 @@ function get_sets()
         right_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                "DEX+20", "Accuracy+20 Attack+20", "DEX+10",
-                "Weapon skill damage +10%"
-            }
+            augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", "Weapon skill damage +10%"}
         }
     }
 
@@ -248,13 +235,9 @@ function get_sets()
         right_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10',
-                'Weapon skill damage +10%'
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', 'Weapon skill damage +10%'}
         }
     }
-
 
     sets.WeaponSkill["Pyrrhic Kleos"] = {
         ammo = "Aurgelmir Orb +1",
@@ -277,28 +260,17 @@ function get_sets()
         right_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'STR+20', 'Accuracy+20 Attack+20', 'STR+10', '"Dbl.Atk."+10'
-            }
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', '"Dbl.Atk."+10'}
         }
     }
 
     sets.WeaponSkill["Rudra's Storm"] = {
         ammo = "Aurgelmir Orb +1",
-        head = "Lilitu Headpiece",
-        body = {
-            name = "Herculean Vest",
-            augments = {
-                'MND+9', 'Attack+29', 'Weapon skill damage +6%',
-                'Accuracy+15 Attack+15'
-            }
-        },
+        head = "Nyame Helm",
+        body = "Nyame Mail",
         hands = "Maxixi Bangles +3",
         legs = "Horos Tights +3",
-        feet = {
-            name = "Herculean Boots",
-            augments = {'Attack+24', 'Weapon skill damage +3%', 'DEX+14'}
-        },
+        feet = "Nyame Sollerets",
         neck = "Etoile Gorget +2",
         waist = "Sailfi Belt +1",
         left_ear = "Ishvara Earring",
@@ -307,21 +279,15 @@ function get_sets()
         right_ring = "Regal Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10',
-                'Weapon skill damage +10%'
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', 'Weapon skill damage +10%'}
         }
     }
-    sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(
-        sets.WeaponSkill["Rudra's Storm"],
-        {
-            ammo = "Charis Feather",
-            head = "Maculele Tiara +1",
-            body = "Meg. Cuirie +2",
-            left_ear = "Ishvara Earring",
-        }
-    )
+    sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {
+        ammo = "Charis Feather",
+        head = "Maculele Tiara +1",
+        body = "Meg. Cuirie +2",
+        left_ear = "Ishvara Earring"
+    })
     sets.WeaponSkill["Shark Bite"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {})
 end
 
@@ -385,12 +351,17 @@ function aftercast(spell, action)
 end
 
 function status_change(new, old)
-    if incapacitated() then return end
+    if incapacitated() then
+        return
+    end
 
-    if _G["status_change_" .. new:lower()] and
-        not _G["status_change_" .. new:lower()]() then return end
+    if _G["status_change_" .. new:lower()] and not _G["status_change_" .. new:lower()]() then
+        return
+    end
 
-    if (sets[new]) then equip(sets[new]) end
+    if (sets[new]) then
+        equip(sets[new])
+    end
 end
 
 function status_change_engaged()
@@ -404,14 +375,18 @@ function status_change_engaged()
 end
 
 function incapacitated()
-    if incapacitated_states:find(function(value) return buffactive[value] or false end) then
+    if incapacitated_states:find(function(value)
+        return buffactive[value] or false
+    end) then
         equip(sets.Idle)
         return true
     end
 end
 
 function buff_change(name, gain, buff_details)
-    if incapacitated_states:contains(name) then status_change(player.status) end
+    if incapacitated_states:contains(name) then
+        status_change(player.status)
+    end
 
     debug(name .. " " .. (gain and "on" or "off"))
 end
@@ -426,14 +401,6 @@ function self_command(argsString)
     end
 
     status_change(player.status)
-end
-
-function self_command_dt(args)
-    DT = not DT
-
-    windower.add_to_chat(123, "DT: " .. (DT and "on" or "off"))
-
-    status_change(player.status, player.status)
 end
 
 function self_command_e(args)
@@ -460,15 +427,21 @@ end
 function find_player_in_alliance(name)
     for party_index, ally_party in ipairs(alliance) do
         for player_index, _player in ipairs(ally_party) do
-            if _player.name == name then return _player end
+            if _player.name == name then
+                return _player
+            end
         end
     end
 end
 
 function get_target_missing_hp(target)
-    if target.type == "SELF" then return player.max_hp - player.hp end
+    if target.type == "SELF" then
+        return player.max_hp - player.hp
+    end
 
-    if not target.isallymember then return end
+    if not target.isallymember then
+        return
+    end
 
     local target = find_player_in_alliance(target.name)
 
@@ -476,7 +449,9 @@ function get_target_missing_hp(target)
 end
 
 function get_dnc_level()
-    if player.sub_job == "DNC" then return player.sub_job_level end
+    if player.sub_job == "DNC" then
+        return player.sub_job_level
+    end
 
     return player.main_job_level
 end
@@ -492,29 +467,55 @@ function refine_waltz(spell)
     local spellRecasts = windower.ffxi.get_spell_recasts()
     local missingHP = get_target_missing_hp(spell.target)
 
-    if not missingHP then return true end
+    if not missingHP then
+        return true
+    end
 
-    local waltzes = table.filter({
-        {id = 190, name = "Curing Waltz", level = 15, tp = 200, hp = 300},
-        {id = 191, name = "Curing Waltz II", level = 30, tp = 350, hp = 600},
-        {id = 192, name = "Curing Waltz III", level = 45, tp = 500, hp = 1000},
-        {id = 193, name = "Curing Waltz IV", level = 70, tp = 650, hp = 1500},
-        {id = 194, name = "Curing Waltz V", level = 87, tp = 800, hp = 2000}
-    }, function(waltz)
-        return waltz.level <= dncLevel and waltz.tp <= player.tp and
-                   spellRecasts[waltz.id] < 1
+    local waltzes = table.filter({{
+        id = 190,
+        name = "Curing Waltz",
+        level = 15,
+        tp = 200,
+        hp = 300
+    }, {
+        id = 191,
+        name = "Curing Waltz II",
+        level = 30,
+        tp = 350,
+        hp = 600
+    }, {
+        id = 192,
+        name = "Curing Waltz III",
+        level = 45,
+        tp = 500,
+        hp = 1000
+    }, {
+        id = 193,
+        name = "Curing Waltz IV",
+        level = 70,
+        tp = 650,
+        hp = 1500
+    }, {
+        id = 194,
+        name = "Curing Waltz V",
+        level = 87,
+        tp = 800,
+        hp = 2000
+    }}, function(waltz)
+        return waltz.level <= dncLevel and waltz.tp <= player.tp and spellRecasts[waltz.id] < 1
     end)
 
     local newWaltz = "Curing Waltz"
     for _, waltz in ipairs(waltzes) do
-        if waltz.hp > missingHP then break end
+        if waltz.hp > missingHP then
+            break
+        end
 
         newWaltz = waltz.name
     end
 
     if newWaltz ~= spell.english then
-        send_command('@input /ja "' .. newWaltz .. '" ' ..
-                         tostring(spell.target.raw))
+        send_command('@input /ja "' .. newWaltz .. '" ' .. tostring(spell.target.raw))
         cancel_spell()
         return
     end
@@ -523,8 +524,7 @@ function refine_waltz(spell)
 end
 
 function is_magic(spell)
-    return spell.type:endswith("Magic") or spell.type == "BardSong" or
-               spell.type == "Ninjutsu" or spell.type == "Trust"
+    return spell.type:endswith("Magic") or spell.type == "BardSong" or spell.type == "Ninjutsu" or spell.type == "Trust"
 end
 
 function notice(s)
