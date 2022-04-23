@@ -113,26 +113,11 @@ function get_sets()
 
     sets.WeaponSkill = {
         ammo = "Yamarang",
-        head = "Pill. Bonnet +3",
-        body = {
-            name = "Herculean Vest",
-            augments = {
-                "MND+9",
-                "Attack+29",
-                "Weapon skill damage +6%",
-                "Accuracy+15 Attack+15"
-            }
-        },
-        hands = "Meg. Gloves +2",
-        legs = "Plun. Culottes +3",
-        feet = {
-            name = "Herculean Boots",
-            augments = {
-                "Attack+24",
-                "Weapon skill damage +3%",
-                "DEX+14"
-            }
-        },
+        head = "Gleti's Mask",
+        body = "Nyame Mail",
+        hands = "Gleti's Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
         neck = "Assassin's Gorget",
         waist = "Chiner's Belt +1",
         left_ear = "Ishvara Earring",
@@ -141,24 +126,20 @@ function get_sets()
         right_ring = "Regal Ring",
         back = {
             name = "Toutatis's Cape",
-            augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+10",
-                "Weapon skill damage +10%",
-                "Phys. dmg. taken-10%"
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
 
+
     sets.WeaponSkill["Savage Blade"] = {
-        head = "Nyame Helm",
+        ammo = "Yamarang",
+        head = "Gleti's Mask",
         body = "Nyame Mail",
-        hands = "Nyame Gauntlets",
+        hands = "Gleti's Gauntlets",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Assassin's Gorget",
-        waist = "Sailfi Belt +1",
+        waist = "Chiner's Belt +1",
         left_ear = "Ishvara Earring",
         right_ear = "Moonshade Earring",
         left_ring = "Ilabrat Ring",
