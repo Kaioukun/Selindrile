@@ -17,17 +17,17 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Dual Wield"+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dual Wield"+10',
                 'Phys. dmg. taken-10%'
             }
         }
     }
 
     sets.Engaged = {
-        mode = "Hybrid"
+        mode = "Mdt"
     }
     sets.Engaged.Hybrid = {
         ammo = "Aurgelmir orb",
@@ -46,10 +46,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Dual Wield"+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Dual Wield"+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -93,7 +93,9 @@ function get_sets()
         legs = "Vishap Brais +3",
     }
     sets.JobAbility["Call Wyvern"] = {
-        -- body = "Pteroslaver Mail +1"
+        neck = "Dgn. Collar +1",
+        -- body = "Pteroslaver Mail +1",
+        left_ring = "Dreki Ring",
     }
 
     -- WS Sets --
@@ -105,7 +107,7 @@ function get_sets()
         body = "Nyame Mail",
         hands = "Ptero. Fin. G. +3",
         legs = "Vishap Brais +3",
-        feet = "Sulev. Leggings +2",
+        feet = "Nyame Sollerets",
         neck = "Dgn. Collar +1",
         waist = {
             name = "Sailfi Belt +1",
@@ -120,10 +122,10 @@ function get_sets()
         back = {
             name = "Brigantia's Mantle",
             augments = {
-                'STR+20', 
-                'Accuracy+20 Attack+20', 
-                'STR+10', 
-                'Weapon skill damage +10%', 
+                'STR+20',
+                'Accuracy+20 Attack+20',
+                'STR+10',
+                'Weapon skill damage +10%',
                 'Damage taken-5%'
             }
         }
