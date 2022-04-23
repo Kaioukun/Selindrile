@@ -1,6 +1,13 @@
 local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
+
+local modes = {
+    Idle = "Normal",
+    Engaged = "Tank"
+}
+
 function get_sets()
-    sets.Idle = {
+    sets.Idle = {}
+    sets.Idle.Normal = {
         main = "Epeolatry",
         sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
@@ -18,18 +25,64 @@ function get_sets()
         back = {
             name = "Ogma's Cape",
             augments = {
-                'HP+60', 
-                'Eva.+20 /Mag. Eva.+20', 
-                'Mag. Evasion+10', 
-                'Enmity+10', 
+                'HP+60',
+                'Eva.+20 /Mag. Eva.+20',
+                'Mag. Evasion+10',
+                'Enmity+10',
+                'Phys. dmg. taken-10%'
+            }
+        }
+    }
+    sets.Idle.Tank = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
+        ammo = "Staunch Tathlum +1",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Futhark Torque +2",
+        waist = "Engraved Belt",
+        left_ear = "Hearty Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Vocane Ring +1",
+        right_ring = "Shadow Ring",
+        back = {
+            name = "Ogma's Cape",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Mag. Evasion+10', 'Enmity+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+    sets.Idle.Meva = {
+        main = "Epeolatry",
+        sub = "Utu Grip",
+        ammo = "Staunch Tathlum +1",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Futhark Torque +2",
+        waist = "Engraved Belt",
+        left_ear = "Hearty Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Vocane Ring +1",
+        right_ring = "Shadow Ring",
+        back = {
+            name = "Ogma's Cape",
+            augments = {
+                'HP+60',
+                'Eva.+20 /Mag. Eva.+20',
+                'Mag. Evasion+10',
+                'Enmity+10',
                 'Phys. dmg. taken-10%'
             }
         }
     }
     -- sets.Idle.Kite = {}
 
-    sets.Engaged = {mode = "Hybrid"}
-    sets.Engaged.Melee = {
+    sets.Engaged = {}
+    sets.Engaged.Normal = {
         main = "Epeolatry",
         sub = "Utu Grip",
         ammo = "Ginsen",
@@ -91,33 +144,8 @@ function get_sets()
             }
         }
     }
-    sets.Engaged.Tank = sets.Idle
-    -- {
-    --     main = "Epeolatry",
-    --     sub = "Utu Grip",
-    --     ammo = "Staunch Tathlum +1",
-    --     head = "Turms Cap +1",
-    --     body = "Runeist's Coat +3",
-    --     hands = "Turms Mittens +1",
-    --     legs = "Eri. Leg Guards +1",
-    --     feet = "Turms Leggings +1",
-    --     neck = "Futhark Torque +2",
-    --     waist = "Engraved Belt",
-    --     left_ear = "Hearty Earring",
-    --     right_ear = "Odnowa Earring +1",
-    --     left_ring = "Vocane Ring +1",
-    --     right_ring = "Defending Ring",
-    --     back = {
-    --         name = "Ogma's cape",
-    --         augments = {
-    --             "HP+60",
-    --             "Eva.+20 /Mag. Eva.+20",
-    --             "Mag. Evasion+10",
-    --             "Enmity+10",
-    --             "Phys. dmg. taken-10%"
-    --         }
-    --     }
-    -- }
+    sets.Engaged.Tank = sets.Idle.Tank
+    sets.Engaged.Meva = sets.Idle.Meva
     sets.Engaged.Hybrid =
         set_combine(
         sets.Engaged.Melee,
@@ -324,21 +352,6 @@ function get_sets()
         right_ring="Shadow Ring",
         back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},
     }
-        -- set_combine(sets.Midcast["Enhancing Magic"], {
-        --     head = "Futhark Bandeau +3",
-        --     hands = {
-        --         name="Herculean Gloves",
-        --         augments={'Phalanx +2'}
-        --     },
-        --     legs = {
-        --         name="Herculean Trousers",
-        --         augments={'Phalanx +2'}
-        --     },
-        --     feet = {
-        --         name="Herculean Boots",
-        --         augments={'Phalanx +5'}
-        --     },
-        -- })
     sets.Midcast["Enhancing Magic"].Refresh = set_combine(sets.Midcast["Enhancing Magic"], {head = "Erilaz Galea +1"})
     sets.Midcast["Enhancing Magic"].Regen = set_combine(sets.Midcast["Enhancing Magic"], {head = "Rune. Bandeau +3"})
     sets.Midcast["Enhancing Magic"]["Regen II"] = sets.Midcast["Enhancing Magic"].Regen
@@ -413,13 +426,17 @@ function status_change(new, old)
     end
 end
 
+function status_change_idle()
+    equip(sets.Idle[modes.Idle])
+end
+
 function status_change_engaged()
-    if sets.Engaged.mode == "Tank" and buffactive["Battuta"] then
+    if modes.Engaged == "Tank" and buffactive["Battuta"] then
         equip(sets.Engaged.Parry)
         return
     end
 
-    equip(sets.Engaged[sets.Engaged.mode])
+    equip(sets.Engaged[modes.Engaged])
 end
 
 function aftercast(spell, action)
@@ -471,15 +488,36 @@ function self_command_engaged(args)
         return
     end
 
-    local mode = args[1]:ucfirst()
-    if not sets.Engaged[mode] then
-        error("Error: Invalid Engaged Mode: " .. mode)
+    local cmdMode = args[1]:ucfirst()
+    if not sets.Engaged[cmdMode] then
+        error("Error: Invalid Engaged Mode: " .. cmdMode)
         return
     end
 
-    sets.Engaged.mode = mode
+    modes.Engaged = cmdMode
     status_change(player.status)
-    notice("Engaged Mode Set: " .. mode)
+    notice("Engaged Mode Set: " .. cmdMode)
+end
+
+function self_command_i(args)
+    return self_command_idle(args)
+end
+
+function self_command_idle(args)
+    if not args[1] then
+        error("Error: No Idle Mode Specified")
+        return
+    end
+
+    local cmdMode = args[1]:ucfirst()
+    if not sets.Idle[cmdMode] then
+        error("Error: Invalid Engaged Mode: " .. cmdMode)
+        return
+    end
+
+    modes.Idle = cmdMode
+    status_change(player.status)
+    notice("Engaged Mode Set: " .. cmdMode)
 end
 
 function is_magic(spell)
