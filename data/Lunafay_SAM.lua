@@ -198,10 +198,10 @@ function get_sets()
         feet = "Nyame Sollerets",
         neck = "Sam. Nodowa +2",
         waist = "Ioskeha Belt +1",
-        left_ear = "Cessance Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Flamma Ring",
-        right_ring = "Rajas Ring",
+        left_ear = "Dedition Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Chirich Ring +1",
+        right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
             augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", '"Dbl.Atk."+10', "Phys. dmg. taken-10%"}
@@ -218,15 +218,16 @@ function get_sets()
         feet = "Ken. Sune-Ate +1",
         neck = "Sam. Nodowa +2",
         waist = "Sailfi Belt +1",
-        left_ear = "Cessance Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Ilabrat Ring",
+        left_ear = "Dedition Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Chirich Ring +1",
         right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
             augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
         }
     }
+
     sets.Engaged.Hybrid = {
         ammo = "Aurgelmir Orb",
         head = "Mpaca's Cap",
@@ -281,24 +282,45 @@ function get_sets()
     -- WS Sets --
     sets.WeaponSkill = {
         equipable = true,
-        sub = "Utu Grip",
         ammo = "Knobkierrie",
-        head = "Mpaca's cap",
-        body = "Sakonji Domaru +3",
+        head = "Mpaca's Cap",
+        body = "Nyame Mail",
         hands = "Nyame Gauntlets",
-        legs = "Wakido Haidate +3",
+        legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Sam. Nodowa +2",
         waist = "Sailfi Belt +1",
         left_ear = "Thrud Earring",
         right_ear = "Moonshade Earring",
         left_ring = "Karieyh Ring",
+        right_ring = "Epaminondas's Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
+    sets.WeaponSkill["Tachi: Shoha"] = {
+        ammo = "Knobkierrie",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sam. Nodowa +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Thrud Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Epaminondas's Ring",
         right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
-            augments = {"STR+20", "Accuracy+20 Attack+20", "STR+10", "Weapon skill damage +10%", "Phys. dmg. taken-10%"}
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
+    sets.WeaponSkill["Tachi: Rana"] = set_combine(
+        { right_ear = "Lugra Earring" },
+        sets.WeaponSkill["Tachi: Shoha"]
+    )
     sets.WeaponSkill["Tachi: Jinpu"] = {
         ammo = "Knobkierrie",
         head = "Nyame Helm",
@@ -311,37 +333,35 @@ function get_sets()
         left_ear = "Moonshade Earring",
         right_ear = "Friomisi Earring",
         left_ring = "Karieyh Ring",
-        right_ring = "Niqmaddu Ring",
-        back = {
-            name = "Smertrios's Mantle",
-            augments = {'Weapon skill damage +10%'}
-        }
-    }
-    sets.WeaponSkill["Tachi: Kagero"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
-    sets.WeaponSkill["Tachi: Koki"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
-
-    sets.WeaponSkill["Impulse Drive"] = {
-        main = "Shining One",
-        sub = "Utu Grip",
-        ammo = "Knobkierrie",
-        head = "Mpaca's Cap",
-        body = "Nyame Mail",
-        hands = "Nyame Gauntlets",
-        legs = "Nyame Flanchard",
-        feet = "Nyame Sollerets",
-        neck = "Sam. Nodowa +2",
-        waist = "Sailfi Belt +1",
-        left_ear = "Thrud Earring",
-        right_ear = "Moonshade Earring",
-        left_ring = "Defending Ring",
-        right_ring = "Karieyh Ring",
+        right_ring = "Epaminondas's Ring",
         back = {
             name = "Smertrios's Mantle",
             augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
+    sets.WeaponSkill["Tachi: Kagero"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
+    sets.WeaponSkill["Tachi: Koki"] = set_combine({}, sets.WeaponSkill["Tachi: Jinpu"])
 
-    sets.WeaponSkill.Stardiver = sets.WeaponSkill["Impulse Drive"]
+    sets.WeaponSkill.Stardiver = {
+        main = "Shining One",
+        sub = "Utu Grip",
+        ammo = "Knobkierrie",
+        head = "Mpaca's Cap",
+        body = "Mpaca's Doublet",
+        hands = "Ryuo Tekko +1",
+        legs = "Mpaca's Hose",
+        feet = "Mpaca's Boots",
+        neck = "Sam. Nodowa +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Schere Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Regal Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Smertrios's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
 
     -- Magic Sets --
     sets.FastCast = {}
