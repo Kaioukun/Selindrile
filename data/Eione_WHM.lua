@@ -4,9 +4,9 @@ function get_sets()
         sub = "Genmei Shield",
         ammo = "Staunch Tathlum",
         head = "Nyame Helm",
-        body = "Theo. Bliaut +3",
+        body = "Ebers Bliaut +3",
         hands = "Nyame Gauntlets",
-        legs = "Assid. Pants +1",
+        legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Twilight Torque",
         waist = "Carrier's Sash",
@@ -55,7 +55,7 @@ function get_sets()
 			augments = {'"Cure" spellcasting time -7%'}
 		},
 		body = "Inyanga Jubbah +2",
-		legs = "Ebers Pant. +1",
+		legs = "Ebers Pant. +3",
 		feet = {
 			name = "Vanya Clogs",
 			augments = {'"Cure" spellcasting time -7%'}
@@ -73,26 +73,30 @@ function get_sets()
 	}
 
     sets.Midcast.Cure = {
-		main = "Queller Rod",
-		sub = "Sors Shield",
-		head = "Ebers Cap +1",
-		body = "Ebers Bliaut +1",
-		hands = "Theophany Mitts +2",
-		legs = "Ebers Pant. +1",
-		feet = {
-			name = "Vanya Clogs",
-			augments = {'Healing magic skill +20'}
-		},
-		neck = "Cleric's Torque",
-		left_ear = "Mendi. Earring",
-		right_ear = "Regal Earring",
-		left_ring = "Lebeche Ring",
-		right_ring = "Janniston Ring",
-		back = {
-			name = "Alaunus's Cape",
-			augments = {'MND+20', 'MND+10'}
-		}
-	}
+        -- Light Obi
+        main = "Queller Rod",
+        sub = "Genmei Shield",
+        ammo = "Staunch Tathlum",
+        head = "Kaykaus Mitra +1",
+        body = "Ebers Bliaut +3",
+        hands = "Theophany Mitts +2",
+        legs = "Ebers Pant. +3",
+        feet = "Kaykaus Boots +1",
+        neck = "Cleric's Torque",
+        left_ear = "Mendi. Earring",
+        right_ear = "Regal Earring",
+        left_ring = "Lebeche Ring",
+        right_ring = "Janniston Ring",
+        back = {
+            name = "Alaunus's Cape",
+            augments = {'MND+20', 'Eva.+20 /Mag. Eva.+20', 'MND+10', '"Cure" potency +10%', 'Damage taken-5%'}
+        }
+    }
+
+    sets.Midcast.Curaga = set_combine(
+        sets.Midcast.Cure,
+        { body = "Theo. Bliaut +3", }
+    )
 
     sets.Midcast["Divine Veil"] = {
         main = "Yagrush"
@@ -102,10 +106,24 @@ function get_sets()
         neck = "Cleric's Torque"
     })
 
-    sets.Midcast.Cursna = set_combine(sets.Midcast["Divine Veil"], {
+    sets.Midcast.Cursna = {
+        main = "Yagrush",
+        ammo = "Hasty Pinion +1",
+        head = "Vanya Hood",
+        body = "Ebers Bliaut +3",
+        hands = "Fanatic Gloves",
         legs = "Th. Pantaloons +2",
-        waist = "Alaunus's Cape"
-    })
+        feet = "Vanya Clogs",
+        neck = "Malison Medallion",
+        waist = "Bishop's Sash",
+        right_ear = "Meili Earring",
+        left_ring = "Haoma's Ring",
+        right_ring = "Menelaus's Ring",
+        back = {
+            name = "Alaunus's Cape",
+            augments = {'MND+20', 'Eva.+20 /Mag. Eva.+20', 'MND+10', '"Cure" potency +10%', 'Damage taken-5%'}
+        }
+    }
 
     sets.Midcast["Enhancing Magic"] = {
 		main = {
@@ -114,8 +132,8 @@ function get_sets()
 		},
 		sub = "Ammurapi Shield",
 		head = "Ebers Cap +1",
-		body = "Ebers Bliaut +1",
-		hands = "Ebers Mitts +1",
+		body = "Ebers Bliaut +3",
+		hands = "Ebers Mitts +2",
 		legs = "Piety Pantaln. +2",
 		feet = "Theo. Duckbills +2",
 		neck = "Melic Torque",
@@ -136,11 +154,17 @@ function get_sets()
 		sub = "Ammurapi Shield",
 		head = "Inyanga Tiara +2",
 		body = "Piety Bliaut +3",
-		hands = "Ebers Mitts +1",
+		hands = "Ebers Mitts +2",
 		legs = "Th. Pantaloons +2",
 		feet = "Theo. Duckbills +2",
 		waist = "Embla Sash"
 	})
+
+    sets.Midcast.Aquaveil = set_combine(sets.Midcast["Enhancing Magic"], {
+        head = "Chironic Hat",
+        legs = "Shedir Seraweels",
+        waist = "Emphatikos Rope"
+    })
 
     sets.Midcast.Bar = {
 		main = {
@@ -149,8 +173,8 @@ function get_sets()
 		},
 		sub = "Ammurapi Shield",
 		head = "Ebers Cap +1",
-		body = "Ebers Bliaut +1",
-		hands = "Ebers Mitts +1",
+		body = "Ebers Bliaut +3",
+		hands = "Ebers Mitts +2",
 		legs = "Piety Pantaln. +2",
 		feet = "Theo. Duckbills +2",
 		neck = "Melic Torque",
@@ -163,7 +187,7 @@ function get_sets()
 	}
 
     sets.Midcast.Auspice = set_combine(sets.Midcast["Enhancing Magic"], {
-        feet = "Ebers Duckbills +1"
+        feet = "Ebers Duckbills +2"
     })
 end
 

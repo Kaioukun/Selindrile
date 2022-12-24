@@ -5,7 +5,7 @@ function get_sets()
         body = "Gleti's Cuirass",
         hands = "Turms Mittens +1",
         legs = "Gleti's Breeches",
-        feet = "Turms Leggings +1",
+        feet = "Fajin Boots",
         neck = "Loricate Torque +1",
         waist = "Engraved Belt",
         left_ear = "Infused Earring",

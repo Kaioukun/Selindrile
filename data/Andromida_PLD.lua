@@ -26,7 +26,7 @@ function get_sets()
 
     sets.Midcast = {}
     sets.Midcast['Enhancing Magic'] = {
-        hands = "Souv. Handsch. +1",
+        hands = "Regal Gauntlets",
         body = "Shab. Cuirass +1"
     }
     sets.Midcast['Enhancing Magic'].Phalanx = {
@@ -61,6 +61,22 @@ function get_sets()
             name = "Rudianos's Mantle",
             augments = {'"Cure" potency +10%'}
         }
+    }
+
+    sets.Midcast['Healing Magic Self'] = {
+        ammo="Staunch Tathlum +1",
+        head={ name="Souv. Schaller +1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}},
+        body={ name="Souv. Cuirass +1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}},
+        hands="Macabre Gaunt. +1",
+        legs={ name="Founder's Hose", augments={'MND+10','Mag. Acc.+15','Attack+15','Breath dmg. taken -5%',}},
+        feet={ name="Odyssean Greaves", augments={'"Cure" potency +6%','STR+6','Mag. Acc.+11','"Mag.Atk.Bns."+7',}},
+        neck="Sacro Gorget",
+        waist="Creed Baudrier",
+        left_ear={name="Tuisto Earring",priority=1},
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring={ name="Gelatinous Ring +1", augments={'Path: A',},priority=2},
+        right_ring={ name="Moonlight Ring",priority=3},
+        back={ name="Rudianos's Mantle", augments={'HP+60','Eva.+20 /Mag. Eva.+20','"Cure" potency +10%','Phys. dmg. taken-10%',}},
     }
 
     sets.Midcast['Divine Magic'] = {}
@@ -101,12 +117,20 @@ function get_sets()
     sets.SIRD = {
         ammo = "Staunch Tathlum +1",
         head = "Souv. Schaller +1",
-        body = "Yorium Cuirass",
+        body = "Sakpata's Plate",
         hands = "Regal Gauntlets",
-        legs = "Carmine Cuisses +1",
-        neck = "Moonlight Necklace",
+        legs = "Founder's Hose",
+        feet = "Sakpata's Leggings",
+        neck = "Loricate Torque +1",
         waist = "Audumbla Sash",
-        right_ear = "Magnetic Earring"
+        left_ear = "Knightly Earring",
+        right_ear = "Magnetic Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Moonlight Ring",
+        back = {
+            name = "Rudianos's Mantle",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', 'HP+20', 'Enmity+10', 'Phys. dmg. taken-10%'}
+        }
     }
 
     sets.Emnity = {
@@ -142,10 +166,30 @@ function get_sets()
     sets.JobAbility['Rampart'] = set_combine(sets.Emnity, {
         head = "Cab. Coronet +1"
     })
+
+    sets.WeaponSkill = {}
+    sets.WeaponSkill.Cataclysm = {
+        main = "Malignance Pole",
+        ammo = "Crepuscular Pebble",
+        head = "Pixie Hairpin +1",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sanctity Necklace",
+        waist = "Eschan Stone",
+        left_ear = "Ishvara Earring",
+        right_ear = "Moonshade Earring",
+        left_ring = "Archon Ring",
+        right_ring = "Regal Ring",
+        back = {
+            name = "Rudianos's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
 end
 
 function precast(spell, action)
-    print("Pre " .. spell.action_type)
     if incapacitated() then
         return
     end
@@ -230,8 +274,6 @@ function incapacitated()
 end
 
 function self_command(argsString)
-    print(T(player).status)
-
     args = argsString:lower():split(" ")
 
     if _G["self_command_" .. args[1]] then

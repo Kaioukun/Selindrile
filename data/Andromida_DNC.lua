@@ -24,36 +24,27 @@ function get_sets()
         mode = "Turtle"
     }
     sets.Engaged.Fodder = {
-        ammo = "Aurgelmir Orb +1",
+        ammo = "Staunch Tathlum +1",
         head = {
             name = "Adhemar Bonnet +1",
             augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
         },
-        body = "Horos Casaque +3",
+        body = "Macu. Casaque +3",
         hands = {
             name = "Adhemar Wrist. +1",
             augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
         },
-        legs = {
-            name = "Samnuha Tights",
-            augments = {'STR+10', 'DEX+10', '"Dbl.Atk."+3', '"Triple Atk."+3'}
-        },
+        legs = "Samnuha Tights",
         feet = "Horos T. Shoes +3",
         neck = "Etoile Gorget +2",
         waist = "Windbuffet Belt +1",
         left_ear = "Sherida Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Epona's Ring",
-        right_ring = "Petrov Ring",
+        right_ear = "Telos Earring",
+        left_ring = "Moonlight Ring",
+        right_ring = "Epona's Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Store TP"+10', 
-                'Phys. dmg. taken-10%'
-            }
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
         }
     }
 
@@ -73,10 +64,10 @@ function get_sets()
         back = {
             name = "Senuna's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Store TP"+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Store TP"+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -98,10 +89,10 @@ function get_sets()
         back = {
             name = "Senuna's Mantle",
             augments = {
-                'DEX+20', 
-                'Accuracy+20 Attack+20', 
-                'DEX+10', 
-                '"Store TP"+10', 
+                'DEX+20',
+                'Accuracy+20 Attack+20',
+                'DEX+10',
+                '"Store TP"+10',
                 'Phys. dmg. taken-10%'
             }
         }
@@ -146,7 +137,7 @@ function get_sets()
 
     sets.Flourish2 = {}
     sets.Flourish2["Reverse Flourish"] = {
-        hands = "Macu. Bangles +1",
+        hands = "Macu. Bangles +2",
         back = {
             name = "Toetapper Mantle",
             augments = {'"Store TP"+2', '"Rev. Flourish"+29', "Weapon skill damage +1%"}
@@ -167,11 +158,11 @@ function get_sets()
     }
 
     sets.Samba = {
-        head = "Maculele Tiara +1",
-        body = "Macu. Casaque +1",
-        hands = "Macu. Bangles +1",
-        legs = "Maculele Tights +1",
-        feet = "Macu. Toe shoes +1"
+        head = "Maculele Tiara +3",
+        body = "Macu. Casaque +3",
+        hands = "Macu. Bangles +2",
+        legs = "Maculele Tights +2",
+        feet = "Macu. Toe sh. +2"
     }
 
     sets.Step = {
@@ -284,7 +275,7 @@ function get_sets()
     }
     sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {
         ammo = "Charis Feather",
-        head = "Maculele Tiara +1",
+        head = "Maculele Tiara +3",
         body = "Meg. Cuirie +2",
         left_ear = "Ishvara Earring"
     })

@@ -1,6 +1,9 @@
-local engaged_mode = "Hybrid"
+local engaged_mode = "Normal"
 
 local incapacitated_states = T {"stun", "petrification", "terror", "sleep", "defense down"}
+
+-- kegero puk clusters
+-- jinpu bats marid qutrub ziz
 
 local tutle_mobs = T {
     -- Ody NMs
@@ -181,13 +184,13 @@ function get_sets()
             sub = "Utu Grip",
         },
         Slashing = {
-            main = "Masamune",
+            main = "Dojikiri Yasutsuna",
             sub = "Utu Grip",
         },
     }
 
     sets.Idle = {
-        ammo = "Aurgelmir Orb",
+        ammo = "Aurgelmir Orb +1",
         head = "Nyame Helm",
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
@@ -207,10 +210,10 @@ function get_sets()
 
     sets.Engaged = {}
     sets.Engaged.Normal = {
-        ammo = "Aurgelmir Orb",
+        ammo = "Aurgelmir Orb +1",
         head = "Flam. Zucchetto +2",
         body = "Ken. Samue +1",
-        hands = "Wakido Kote +3",
+        hands = "Wakido Kote +2",
         legs = "Ken. Hakama +1",
         feet = "Ken. Sune-Ate +1",
         neck = "Sam. Nodowa +2",
@@ -226,18 +229,17 @@ function get_sets()
     }
 
     sets.Engaged.Hybrid = {
-        sub = "Utu Grip",
-        ammo = "Aurgelmir Orb",
-        head = "Kasuga Kabuto +3",
-        body = "Kasuga Domaru +3",
+        ammo = "Aurgelmir Orb +1",
+        head = "Mpaca's Cap",
+        body = "Mpaca's Doublet",
         hands = "Mpaca's Gloves",
-        legs = "Kasuga Haidate +3",
+        legs = "Mpaca's Hose",
         feet = "Mpaca's Boots",
         neck = "Sam. Nodowa +2",
-        waist = "Sailfi Belt +1",
-        left_ear = "Dedition Earring",
-        right_ear = "Kasuga Earring",
-        left_ring = "Chirich Ring +1",
+        waist = "Ioskeha Belt +1",
+        left_ear = "Cessance Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Ilabrat Ring",
         right_ring = "Niqmaddu Ring",
         back = {
             name = "Smertrios's Mantle",
@@ -245,10 +247,10 @@ function get_sets()
         }
     }
     sets.Engaged.Turtle = {
-        ammo = "Aurgelmir Orb",
+        ammo = "Aurgelmir Orb +1",
         head = "Nyame Helm",
         body = "Nyame Mail",
-        hands = "Wakido Kote +3",
+        hands = "Wakido Kote +2",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Sam. Nodowa +2",

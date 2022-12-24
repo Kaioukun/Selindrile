@@ -21,6 +21,7 @@ function get_sets()
 
     sets.Engaged = {}
     sets.Engaged.Normal = {
+        main={ name="Rostam", augments={'Path: A',}},
         ammo = "Chrono Bullet",
         head = "Malignance Chapeau",
         body = "Mummu Jacket +2",
@@ -55,6 +56,13 @@ function get_sets()
             augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dual Wield"+10', 'Phys. dmg. taken-10%'}
         }
     }
+    sets.Engaged.Subtle = set_combine(
+        sets.Engaged.Turtle,
+        {
+            left_ring = "Chirich Ring +1",
+            right_ring = "Chirich Ring +1",
+        }
+    )
 
     sets.JobAbility = {}
 
@@ -190,9 +198,9 @@ function get_sets()
             augments={'Path: C',}
         },
         head = "Lanun Tricorne +3",
-        hands = "Chasseur's Gants +1",
-        legs = "Chas. Culottes +1",
-        feet = "Chass. Bottes +1",
+        hands = "Chasseur's Gants +3",
+        legs = "Chas. Culottes +3",
+        feet = "Chass. Bottes +2",
         neck = "Regal Necklace",
         right_ring = "Luzaf's Ring"
     }

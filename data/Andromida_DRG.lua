@@ -52,32 +52,6 @@ function get_sets()
         }
     }
 
-    sets.Engaged.Savage = {
-        main = "Naegling",
-        sub = "Ternion Dagger +1",
-        ammo = "Aurgelmir Orb +1",
-        head = "Pteroslaver armet +3",
-        body = "Flamma Korazin +2",
-        hands = "Sulev. Gauntlets +2",
-        legs = "Sulev. Cuisses +2",
-        feet = "Pteroslaver brais +3",
-        neck = "Dgn. Collar +2",
-        waist = "Ioskeha Belt +1",
-        left_ear = "Dedition Earring",
-        right_ear = "Sherida Earring",
-        left_ring = "Petrov Ring",
-        right_ring = "Niqmaddu Ring",
-        back = {
-            name = "Brigantia's Mantle",
-            augments = {
-                "DEX+20",
-                "Accuracy+20 Attack+20",
-                "DEX+10",
-                '"Dbl.Atk."+10',
-                "Phys. dmg. taken-10%"
-            }
-        }
-    }
     sets.Engaged.Dt = {
         ammo = "Staunch Tathlum +1",
         head = "Sulevia's Mask +2",
@@ -134,6 +108,53 @@ function get_sets()
         feet = "Nyame Sollerets",
     })
 
+    sets.Engaged.Sword = {
+        main = "Naegling",
+        ammo = "Coiste Bodhar",
+        head = "Flam. Zucchetto +2",
+        body = "Gleti's Cuirass",
+        hands = "Pel. Vambraces +3",
+        legs = "Ptero. Brais +3",
+        feet = "Flam. Gambieras +2",
+        neck = "Anu Torque",
+        waist = "Ioskeha Belt +1",
+        left_ear = "Brutal Earring",
+        right_ear = "Sherida Earring",
+        left_ring = "Petrov Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.Engaged.Pole = {
+        main = "Shining One",
+        sub = "Utu Grip",
+        ammo = "Coiste Bodhar",
+        head = "Flam. Zucchetto +2",
+        body = "Pelt. Plackart +3",
+        hands = "Gleti's Gauntlets",
+        legs = "Ptero. Brais +3",
+        feet = "Flam. Gambieras +2",
+        neck = "Anu Torque",
+        waist = "Ioskeha Belt +1",
+        left_ear = "Brutal Earring",
+        right_ear = "Sherida Earring",
+        left_ring = "Petrov Ring",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.Doom = {
+        waist = "Gishdubar Sash",
+        left_ring = "Purity Ring",
+        right_ring = "Saida Ring"
+    }
+
     -- JA Sets --
     sets.JobAbility = {}
 
@@ -142,7 +163,7 @@ function get_sets()
         hands = "Vis. Fng. Gaunt. +2"
     }
     sets.JobAbility["Soul Jump"] = set_combine(sets.JobAbility["Jump"], {})
-    sets.JobAbility["Spirit Jump"] = set_combine(sets.JobAbility["Soul Jump"], {feet = "Pelt. Schyn. +1"})
+    sets.JobAbility["Spirit Jump"] = set_combine(sets.JobAbility["Soul Jump"], {feet = "Pelt. Schyn. +3"})
     sets.JobAbility["High Jump"] = set_combine(sets.JobAbility["Jump"], {legs = "Pteroslaver Brais +3"})
     sets.JobAbility["Spirit Link"] = {}
 
@@ -160,25 +181,15 @@ function get_sets()
 
     -- WS Sets --
     sets.WeaponSkill = {
-        main = "Naegling",
         ammo = "Knobkierrie",
         head = "Gleti's Mask",
         body = "Nyame Mail",
         hands = "Gleti's Gauntlets",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
-        neck = {
-            name = "Dgn. Collar +2",
-            augments = {'Path: A'}
-        },
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
-        left_ear = {
-            name = "Moonshade Earring",
-            augments = {'Attack+4', 'TP Bonus +250'}
-        },
+        neck = "Dgn. Collar +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Moonshade Earring",
         right_ear = "Thrud Earring",
         left_ring = "Regal Ring",
         right_ring = "Epaminondas's Ring",
@@ -194,7 +205,7 @@ function get_sets()
         }
     }
 
-    sets.WeaponSkill.Drakesbane = {
+    sets.WeaponSkill["Drakesbane"] = {
         ammo = "Knobkierrie",
         head = "Flam. Zucchetto +2",
         body = "Gleti's Cuirass",
@@ -202,7 +213,7 @@ function get_sets()
             name = "Ptero. Fin. G. +3",
             augments = {'Enhances "Angon" effect'}
         },
-        legs = "Pelt. Cuissots +1",
+        legs = "Pelt. Cuissots +3",
         feet = "Nyame Sollerets",
         neck = {
             name = "Dgn. Collar +2",
@@ -222,37 +233,28 @@ function get_sets()
         }
     }
 
-    sets.WeaponSkill.Stardiver = {
-        ammo = "Knobkierrie",
-        head = "Gleti's Mask",
+    sets.WeaponSkill["Stardiver"] = {
+        ammo = "Crepuscular Pebble",
+        head = "Nyame Helm",
         body = "Gleti's Cuirass",
-        hands = {
-            name = "Ptero. Fin. G. +3",
-            augments = {'Enhances "Angon" effect'}
-        },
-        legs = "Pelt. Cuissots +1",
-        feet = "Gleti's Boots",
-        neck = {
-            name = "Dgn. Collar +2",
-            augments = {'Path: A'}
-        },
+        hands = "Pel. Vambraces +3",
+        legs = "Gleti's Breeches",
+        feet = "Nyame Sollerets",
+        neck = "Dgn. Collar +2",
         waist = "Fotia Belt",
-        left_ear = {
-            name = "Moonshade Earring",
-            augments = {'Attack+4', 'TP Bonus +250'}
-        },
+        left_ear = "Moonshade Earring",
         right_ear = "Sherida Earring",
-        left_ring = "Regal Ring",
+        left_ring = "Sroda Ring",
         right_ring = "Niqmaddu Ring",
         back = {
             name = "Brigantia's Mantle",
-            augments = {"STR+20", "Accuracy+20 Attack+20", '"Dbl.Atk."+10'}
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', '"Dbl.Atk."+10'}
         }
     }
 
     sets.WeaponSkill["Camlann's Torment"] = {
         ammo = "Knobkierrie",
-        head = "Flam. Zucchetto +2",
+        head = "Peltast's Mezail +3",
         body = {
             name = "Valorous Mail",
             augments = {
@@ -276,9 +278,10 @@ function get_sets()
             augments = {"STR+20", "Accuracy+20 Attack+20", '"Dbl.Atk."+10'}
         }
     }
+
     sets.WeaponSkill["Impulse Drive"] = {
         ammo = "Knobkierrie",
-        head = "Gleti's Mask",
+        head = "Peltast's Mezail +3",
         body = "Gleti's Cuirass",
         hands = "Gleti's Gauntlets",
         legs = "Gleti's Breeches",
@@ -326,64 +329,60 @@ function get_sets()
             augments = {"STR+20", "Accuracy+20 Attack+20", '"Dbl.Atk."+10'}
         }
     }
-
-    sets.WeaponSkill["Savage Blade"] = {
-        main = "Naegling",
-        ammo = "Knobkierrie",
-        head = "Gleti's Mask",
-        body = "Nyame Mail",
-        hands = "Gleti's Gauntlets",
-        legs = "Nyame Flanchard",
-        feet = "Nyame Sollerets",
-        neck = {
-            name = "Dgn. Collar +2",
-            augments = {'Path: A'}
-        },
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
-        left_ear = {
-            name = "Moonshade Earring",
-            augments = {'Attack+4', 'TP Bonus +250'}
-        },
-        right_ear = "Thrud Earring",
-        left_ring = "Regal Ring",
-        right_ring = "Epaminondas's Ring",
-        back = {
-            name = "Brigantia's Mantle",
-            augments = {
-                'STR+20',
-                'Accuracy+20 Attack+20',
-                'STR+10',
-                'Weapon skill damage +10%',
-                'Phys. dmg. taken-10%'
-            }
-        }
-    }
-
-    sets.WeaponSkill.Retribution = {
+    sets.WeaponSkill["Raiden Thrust"] = {
         ammo = "Knobkierrie",
         head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
+        neck = "Sibyl Scarf",
+        waist = "Orpheus's Sash",
+        left_ear = "Moonshade Earring",
+        right_ear = "Friomisi Earring",
+        left_ring = "Shiva Ring +1",
+        right_ring = "Acumen Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.WeaponSkill["Savage Blade"] = {
+        ammo = "Knobkierrie",
+        head = "Peltast's Mezail +3",
+        body = "Nyame Mail",
+        hands = "Gleti's Gauntlets",
+		legs = "Nyame Flanchard",
+		feet = "Nyame Sollerets",
+        neck = "Dgn. Collar +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Moonshade Earring",
+        right_ear = "Peltast's Earring",
+        left_ring = "Sroda Ring",
+        right_ring = "Epaminondas's Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {
+                'STR+20',
+                'Accuracy+20 Attack+20',
+                'STR+10',
+                'Weapon skill damage +10%',
+                'Phys. dmg. taken-10%'
+            }
+        }
+    }
+
+    sets.WeaponSkill["Retribution"] = {
+        ammo = "Knobkierrie",
+        head = "Peltast's Mezail +3",
         body = "Gleti's Cuirass",
-        hands = {
-            name = "Ptero. Fin. G. +3",
-            augments = {'Enhances "Angon" effect'}
-        },
+        hands = "Ptero. Fin. G. +3",
         legs = "Vishap Brais +3",
         feet = "Sulev. Leggings +2",
-        neck = {
-            name = "Dgn. Collar +2",
-            augments = {'Path: A'}
-        },
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
-        left_ear = {
-            name = "Moonshade Earring",
-            augments = {'Attack+4', 'TP Bonus +250'}
-        },
+        neck = "Dgn. Collar +2",
+        waist = "Sailfi Belt +1",
+        left_ear = "Moonshade Earring",
         right_ear = "Thrud Earring",
         left_ring = "Regal Ring",
         right_ring = "Epaminondas's Ring",
@@ -399,30 +398,34 @@ function get_sets()
         }
     }
 
-    sets.WeaponSkill.Cataclysm = {
+    sets.WeaponSkill["Earth Crusher"] = {
         ammo = "Knobkierrie",
-        head = "Pixie Hairpin +1",
+        head = "Nyame Helm",
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Sanctity Necklace",
-        waist = "Eschan Stone",
+        waist = "Orpheus's Sash",
         left_ear = "Moonshade Earring",
         right_ear = "Friomisi Earring",
-        left_ring = "Archon Ring",
-        right_ring = "Regal Ring",
+        left_ring = "Shiva Ring +1",
+        right_ring = "Epaminondas's Ring",
         back = {
             name = "Brigantia's Mantle",
-            augments = {
-                'DEX+20',
-                'Accuracy+20 Attack+20',
-                'DEX+10',
-                '"Dbl.Atk."+10',
-                'Phys. dmg. taken-10%'
-            }
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
+
+    sets.WeaponSkill["Cataclysm"] = set_combine(
+        sets.WeaponSkill["Earth Crusher"],
+        {
+            head = "Pixie Hairpin +1",
+            left_ring = "Archon Ring",
+        }
+    )
+
+    sets.WeaponSkill['Aeolian Edge'] = set_combine(sets.WeaponSkill["Earth Crusher"], {})
 end
 
 function precast(spell, action)
@@ -469,16 +472,29 @@ function status_change(new, old)
 
     if (sets[new]) then
         equip(sets[new])
+
+
+        if buffactive["Doom"] then
+            equip(sets.Doom)
+        end
     end
 end
 
 function status_change_engaged()
     equip(sets.Engaged[sets.Engaged.mode])
+
+    if buffactive["Doom"] then
+        equip(sets.Doom)
+    end
 end
 
 function buff_change(name, gain, buff_details)
     if incapacitated_states:contains(name) then
         status_change(player.status)
+    end
+
+    if name == "Doom" then
+        equip(sets.Doom)
     end
 end
 

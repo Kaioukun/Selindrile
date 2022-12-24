@@ -57,8 +57,8 @@ function init_gear_sets()
 
     -- Precast sets to enhance JAs
     sets.precast.JA.Bolster = {body="Bagua Tunic +3"}
-    sets.precast.JA['Life Cycle'] = {head="Azimuth Hood +1", body="Geomancy Tunic +1", back="Nantosuelta's Cape"}
-    sets.precast.JA['Full Circle'] = {hands="Bagua Mitaines +1"}
+    sets.precast.JA['Life Cycle'] = {head="Azimuth Hood +1", body="Geomancy Tunic +2", back="Nantosuelta's Cape"}
+    sets.precast.JA['Full Circle'] = {hands="Azimuth Hood +1"}
     sets.precast.JA['Radial Arcana'] = {feet="Bagua Sandals +1"}
 
     sets.CapacityMantle  = { back="Mecistopins Mantle" }
@@ -70,21 +70,21 @@ function init_gear_sets()
     -- Fast cast sets for spells
 
     sets.precast.FC = {
-        main="Grioavolr",
-		sub="Clerisy strap +1",
-		range="Dunna",
-        head="Bagua galero +1",
+        main="Grioavolr", ---4
+		sub="Clerisy strap +1", ---3
+		range="Dunna",---3
+        head="Amalric coif +1",---11 
         ear2="Loquacious Earring",
-		ear1="Etiolation Earring",
-		body="Shango robe",
-        hands="Lurid mitts",
-        neck="Orunmila's torque",
-        ring1="Weatherspoon",
-		ring2="Kishar Ring",
-        back="Lifestream Cape",
+		ear1="Etiolation Earring",---1
+		body="Agwu's robe",---8
+        hands="Agwu's gages",---6
+        neck="Orunmila's torque",---
+        ring1="Weatherspoon ring",---5
+		ring2="Kishar Ring",---4
+        back="Lifestream Cape",---
         waist="Witful Belt",
-        legs="Volte brais",
-        feet="Regal pumps +1",
+        legs="Volte brais",---8
+        feet="Volte gaiters",---6
     }
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {
@@ -171,7 +171,7 @@ function init_gear_sets()
 		right_ear="Loquac. Earring",
 		left_ring="Stikini Ring +1",
 		right_ring="Kishar Ring",
-		back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +20',}},
+		back="Lifestream Cape",
 }
 	
 	sets.midcast['Geo-Poison'] = sets.midcast['Geo-Regen']
@@ -212,7 +212,7 @@ function init_gear_sets()
         neck="Bagua charm +2",
         hands="Geomancy Mitaines +2",
         body="Bagua Tunic +1",
-		ring1="Stikini ring",
+		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",
         back="Lifestream Cape",
         feet="Azimuth gaiters +1",
@@ -250,20 +250,20 @@ function init_gear_sets()
 	sets.midcast['Indi-Gravity'] = sets.midcast['Indi-Regen']
 	
     sets.midcast.Cure =  {
-        main="Serenity",
-		sub="Achaq grip",
-		head="Vanya Hood",
-		neck="Orunmila torque",
-		ear1="Loquac. Earring",
+        main="Daybreak", --30
+		sub="Genbu's shield", --4
+		head="Vanya Hood", --17
+		neck="Incanter's torque",
+		ear1="Etiolation earring",
 		ear2="Beatific earring",
-		body="Kaykaus bliaut",
+		body="Shamash",
 		hands="Revealer's mitts",
 		ring1="Ephedra ring",
 		ring2="Sirona's ring",
 		back="Pahtli cape",
 		waist="Cascade belt",
-		legs="Kaykaus tights",
-		feet="Medium's sabots",
+		legs="Volte brais",
+		feet="Regal pumps +1",
     }
     
     sets.midcast.Curaga = sets.midcast.Cure
@@ -362,7 +362,7 @@ function init_gear_sets()
     waist="Rumination Sash",
     left_ear="Barkaro. Earring",
     right_ear="",
-    left_ring="Stikini Ring",
+    left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
     back="Lifestream Cape",
     }
@@ -371,7 +371,7 @@ function init_gear_sets()
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Bagua galero +2",
-    body="Geo. Tunic +1",
+    body="Geo. Tunic +2",
     hands="Geo. Mitaines +2",
     legs="Azimuth Tights +1",
     feet={ name="Merlinic Crackows", augments={'Weapon skill damage +1%','"Store TP"+5','"Refresh"+1','Accuracy+3 Attack+3','Mag. Acc.+6 "Mag.Atk.Bns."+6',}},
@@ -389,7 +389,7 @@ function init_gear_sets()
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Bagua galero +2",
-    body="Geo. Tunic +1",
+    body="Geo. Tunic +2",
     hands="Geo. Mitaines +2",
     legs="Azimuth Tights +1",
     feet={ name="Merlinic Crackows", augments={'Weapon skill damage +1%','"Store TP"+5','"Refresh"+1','Accuracy+3 Attack+3','Mag. Acc.+6 "Mag.Atk.Bns."+6',}},
@@ -449,60 +449,59 @@ function init_gear_sets()
 
     -- Resting sets
     sets.resting = {
-	
-    main="Bolelabunga",
-    sub="Genmei Shield",
-    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-    head="Azimuth Hood +1",
-    body="Jhakri Robe +2",
-    hands="Geo. Mitaines +2",
-    legs="Assiduity pants",
-    feet="Bagua Sandals +1",
-    neck="Loricate Torque",
-    waist="",
-    left_ear="",
-    right_ear="",
-    left_ring="Stikini ring +1",
-    right_ring="",
-    back="Nantosuelta's Cape",
-	}
+		main="Boonwell Staff",
+		sub="Oneiros Grip",
+		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head={ name="Nyame Helm", augments={'Path: B',}},
+		body="Shamash Robe",
+		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		legs="Volte Brais",
+		feet={ name="Nyame Sollerets", augments={'Path: B',}},
+		neck="Bathy Choker",
+		waist="Austerity Belt +1",
+		left_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
+		right_ear="Infused Earring",
+		left_ring="Stikini Ring +1",
+		right_ring="Stikini Ring +1",
+		back="Moonbeam Cape",
+}
 
     -- Idle sets
     sets.idle = {
-    main="Bolelabunga",
-    sub="Genbu's shield",
-    head="Azimuth hood +1",
-    body="Witching Robe",
-    hands="Geo. Mitaines +2",
-    legs="Volte brais",
-    feet="Azimuth gaiters +1",
-    neck="Loricate torque +1",
-    waist="Fucho-no-Obi",
-    left_ear="Etiolation earring",
-    right_ear="Ethereal earring",
-    left_ring="Stikini ring +1",
-    right_ring="Defending ring",
-    back="Moonbeam Cape",
+		main="Malignance pole", --20
+		sub="Khonsu", --6
+		head="Nyame helm", --7
+		body="Shamash",
+		hands="Nyame gauntlets",
+		legs="Volte brais",
+		feet="Nyame sollerets",
+		neck="Loricate torque +1",
+		waist="Fucho-no-Obi",
+		left_ear="Etiolation earring",
+		right_ear="Infused earring",
+		left_ring="Stikini ring +1",
+		right_ring="Defending ring", --10
+		back="Moonbeam Cape", --5
 	}
  
 
     -- .Pet sets are for when Luopan is present.
     sets.idle.Pet = {
-    main="Sucellus",
-    sub="Genmei Shield",
-    range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-    head="Azimuth hood +1",
-    body="Witching robe",
-    hands="Geo. Mitaines",
-    legs="Assiduity pants +1",
-    feet="Bagua Sandals +1",
-    neck="Bagua charm +2",
-    waist="Isa belt",
-    left_ear="Ethereal earring",
-    right_ear="Etiolation earring",
-    left_ring="Stikini ring +1",
-    right_ring="Defending ring",
-    back="Moonbeam cape",
+		main="Malignance pole",
+		sub="Khonsu",
+		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head="Nyame helm",
+		body="Shamash",
+		hands="Geo. Mitaines +2",
+		legs="Volte brais",
+		feet="Bagua Sandals +3",
+		neck="Bagua charm +2",
+		waist="Isa belt",
+		left_ear="Ethereal earring",
+		right_ear="Etiolation earring",
+		left_ring="Stikini ring +1",
+		right_ring="Defending ring",
+		back="Lifestream cape",
 	
 	}
 
@@ -514,7 +513,7 @@ function init_gear_sets()
     -- .Indi sets are for when an Indi-spell is active.
     --sets.idle.Indi = set_combine(sets.idle, {
     --    legs="Bagua Pants +1", 
-    --    feet="Geomancy Sandals +1",
+    --    feet="Geomancy Sandals +2",
     --    back="Lifestream Cape",
     --    --feet="Azimuth Gaiters"
     --})
@@ -531,13 +530,13 @@ function init_gear_sets()
 
     sets.idle.Town = {
         
-	main="Bolelabunga",
+	main="Daybreak",
     sub="Genmei Shield",
     ammo="Staunch Tathlum",
     head="Befouled Crown",
-    body="Jhakri Robe +2",
+    body="Shamash robe",
     hands={ name="Bagua Mitaines +1", augments={'Enhances "Curative Recantation" effect',}},
-    legs="Assid. Pants +1",
+    legs="Volte brais",
     feet="Geo. Sandals +2",
     neck="Loricate Torque +1",
     waist="Fucho-no-Obi",
@@ -558,7 +557,7 @@ function init_gear_sets()
     sub="Genmei Shield",
     range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
     head="Bagua galero +1",
-    body="Jhakri Robe +2",
+    body="",
     hands="Geo. Mitaines +2",
     legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
     feet={ name="Bagua Sandals +1", augments={'Enhances "Radial Arcana" effect',}},
@@ -619,7 +618,7 @@ function init_gear_sets()
         ring2="K'ayres Ring",
         back="Kayapa Cape",
         waist="Windbuffet Belt +1",
-        legs="Geomancy Pants +1",
+        legs="Geomancy Pants +2",
         feet="Umbani Boots"
     }
     sets.engaged.Melee = set_combine(sets.engaged, {

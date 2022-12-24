@@ -70,17 +70,15 @@ function get_sets()
     sets.Midcast['Dark Magic'] = {}
     sets.Midcast['Elemental Magic'] = {
         equipable = true,
-        main = "Bunzi's Rod",
-        sub = "Ammurapi Shield",
         ammo = "Regal Gem",
-        head = "Viti. Chapeau +3",
+        head = "Leth. Chappel +2",
         body = "Amalric Doublet +1",
         hands = "Jhakri Cuffs +2",
         legs = "Jhakri Slops +2",
         feet = "Amalric Nails +1",
-        neck = "Dls. Torque +2",
+        neck = "Sanctity Necklace",
         waist = "Eschan Stone",
-        left_ear = "Friomisi Earring",
+        left_ear = "Regal Earring",
         right_ear = "Malignance Earring",
         left_ring = "Strendu Ring",
         right_ring = "Acumen Ring",
@@ -94,8 +92,8 @@ function get_sets()
         main = "Daybreak",
         sub = "Ammurapi Shield",
         head = "Viti. Chapeau +3",
-        body = "Atrophy Tabard +3",
-        hands = "Leth. Gantherots +1",
+        body = "Lethargy Sayon +3",
+        hands = "Leth. Ganth. +3",
         legs = {
             name = "Chironic Hose",
             augments = {'Mag. Acc.+20 "Mag.Atk.Bns."+20', 'Haste+2', 'MND+13', 'Mag. Acc.+13'}
@@ -120,11 +118,11 @@ function get_sets()
     sets.Midcast['Enhancing Magic']['Other'] = {
         sub = "Ammurapi Shield",
         ammo = "Staunch Tathlum +1",
-        head = "Leth. Chappel +1",
-        body = "Lethargy Sayon +1",
+        head = "Leth. Chappel +2",
+        body = "Lethargy Sayon +3",
         hands = "Atrophy Gloves +3",
-        legs = "Leth. Fuseau +1",
-        feet = "Leth. Houseaux +1",
+        legs = "Leth. Fuseau +2",
+        feet = "Leth. Houseaux +3",
         neck = "Dls. Torque +2",
         waist = "Embla Sash",
         left_ear = "Andoaa Earring",
@@ -135,17 +133,48 @@ function get_sets()
     sets.Midcast['Enhancing Magic']['Self'] = set_combine(sets.Midcast['Enhancing Magic']['Other'], {
         body = "Viti. Tabard +3"
     })
+    sets.Midcast['Enhancing Magic']['Phalanx'] = set_combine(
+        sets.Midcast['Enhancing Magic']['Self'],
+        {
+            head = "Fu. Bandeau +3",
+            hands = "Regal Gauntlets",
+            legs = "Futhark Trousers +1",
+            feet = "Herculean Boots",
+            waist = "Olympus Sash",
+            left_ear = "Andoaa Earring",
+            right_ear = "Mimir Earring",
+            left_ring = "Stikini Ring +1"
+        }
+    )
     sets.Midcast['Enhancing Magic']['Refresh'] = set_combine(sets.Midcast['Enhancing Magic']['Other'], {
         head = "Amalric Coif +1",
         body = "Atrophy Tabard +3",
-        legs = "Leth. Fuseau +1",
+        legs = "Leth. Fuseau +2",
         waist = "Gishdubar Sash"
     })
     sets.Midcast['Enhancing Magic']['Refresh II'] = sets.Midcast['Enhancing Magic']['Refresh']
     sets.Midcast['Enhancing Magic']['Refresh III'] = sets.Midcast['Enhancing Magic']['Refresh']
 
     sets.Midcast['Divine Magic'] = {}
-    sets.Midcast['Healing Magic'] = {}
+    sets.Midcast['Healing Magic'] = {
+        equipable = true,
+        ammo = "Regal Gem",
+        head = "Kaykaus Mitra +1",
+        body = "Kaykaus Bliaut +1",
+        hands = "Kaykaus Cuffs +1",
+        legs = "Kaykaus Tights +1",
+        feet = "Kaykaus Boots +1",
+        neck = "Phalaina Locket",
+        waist = "Luminary Sash",
+        left_ear = "Regal Earring",
+        right_ear = "Magnetic Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = "Stikini Ring +1",
+        back = {
+            name = "Sucellos's Cape",
+            augments = {'MND+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'MND+10', '"Fast Cast"+10', 'Phys. dmg. taken-10%'}
+        }
+    }
 
     sets.FastCast = {
         main = "Crocea Mors",
@@ -170,37 +199,75 @@ function get_sets()
 
     sets.WeaponSkill = {
         equipable = true,
-        ammo = "Aurgelmir Orb +1",
+        ammo = "Oshasha's Treatise",
         head = "Nyame Helm",
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
-        neck = "Dls. Torque +2",
+        neck = "Rep. Plat. Medal",
         waist = "Sailfi Belt +1",
-        left_ear = "Sherida Earring",
-        right_ear = "Ishvara Earring",
+        left_ear = "Moonshade Earring",
+        right_ear = "Leth. Earring +1",
         left_ring = "Epaminondas's Ring",
-        right_ring = "Apate Ring",
+        right_ring = "Sroda Ring",
         back = {
             name = "Sucellos's Cape",
-            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'Accuracy+10', '"Dual Wield"+10', 'Phys. dmg. taken-10%'}
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
 
-    sets.WeaponSkill["Savage Blade"] = {
-        ammo = "Aurgelmir Orb +1",
+    sets.WeaponSkill["Seraph Blade"] = {
+        ammo = "Oshasha's Treatise",
         head = "Nyame Helm",
         body = "Nyame Mail",
-        hands = "Nyame Gauntlets",
+        hands = "Jhakri Cuffs +2",
         legs = "Nyame Flanchard",
-        feet = "Nyame Sollerets",
+        feet = "Leth. Houseaux +3",
         neck = "Dls. Torque +2",
-        waist = "Sailfi Belt +1",
-        left_ear = "Sherida Earring",
-        right_ear = "Ishvara Earring",
+        waist = "Orpheus's Sash",
+        left_ear = "Moonshade Earring",
+        right_ear = "Malignance Earring",
         left_ring = "Epaminondas's Ring",
-        right_ring = "Apate Ring",
+        right_ring = "Acumen Ring",
+        back = {
+            name = "Sucellos's Cape",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.WeaponSkill["Sanguine Blade"] = {
+        ammo = "Oshasha's Treatise",
+        head = "Pixie Hairpin +1",
+        body = "Nyame Mail",
+        hands = "Leth. Ganth. +3",
+        legs = "Nyame Flanchard",
+        feet = "Leth. Houseaux +3",
+        neck = "Sibyl Scarf",
+        waist = "Orpheus's Sash",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Epaminondas's Ring",
+        right_ring = "Archon Ring",
+        back = {
+            name = "Sucellos's Cape",
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
+        }
+    }
+
+    sets.WeaponSkill["Aeolian Edge"] = {
+        ammo = "Oshasha's Treatise",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Leth. Ganth. +3",
+        legs = "Nyame Flanchard",
+        feet = "Leth. Houseaux +3",
+        neck = "Sibyl Scarf",
+        waist = "Orpheus's Sash",
+        left_ear = "Moonshade Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Epaminondas's Ring",
+        right_ring = "Acumen Ring",
         back = {
             name = "Sucellos's Cape",
             augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}

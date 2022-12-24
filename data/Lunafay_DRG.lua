@@ -104,30 +104,19 @@ function get_sets()
     sets.WeaponSkill["Savage Blade"] = {
         ammo = "Knobkierrie",
         head = "Nyame Helm",
-        body = "Nyame Mail",
-        hands = "Ptero. Fin. G. +3",
-        legs = "Vishap Brais +3",
+        body = "Gleti's Cuirass",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Dgn. Collar +1",
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
+        waist = "Sailfi Belt +1",
         left_ear = "Moonshade Earring",
         right_ear = "Thrud Earring",
         left_ring = "Karieyh Ring",
-        right_ring = "Niqmaddu Ring",
-        -- left_ring = "Regal Ring",
-        -- right_ring = "Epaminondas's Ring",
+        right_ring = "Epaminondas's Ring",
         back = {
             name = "Brigantia's Mantle",
-            augments = {
-                'STR+20',
-                'Accuracy+20 Attack+20',
-                'STR+10',
-                'Weapon skill damage +10%',
-                'Damage taken-5%'
-            }
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Damage taken-5%'}
         }
     }
 

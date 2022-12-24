@@ -1,6 +1,6 @@
 -- sam/drk
 -- pld/casters
--- 
+--
 
 
 function get_sets()
@@ -9,7 +9,7 @@ function get_sets()
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
-        feet = "Nyame Sollerets",
+        legs = "Carmine Cuisses +1",
         neck = "Warder's Charm +1",
         waist = {
             name = "Sailfi Belt +1",
@@ -34,10 +34,7 @@ function get_sets()
         legs = "Malignance Tights",
         feet = "Malignance Boots",
         neck = "Caro Necklace",
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
+        waist = "Sailfi Belt +1",
         left_ear = "Telos Earring",
         right_ear = "Mache Earring +1",
         left_ring = "Petrov Ring",
@@ -111,8 +108,8 @@ function get_sets()
             name = "Carmine Fin. Ga. +1",
             augments = {"Rng.Atk.+20", '"Mag.Atk.Bns."+12', '"Store TP"+6'}
         },
-        legs={ 
-            name="Herculean Trousers", 
+        legs={
+            name="Herculean Trousers",
             augments={'"Store TP"+4','Accuracy+10','Weapon skill damage +8%','Accuracy+9 Attack+9','Mag. Acc.+11 "Mag.Atk.Bns."+11',}
         },
         feet = "Lanun bottes +2",
@@ -157,7 +154,7 @@ function get_sets()
         body = "Chasseur's Frac +1",
         hands = "Chasseur's Gants +1",
         legs = "Chasseur's Culottes",
-        --right_ring = "Luzaf's Ring",
+        right_ring = "Luzaf's Ring",
         back = {
             name = "Camulus's Mantle",
             augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+5", '"Dbl.Atk."+10', "System: 1 ID: 1155 Val: 4"}
@@ -165,7 +162,7 @@ function get_sets()
     }
     sets.JobAbility["Double-Up"] = {
         legs = "Lanun Trews",
-        --right_ring = "Luzaf's Ring",
+        right_ring = "Luzaf's Ring",
     }
 
     sets.CorsairShot = {
@@ -213,9 +210,9 @@ function precast(spell, action)
 end
 
 function is_magic(spell)
-    return spell.type:endswith("Magic") 
-        or spell.type == "BardSong" 
-        or spell.type == "Ninjutsu" 
+    return spell.type:endswith("Magic")
+        or spell.type == "BardSong"
+        or spell.type == "Ninjutsu"
         or spell.type == "Trust"
 end
 

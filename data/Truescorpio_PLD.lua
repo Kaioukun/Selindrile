@@ -2,117 +2,149 @@ local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
 
 function get_sets()
     sets.Idle = {
-        ammo = "Staunch Tathlum",
-        head = "Nyame Helm",
-        body = "Nyame Mail",
-        hands = "Nyame Gauntlets",
-        legs = "Nyame Flanchard",
-        feet = "Nyame Sollerets",
-        neck = "Orunmila's Torque",
-        waist = "Dynamic Belt +1",
-        left_ear = "Etiolation Earring",
-        right_ear = "Ethereal Earring",
-        left_ring = "Shadow Ring",
-        right_ring = "Defending Ring",
-        back = {
-            name = "Rudianos's Mantle",
-            augments = {'Enmity+10'}
-        }
-    }
-
-    sets.Engaged = {mode = "Tank"}
-    sets.Engaged.Tank = {
-        ammo = "Staunch Tathlum",
+		main = "Burtgang",
+        ammo = "Staunch Tathlum +1",
         head = "Sakpata's Helm",
         body = "Sakpata's Plate",
         hands = "Sakpata's Gauntlets",
-        legs = "Sakpata's Cuisses",
+        legs = "Carmine cuisses +1",
         feet = "Sakpata's Leggings",
-        neck = "Loricate Torque +1",
-        waist = "Dynamic Belt +1",
-        left_ear = "Telos Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Petrov Ring",
-        right_ring = "Regal Ring",
-        back = {
-            name = "Rudianos's Mantle"
-        }
+        neck = "Warder's charm +1",
+        waist = "Carrier's Sash",
+        left_ear = "Cryptic Earring",
+        right_ear = "Ethereal Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Supershear Ring",
+		back={ name="Rudianos's Mantle", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Phys. dmg. taken-10%',}},
     }
 
-    -- Ammo: Sapience Orb
-    -- Cryptic Earring
-    -- Tuisto Earring
-    -- Eihwaz Ring
-    sets.Emnity = {
-        equipable = true,
-        head = "Loess Barbuta +1",
-        body = "Souv. Cuirass +1",
-        hands = {
-            name = "Yorium Gauntlets",
-            augments = {'Enmity+9'}
-        },
-        legs = "Souv. Diechlings +1",
-        feet = {
-            name = "Eschite Greaves",
-            augments = {'HP+80', 'Enmity+7', 'Phys. dmg. taken -4'}
-        },
-        neck = "Moonlight Necklace",
-        waist = "Creed Baudrier",
-        left_ring = "Apeile Ring +1",
-        back = {
-            name = "Rudianos's Mantle",
-            augments = {'Enmity+10'}
-        }
-    }
-
-    -- JA Sets --
-    sets.JobAbility = {}
-
-    -- WS Sets --
-    sets.WeaponSkill = {}
-    sets.WeaponSkill["Atonement"] = sets.Emnity
-
-    sets.FastCast = {
-        ammo = "Incantor Stone",
-        legs = "Enif Cosciales",
-        feet = "Odyssean Greaves",
-        neck = "Orunmila's Torque",
-        left_ear = "Etiolation Earring",
-        right_ear = "Loquac. Earring",
-        right_ring = "Kishar Ring"
-    }
+    sets.Engaged = set_combine(sets.Idle, {
+        legs = "Sakpata's Cuisses"
+    })
 
     sets.Midcast = {}
-
-    sets.Midcast["Enhancing Magic"] = {
-        -- equipable = true
+    sets.Midcast['Enhancing Magic'] = {
+        hands = "Souv. Handsch. +1",
+        body = "Shab. Cuirass +1",
+		right_ear = "Andoaa earring",
+    }
+    sets.Midcast['Enhancing Magic'].Phalanx = {
+        head = "Yorium Barbuta",
+        body = "Yorium Cuirass",
+        hands = "Souv. Handsch. +1",
+        legs = "Sakpata's Cuisses",
+        feet = "Souveran Schuhs +1",
+        waist = "Olympus Sash",
+        left_ear = "Andoaa Earring",
+        right_ear = "Mimir Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = "Stikini Ring +1",
+        back = "Weard Mantle"
     }
 
-    sets.Midcast["Enhancing Magic"].Phalanx =
-        set_combine(sets.Midcast["Enhancing Magic"], {})
+    -- sets.Midcast['Healing Magic'] = {
+    --     equipable = true,
+    --     ammo = "Staunch Tathlum +1",
+    --     head = "Souv. Schaller +1",
+    --     body = "Souv. Cuirass +1",
+    --     hands = "Souv. Handsch. +1",
+    --     legs = "Souv. Diechlings +1",
+    --     feet = "Souveran Schuhs +1",
+    --     neck = "Loricate Torque +1",
+    --     waist = "Flume Belt",
+    --     left_ear = "Odnowa Earring +1",
+    --     right_ear = "Magnetic Earring",
+    --     left_ring = "Moonbeam Ring",
+    --     right_ring = "Defending Ring",
+    --     -- back = {
+    --     --     name = "Rudianos's Mantle",
+    --     --     augments = {'"Cure" potency +10%'}
+    --     -- }
+    -- }
 
-    sets.Midcast["Divine Magic"] = set_combine(sets.Emnity, {})
-    sets.Midcast["Dark Magic"] = set_combine(sets.Emnity, {})
-    sets.Midcast["Blue Magic"] = set_combine(sets.Emnity, {})
+    sets.Midcast['Divine Magic'] = {}
+    sets.Midcast['Divine Magic'].Flash = {
+        ammo = "Sapience Orb",
+        head = "Loess Barbuta +1",
+        body = "Souv. Cuirass +1",
+        hands = "Souv. Handsch. +1",
+        legs = "Souv. Diechlings +1",
+        feet = "Odyssean greaves",
+        neck = "Moonlight Necklace",
+        right_ear = "Cryptic Earring",
+        left_ring = "Supershear ring",
+        right_ring = "Apeile Ring +1",
+		back={ name="Rudianos's Mantle", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.FastCast = {
+		ammo="Sapience Orb", --2
+		head="Sakpata's Helm", --8
+		body="Sacro breastplate", --10
+		hands="Leyline gloves",--5
+		legs= "Odyssean cuisses", --2
+		feet="Sakpata's Leggings",
+		neck="Orunmila's Torque", --5
+		waist="Carrier's Sash",
+		left_ear="Enchntr. Earring +1", --2
+		right_ear="Etiolation Earring", --1
+		left_ring="Kishar Ring", --4
+		right_ring="Supershear Ring",
+		back={ name="Rudianos's Mantle", augments={'"Fast Cast"+10'}}, --10
+    }
+
+    sets.SIRD = {
+        ammo = "Staunch Tathlum +1", -- 11
+        head = "Souv. Schaller +1", -- 20 31
+        body = {name = "Yorium Cuirass", augments = {'Spell interruption rate down -9%'}
+        }, -- 9 40
+        hands = "Sakpata's Gauntlets",
+        legs = "Carmine Cuisses +1", -- 20 50
+        feet = "Odyssean Greaves", -- 20 70
+        neck = "Moonlight Necklace", -- 15 85
+        waist = "Rumination Sash", -- 10 95
+        left_ear = "Knightly Earring", -- 9 104
+        right_ear = "Halasz Earring", -- 4 106
+        left_ring = "Defending Ring",
+        right_ring = "Warden's Ring",
+        back={ name="Rudianos's Mantle", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.Enmity = {
+        ammo = "Sapience Orb",
+        head = "Loess Barbuta +1",
+        body = "Souv. Cuirass +1",
+        hands = "Souv. Handsch. +1",
+        legs = "Souv. Diechlings +1",
+        feet = "Souveran Schuhs +1",
+        neck = "Moonlight Necklace",
+        waist = "Creed baudrier",
+        left_ear = "",
+        right_ear = "Cryptic Earring",
+        left_ring = "Supershear Ring",
+        right_ring = "Apeile Ring +1",
+       back={ name="Rudianos's Mantle", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.JobAbility = set_combine(sets.Emnity)
+    sets.JobAbility.equipable = true
+
+    sets.JobAbility['Shield Bash'] = set_combine(sets.Emnity, {
+        hands = "Cab. Gauntlets +3"
+    })
+
+    sets.JobAbility['Sentinel'] = set_combine(sets.Emnity, {
+        feet = "Cab. Leggings +3"
+    })
+
+    sets.JobAbility['Rampart'] = set_combine(sets.Emnity, {
+        head = "Cab. Coronet +1"
+    })
 end
 
---[[
-    Healing Breeze
-    Refueling
-    Cacoon
-    Sheep Song
-    Blank Gaze
-    Geist Wall
-    Jettatura
-]]
 function precast(spell, action)
     if incapacitated() then
         return
-    end
-
-    if (spell.english == "Spectral Jig" or spell.english == "Sneak") and buffactive.Sneak then
-        cast_delay(0.2)
-        send_command("cancel Sneak")
     end
 
     if sets[spell.type] and sets[spell.type][spell.english] then
@@ -127,12 +159,10 @@ function precast(spell, action)
         return
     end
 
-    if is_magic(spell) then
+    if spell.action_type == "Magic" then
         equip(sets.FastCast)
         return
     end
-
-    notice("No set for " .. spell.type .. "." .. spell.english)
 end
 
 function midcast(spell, action)
@@ -140,7 +170,7 @@ function midcast(spell, action)
         return
     end
 
-    if not is_magic(spell) then
+    if spell.action_type ~= "Magic" then
         return
     end
 
@@ -156,8 +186,7 @@ function midcast(spell, action)
         return
     end
 
-    notice("No set for Midcast." .. spell.skill .. "." .. spell.english .. " using Emnity")
-    equip(sets.Emnity)
+    equip(sets.SIRD)
 end
 
 function status_change(new, old)
@@ -174,10 +203,6 @@ function status_change(new, old)
     end
 end
 
-function status_change_engaged()
-    equip(sets.Engaged[sets.Engaged.mode])
-end
-
 function aftercast(spell, action)
     status_change(player.status)
 end
@@ -186,24 +211,22 @@ function buff_change(name, gain, buff_details)
     if incapacitated_states:contains(name) then
         status_change(player.status)
     end
+
+    if name == "Battuta" then
+        status_change(player.status)
+    end
 end
 
 function incapacitated()
-    if
-        incapacitated_states:find(
-            function(value)
-                return buffactive[value] or false
-            end
-        )
-     then
+    if incapacitated_states:find(function(value)
+        return buffactive[value] or false
+    end) then
         equip(sets.Idle)
         return true
     end
 end
 
 function self_command(argsString)
-    print(T(player).status)
-
     args = argsString:lower():split(" ")
 
     if _G["self_command_" .. args[1]] then
@@ -232,25 +255,4 @@ function self_command_engaged(args)
     sets.Engaged.mode = mode
     status_change(player.status)
     notice("Engaged Mode Set: " .. mode)
-end
-
-function is_magic(spell)
-    return spell.type:endswith("Magic")
-        or spell.type == "BardSong"
-        or spell.type == "Ninjutsu"
-        or spell.type == "Trust"
-end
-
-function notice(s)
-    add_to_chat(121, s)
-end
-
-function error(s)
-    add_to_chat(4, s)
-end
-
-function debug(s)
-    if debugMode then
-        notice(s)
-    end
 end
