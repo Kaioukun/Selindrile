@@ -71,7 +71,7 @@ function get_sets()
     sets.Midcast['Elemental Magic'] = {
         equipable = true,
         ammo = "Regal Gem",
-        head = "Leth. Chappel +2",
+        head = "Leth. Chappel +3",
         body = "Amalric Doublet +1",
         hands = "Jhakri Cuffs +2",
         legs = "Jhakri Slops +2",
@@ -118,10 +118,10 @@ function get_sets()
     sets.Midcast['Enhancing Magic']['Other'] = {
         sub = "Ammurapi Shield",
         ammo = "Staunch Tathlum +1",
-        head = "Leth. Chappel +2",
+        head = "Leth. Chappel +3",
         body = "Lethargy Sayon +3",
         hands = "Atrophy Gloves +3",
-        legs = "Leth. Fuseau +2",
+        legs = "Leth. Fuseau +3",
         feet = "Leth. Houseaux +3",
         neck = "Dls. Torque +2",
         waist = "Embla Sash",
@@ -149,7 +149,7 @@ function get_sets()
     sets.Midcast['Enhancing Magic']['Refresh'] = set_combine(sets.Midcast['Enhancing Magic']['Other'], {
         head = "Amalric Coif +1",
         body = "Atrophy Tabard +3",
-        legs = "Leth. Fuseau +2",
+        legs = "Leth. Fuseau +3",
         waist = "Gishdubar Sash"
     })
     sets.Midcast['Enhancing Magic']['Refresh II'] = sets.Midcast['Enhancing Magic']['Refresh']

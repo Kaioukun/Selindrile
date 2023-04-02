@@ -187,6 +187,8 @@ function get_sets()
             augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', 'Weapon skill damage +10%', 'Phys. dmg. taken-10%'}
         }
     }
+
+    sets.Resting = sets.Midcast['Enhancing Magic'].Phalanx
 end
 
 function precast(spell, action)

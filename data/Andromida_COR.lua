@@ -9,14 +9,11 @@ function get_sets()
         body = "Nyame Mail",
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
-        legs = "Carmine Cuisses +1",
+        feet = "Nyame Sollerets",
         neck = "Warder's Charm +1",
-        waist = {
-            name = "Sailfi Belt +1",
-            augments = {'Path: A'}
-        },
-        left_ear = "Infused Earring",
-        right_ear = "Hearty Earring",
+        waist = "Carrier's Sash",
+        left_ear = "Tuisto Earring",
+        right_ear = "Odnowa Earring +1",
         left_ring = "Vocane Ring +1",
         right_ring = "Shadow Ring",
         back = {
@@ -147,14 +144,14 @@ function get_sets()
     }
 
     sets.CorsairRoll = {
-        main = "Lanun Knife",
+        main = "Rostam",
         range = "Compensator",
         head = "Lanun Tricorne",
         neck = "Regal necklace",
         body = "Chasseur's Frac +1",
         hands = "Chasseur's Gants +1",
         legs = "Chasseur's Culottes",
-        right_ring = "Luzaf's Ring",
+        -- right_ring = "Luzaf's Ring",
         back = {
             name = "Camulus's Mantle",
             augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+5", '"Dbl.Atk."+10', "System: 1 ID: 1155 Val: 4"}
@@ -162,7 +159,7 @@ function get_sets()
     }
     sets.JobAbility["Double-Up"] = {
         legs = "Lanun Trews",
-        right_ring = "Luzaf's Ring",
+        -- right_ring = "Luzaf's Ring",
     }
 
     sets.CorsairShot = {

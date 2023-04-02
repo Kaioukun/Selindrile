@@ -126,24 +126,15 @@ function get_sets()
     }
 
     sets.Midcast["Enhancing Magic"] = {
-		main = {
-			name = "Gada",
-			augments = {'Enh. Mag. eff. dur. +5'}
-		},
-		sub = "Ammurapi Shield",
-		head = "Ebers Cap +1",
-		body = "Ebers Bliaut +3",
-		hands = "Ebers Mitts +2",
-		legs = "Piety Pantaln. +2",
-		feet = "Theo. Duckbills +2",
-		neck = "Melic Torque",
-		waist = "Embla Sash",
-		left_ear = "Andoaa Earring",
-		right_ear = "Vor Earring",
-		left_ring = "Stikini Ring",
-		right_ring = "Stikini Ring +1",
-		back = "Merciful Cape"
-	}
+        main = "Gada",
+        sub = "Ammurapi Shield",
+        head = "Telchine Cap",
+        body = "Telchine Chas.",
+        hands = "Telchine Gloves",
+        legs = "Telchine Braconi",
+        feet = "Theo. Duckbills +2",
+        waist = "Embla Sash"
+    }
 
     sets.Midcast["Shellra V"] = set_combine(sets.Midcast["Enhancing Magic"], {
         legs = "Piety pantaloons +2"

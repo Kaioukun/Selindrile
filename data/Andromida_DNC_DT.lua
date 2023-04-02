@@ -1,5 +1,12 @@
 local incapacitated_states = T {"stun", "petrification", "terror", "sleep", "weakness"}
 
+-- waltz set changes:
+--  augment Odnowa
+--  switch vocane for carbuncle
+
+-- step set
+--  use 2nd moonlight ring
+
 function get_sets()
     sets.Idle = {
         ammo = "Staunch Tathlum +1",
@@ -21,95 +28,33 @@ function get_sets()
     }
 
     sets.Engaged = {
-        mode = "Turtle"
-    }
-    sets.Engaged.Fodder = {
-        ammo = "Staunch Tathlum +1",
-        head = {
-            name = "Adhemar Bonnet +1",
-            augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
-        },
-        body = "Macu. Casaque +3",
-        hands = {
-            name = "Adhemar Wrist. +1",
-            augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
-        },
-        legs = "Samnuha Tights",
-        feet = "Horos T. Shoes +3",
-        neck = "Etoile Gorget +2",
-        waist = "Windbuffet Belt +1",
-        left_ear = "Sherida Earring",
-        right_ear = "Telos Earring",
-        left_ring = "Moonlight Ring",
-        right_ring = "Epona's Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
-        }
-    }
-
-    sets.Engaged.Am3 = {
-        ammo = "Aurgelmir Orb +1",
-        head = "Malignance Chapeau",
-        body = "Malignance Tabard",
+        ammo = "Coiste Bodhar",
+        head = "Nyame Helm",
+        body = "Gleti's Cuirass",
         hands = "Malignance Gloves",
-        legs = "Malignance Tights",
-        feet = "Malignance Boots",
-        neck = "Etoile Gorget +2",
-        waist = "Windbuffet Belt +1",
-        left_ear = "Dedition Earring",
-        right_ear = "Telos Earring",
-        left_ring = "Chirich Ring +1",
-        right_ring = "Chirich Ring +1",
+        legs = "Gleti's Breeches",
+        feet = "Nyame Sollerets",
+        neck = "Unmoving Collar +1",
+        waist = "Sailfi Belt +1",
+        left_ear = "Odnowa Earring +1",
+        right_ear = "Sherida Earring",
+        left_ring = "Chirich Ring +1+",
+        right_ring = "Moonlight Ring",
         back = {
             name = "Senuna's Mantle",
-            augments = {
-                'DEX+20',
-                'Accuracy+20 Attack+20',
-                'DEX+10',
-                '"Store TP"+10',
-                'Phys. dmg. taken-10%'
-            }
+            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
         }
     }
 
-    sets.Engaged.Turtle = {
-        ammo = "Staunch Tathlum +1",
-        head = "Malignance Chapeau",
-        body = "Malignance Tabard",
-        hands = "Malignance Gloves",
-        legs = "Malignance Tights",
-        feet = "Malignance Boots",
-        neck = "Etoile Gorget +2",
-        waist = "Engraved Belt",
-        left_ear = "Sherida Earring",
-        right_ear = "Brutal Earring",
-        left_ring = "Vocane Ring +1",
-        right_ring = "Defending Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {
-                'DEX+20',
-                'Accuracy+20 Attack+20',
-                'DEX+10',
-                '"Store TP"+10',
-                'Phys. dmg. taken-10%'
-            }
-        }
+    sets.Buff = {}
+    sets.Buff["Fan Dance"] = {
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
+        feet = "Nyame Sollerets",
     }
 
-    sets.FastCast = {
-        ammo = "Sapience Orb",
-        hands = "Leyline Gloves",
-        legs = "Limbo Trousers",
-        left_ear = "Loquac. Earring",
-        right_ear = "Etiolation Earring",
-        left_ring = "Prolix Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {'"Fast Cast"+10'}
-        }
-    }
 
     -- JA Sets --
     sets.JobAbility = {}
@@ -147,14 +92,22 @@ function get_sets()
     sets.Flourish3 = {}
 
     sets.Waltz = {
-        ammo = "Yamarang",
-        head = "Horos Tiara +3",
+        ammo = "Staunch Tathlum +1",
+        head = "Nyame Helm",
         body = "Maxixi Casaque +3",
-        hands = "Maxixi Bangles +3",
+        hands = "Nyame Gauntlets",
         legs = "Dashing Subligar",
-        feet = "Horos T. Shoes +3",
+        feet = "Nyame Sollerets",
         neck = "Etoile Gorget +2",
-        waist = "Chaac Belt"
+        waist = "Flume Belt",
+        left_ear = "Tuisto Earring",
+        right_ear = "Odnowa Earring +1",
+        left_ring = "Vocane Ring +1",
+        right_ring = "Moonlight Ring",
+        back = {
+            name = "Senuna's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
+        }
     }
 
     sets.Samba = {
@@ -166,120 +119,50 @@ function get_sets()
     }
 
     sets.Step = {
+        ammo = "Yamarang",
         head = "Maxixi Tiara +2",
-        body = "Horos Casaque +3",
-        hands = "Maxixi Bangles +3",
-        legs = "Meg. Chausses +2",
-        feet = "Horos Toe Shoes +3",
-        neck = "Etoile gorget +2",
-        left_ring = "Regal Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", "Weapon skill damage +10%"}
-        }
-    }
-
-    -- WS Sets --
-    sets.WeaponSkill = {
-        ammo = "Charis Feather",
-        head = {
-            name = "Lilitu Headpiece",
-            augments = {"STR+10", "DEX+10", "Attack+15", "Weapon skill damage +3%"}
-        },
-        body = {
-            name = "Herculean Vest",
-            augments = {'MND+9', 'Attack+29', 'Weapon skill damage +6%', 'Accuracy+15 Attack+15'}
-        },
-        hands = "Maxixi Bangles +3",
-        legs = "Horos Tights +3",
-        feet = {
-            name = "Herculean Boots",
-            augments = {"Attack+24", "Weapon skill damage +3%", "DEX+14"}
-        },
-        neck = "Fotia Gorget",
-        waist = "Fotia Belt",
-        left_ear = "Sherida Earring",
-        right_ear = "Moonshade Earring",
-        left_ring = "Ilabrat Ring",
-        right_ring = "Regal Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {"DEX+20", "Accuracy+20 Attack+20", "DEX+10", "Weapon skill damage +10%"}
-        }
-    }
-
-    sets.WeaponSkill["Evisceration"] = {
-        ammo = "Charis Feather",
-        head = {
-            name = "Adhemar Bonnet +1",
-            augments = {'DEX+12', 'AGI+12', 'Accuracy+20'}
-        },
-        body = "Meg. Cuirie +2",
-        hands = "Mummu Wrists +2",
-        legs = "Lustr. Subligar +1",
-        feet = "Mummu Gamash. +2",
-        neck = "Fotia Gorget",
-        waist = "Fotia Belt",
-        left_ear = "Sherida Earring",
-        right_ear = "Mache Earring +1",
-        left_ring = "Ilabrat Ring",
-        right_ring = "Regal Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', 'Weapon skill damage +10%'}
-        }
-    }
-
-    sets.WeaponSkill["Pyrrhic Kleos"] = {
-        ammo = "Aurgelmir Orb +1",
-        head = "Lustratio Cap +1",
-        body = {
-            name = "Adhemar Jacket +1",
-            augments = {'STR+12', 'DEX+12', 'Attack+20'}
-        },
-        hands = {
-            name = "Adhemar Wrist. +1",
-            augments = {'STR+12', 'DEX+12', 'Attack+20'}
-        },
-        legs = "Samnuha Tights",
-        feet = "Lustra. Leggings +1",
-        neck = "Etoile Gorget +2",
-        waist = "Fotia Belt",
-        left_ear = "Sherida Earring",
-        right_ear = "Mache Earring +1",
-        left_ring = "Epona's Ring",
-        right_ring = "Regal Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {'STR+20', 'Accuracy+20 Attack+20', 'STR+10', '"Dbl.Atk."+10'}
-        }
-    }
-
-    sets.WeaponSkill["Rudra's Storm"] = {
-        ammo = "Aurgelmir Orb +1",
-        head = "Nyame Helm",
         body = "Nyame Mail",
         hands = "Maxixi Bangles +3",
-        legs = "Horos Tights +3",
+        legs = "Nyame Flanchard",
+        feet = "Horos T. Shoes +3",
+        neck = "Etoile Gorget +2",
+        waist = "Eschan Stone",
+        left_ear = "Tuisto Earring",
+        right_ear = "Odnowa Earring +1",
+        left_ring = "Vocane Ring +1",
+        right_ring = "Moonlight Ring",
+        back = {
+            name = "Senuna's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Store TP"+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+    sets.Step['Feather Step'] = set_combine(sets.Step, {
+        feet = "Maculele toe shoes +3"
+    })
+    -- WS Sets --
+    sets.WeaponSkill = {
+        ammo = "Oshasha's Treatise",
+        head = "Maculele Tiara +3",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
         neck = "Etoile Gorget +2",
         waist = "Sailfi Belt +1",
-        left_ear = "Ishvara Earring",
-        right_ear = "Moonshade Earring",
-        left_ring = "Ilabrat Ring",
-        right_ring = "Regal Ring",
-        back = {
-            name = "Senuna's Mantle",
-            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', 'Weapon skill damage +10%'}
-        }
+        left_ear = "Moonshade Earring",
+        right_ear = "Odr Earring",
+        left_ring = "Regal Ring",
+        right_ring = "Epaminondas's Ring",
+        back={
+            name="Senuna's Mantle",
+            augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%',}
+        },
     }
-    sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {
+
+    sets.WeaponSkill["Climactic Rudra's Storm"] = set_combine(sets.WeaponSkill, {
         ammo = "Charis Feather",
         head = "Maculele Tiara +3",
-        body = "Meg. Cuirie +2",
-        left_ear = "Ishvara Earring"
     })
-    sets.WeaponSkill["Shark Bite"] = set_combine(sets.WeaponSkill["Rudra's Storm"], {})
 end
 
 function precast(spell)
@@ -291,17 +174,6 @@ function precast(spell)
     if spell.english == "Spectral Jig" and buffactive.Sneak then
         cast_delay(0.2)
         send_command("cancel Sneak")
-    end
-
-    if "Step" == spell.type then
-        local allRecasts = windower.ffxi.get_ability_recasts()
-        local prestoAvailable = allRecasts[236] < 1 and not buffactive["Presto"]
-        local missingEnoughFM = not buffactive["Finishing Move (6+)"]
-
-        if prestoAvailable and missingEnoughFM then
-            cast_delay(1.1)
-            send_command('@input /ja "Presto" <me>')
-        end
     end
 
     if spell.english:startswith("Curing Waltz") and not refine_waltz(spell) then
@@ -355,16 +227,6 @@ function status_change(new, old)
     end
 end
 
-function status_change_engaged()
-    if sets.Engaged.mode == "Melee" and buffactive["Aftermath: Lv.3"] then
-        equip(sets.Engaged.Am3)
-        return
-    end
-
-    debug("Status: Engaged " .. sets.Engaged.mode)
-    equip(sets.Engaged[sets.Engaged.mode])
-end
-
 function incapacitated()
     if incapacitated_states:find(function(value)
         return buffactive[value] or false
@@ -375,6 +237,8 @@ function incapacitated()
 end
 
 function buff_change(name, gain, buff_details)
+    if not gain and name == 'Scherzo' then send_command('@input /party ' .. name .. ' removed') end
+
     if incapacitated_states:contains(name) then
         status_change(player.status)
     end

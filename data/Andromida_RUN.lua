@@ -1,4 +1,8 @@
 local incapacitated_states = T {"stun", "petrification", "terror", "sleep"}
+local party_report = {
+    Rayke = 44,
+    Gambit = 82,
+}
 
 local modes = {
     Idle = "Normal",
@@ -8,8 +12,7 @@ local modes = {
 function get_sets()
     sets.Idle = {}
     sets.Idle.Normal = {
-        main = "Epeolatry",
-        sub = "Mensch Strap +1",
+        -- sub = "Mensch Strap +1",
         ammo = "Staunch Tathlum +1",
         head = "Nyame Helm",
         body = "Nyame Mail",
@@ -34,7 +37,8 @@ function get_sets()
         }
     }
     sets.Idle.Tank = {
-        main = "Epeolatry",
+        -- main = "Epeolatry",
+        -- sub = "Mensch Strap +1",
         sub = "Mensch Strap +1",
         ammo = "Staunch Tathlum +1",
         head = "Nyame Helm",
@@ -42,7 +46,7 @@ function get_sets()
         hands = "Nyame Gauntlets",
         legs = "Nyame Flanchard",
         feet = "Nyame Sollerets",
-        neck = "Futhark Torque +2",
+        neck = "Warder's Charm +1",
         waist = "Engraved Belt",
         left_ear = "Hearty Earring",
         right_ear = "Etiolation Earring",
@@ -54,8 +58,8 @@ function get_sets()
         }
     }
     sets.Idle.Meva = {
-        main = "Epeolatry",
-        sub = "Mensch Strap +1",
+        -- main = "Epeolatry",
+        -- sub = "Mensch Strap +1",
         ammo = "Staunch Tathlum +1",
         head = "Nyame Helm",
         body = "Nyame Mail",
@@ -83,8 +87,8 @@ function get_sets()
 
     sets.Engaged = {}
     sets.Engaged.Normal = {
-        main = "Epeolatry",
-        sub = "Mensch Strap +1",
+        -- main = "Epeolatry",
+        -- sub = "Mensch Strap +1",
         ammo = "Ginsen",
         head = {
             name = "Adhemar Bonnet +1",
@@ -120,8 +124,8 @@ function get_sets()
         }
     }
     sets.Engaged.Parry = {
-        main = "Epeolatry",
-        sub = "Mensch Strap +1",
+        -- main = "Epeolatry",
+        -- sub = "Mensch Strap +1",
         ammo = "Staunch Tathlum +1",
         head = "Nyame Helm",
         body = "Runeist Coat +3",
@@ -130,6 +134,29 @@ function get_sets()
         feet = "Turms Leggings +1",
         neck = "Futhark Torque +2",
         waist = "Flume Belt",
+        left_ear = "Tuisto Earring",
+        right_ear = "Odnowa Earring +1",
+        left_ring = "Moonlight Ring",
+        right_ring = "Defending Ring",
+        back = {
+            name = "Ogma's Cape",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10', 'Parrying rate+5%'}
+        }
+    }
+
+    -- sets.Engaged.Arabati - Emp Feet Legs rest Nya
+
+    sets.Engaged.Ongo = {
+        -- main = "Hepatizon Axe +1",
+        -- sub = "Mensch Strap +1",
+        ammo = "Staunch Tathlum +1",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Nyame Gauntlets",
+        legs = "Eri. Leg Guards +3",
+        feet = "Turms Leggings +1",
+        neck = "Futhark Torque +2",
+        waist = "Carrier's Sash",
         left_ear = "Tuisto Earring",
         right_ear = "Odnowa Earring +1",
         left_ring = "Moonlight Ring",
@@ -170,8 +197,8 @@ function get_sets()
         }
     )
     sets.Engaged.Melee = {
-        main = "Epeolatry",
-        sub = "Utu Grip",
+        -- main = "Epeolatry",
+        -- sub = "Utu Grip",
         ammo = "Staunch Tathlum +1",
         head = {
             name = "Adhemar Bonnet +1",
@@ -343,6 +370,25 @@ function get_sets()
     sets.WeaponSkill["Fell Cleave"] = set_combine(sets.WeaponSkill["Dimidiation"], {})
     sets.WeaponSkill["Steel Cyclone"] = set_combine(sets.WeaponSkill["Dimidiation"], {})
 
+    sets.WeaponSkill["Ruinator"] = {
+        ammo = "Staunch Tathlum +1",
+        head = "Nyame Helm",
+        body = "Ashera Harness",
+        hands = "Nyame Gauntlets",
+        legs = "Eri. Leg Guards +3",
+        feet = "Turms Leggings +1",
+        neck = "Anu Torque",
+        waist = "Fotia Belt",
+        left_ear = "Sherida Earring",
+        right_ear = "Telos Earring",
+        left_ring = "Moonlight Ring",
+        right_ring = "Petrov Ring",
+        back = {
+            name = "Ogma's Cape",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10', 'Parrying rate+5%'}
+        }
+    }
+
     sets.FastCast = {
         ammo="Sapience orb", -- 2
         head="Rune. Bandeau +3", -- 14
@@ -389,6 +435,7 @@ function get_sets()
 
     sets.Midcast["Enhancing Magic"] = {
         equipable = true,
+        sub = "Utu Grip",
         head = "Erilaz Galea +3",
         hands = "Runeist Mitons +3",
         legs = "Futhark Trousers +1",
@@ -429,11 +476,23 @@ function get_sets()
     sets.Midcast["Divine Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Dark Magic"] = set_combine(sets.Emnity, {})
     sets.Midcast["Blue Magic"] = set_combine(sets.Emnity, {})
+
+    sets.Resting = sets.Midcast["Enhancing Magic"].Phalanx
 end
 
 function precast(spell, action)
     if incapacitated() then
         return
+    end
+
+    if party_report[spell.english] then
+        send_command(
+            'input /party ' .. spell.english .. ' on'
+            .. ';wait ' .. (party_report[spell.english] - 15)
+            .. ';input /party ' .. spell.english .. ' 15 seconds remain'
+            .. ';wait 15'
+            .. ';input /party ' .. spell.english .. ' off'
+        )
     end
 
     if sets[spell.type] and sets[spell.type][spell.english] then
@@ -463,6 +522,10 @@ function midcast(spell, action)
 
     if not is_magic(spell) then
         return
+    end
+
+    if spell.english == "Stoneskin" then
+        send_command("cancel Stoneskin")
     end
 
     if sets["Midcast"][spell.skill] and sets["Midcast"][spell.skill][spell.english] then
@@ -586,6 +649,11 @@ function self_command_idle(args)
     modes.Idle = cmdMode
     status_change(player.status)
     notice("Engaged Mode Set: " .. cmdMode)
+end
+
+function self_command_ongo(args)
+    modes.Engaged = "Ongo"
+    send_command('input /macro set 4')
 end
 
 function is_magic(spell)

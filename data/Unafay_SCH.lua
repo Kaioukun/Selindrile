@@ -1,7 +1,6 @@
 -------------------------------------------------------------------------------------------------------------------
 -- Setup functions for this job.  Generally should not be modified.
 -------------------------------------------------------------------------------------------------------------------
-
 --[[
         Custom commands:
 
@@ -21,11 +20,7 @@
         gs c scholar enmity             Tranquility             Equanimity
         gs c scholar skillchain                                 Immanence
         gs c scholar addendum           Addendum: White         Addendum: Black
---]]
-
-
-
--- Initialization function for this job file.
+--]] -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
 
@@ -35,8 +30,8 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    info.addendumNukes = S{"Stone IV", "Water IV", "Aero IV", "Fire IV", "Blizzard IV", "Thunder IV",
-        "Stone V", "Water V", "Aero V", "Fire V", "Blizzard V", "Thunder V"}
+    info.addendumNukes = S {"Stone IV", "Water IV", "Aero IV", "Fire IV", "Blizzard IV", "Thunder IV", "Stone V",
+                            "Water V", "Aero V", "Fire V", "Blizzard V", "Thunder V"}
 
     state.Buff['Sublimation: Activated'] = buffactive['Sublimation: Activated'] or false
     update_active_strategems()
@@ -52,17 +47,18 @@ function user_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT')
 
+    info.low_nukes = S {"Stone", "Water", "Aero", "Fire", "Blizzard", "Thunder", "Stone II", "Water II", "Aero II",
+                        "Fire II", "Blizzard II", "Thunder II", "Stone III", "Water III", "Aero III", "Fire III",
+                        "Blizzard III", "Thunder III", "Stone IV", "Water IV", "Aero IV", "Fire IV", "Blizzard IV",
+                        "Thunder IV", "Stone V", "Water V", "Aero V", "Fire V", "Blizzard V", "Thunder V"}
+    info.mid_nukes = S {"Stone", "Water", "Aero", "Fire", "Blizzard", "Thunder", "Stone II", "Water II", "Aero II",
+                        "Fire II", "Blizzard II", "Thunder II", "Stone III", "Water III", "Aero III", "Fire III",
+                        "Blizzard III", "Thunder III"}
 
-    info.low_nukes = S{"Stone", "Water", "Aero", "Fire", "Blizzard", "Thunder", "Stone II", "Water II", "Aero II", "Fire II", "Blizzard II", "Thunder II",
-                       "Stone III", "Water III", "Aero III", "Fire III", "Blizzard III", "Thunder III",
-                       "Stone IV", "Water IV", "Aero IV", "Fire IV", "Blizzard IV", "Thunder IV","Stone V", "Water V", "Aero V", "Fire V", "Blizzard V", "Thunder V"
-}
-    info.mid_nukes = S{"Stone", "Water", "Aero", "Fire", "Blizzard", "Thunder", "Stone II", "Water II", "Aero II", "Fire II", "Blizzard II", "Thunder II",
-                       "Stone III", "Water III", "Aero III", "Fire III", "Blizzard III", "Thunder III",
- }                      
-	
-    info.high_nukes = S{"Geohelix II", "Pyrohelix II", "Hydrohelix II", "Anemohelix II", "Cryohelix II", "Ionohelix II", "Noctohelix II", "Luminohelix II","Stone IV", "Water IV", "Aero IV", "Fire IV", "Blizzard IV", "Thunder IV","Stone V", "Water V", "Aero V", "Fire V", "Blizzard V", "Thunder V"
-}
+    info.high_nukes = S {"Geohelix II", "Pyrohelix II", "Hydrohelix II", "Anemohelix II", "Cryohelix II",
+                         "Ionohelix II", "Noctohelix II", "Luminohelix II", "Stone IV", "Water IV", "Aero IV",
+                         "Fire IV", "Blizzard IV", "Thunder IV", "Stone V", "Water V", "Aero V", "Fire V", "Blizzard V",
+                         "Thunder V"}
 
     send_command('bind ^` input /ma Stun <t>')
 
@@ -73,7 +69,6 @@ function user_unload()
     send_command('unbind ^`')
 end
 
-
 -- Define sets and vars used by this job file.
 function init_gear_sets()
     --------------------------------------
@@ -83,437 +78,546 @@ function init_gear_sets()
     -- Precast Sets
 
     -- Precast sets to enhance JAs
-    sets.precast.JA['Sublimation'] ={
-    main="Musa",
-    sub="Clerisy strap +1",
-    ammo="Incanter stone",
-    head="Acad. Mortar. +3",
-    body={ name="Peda. Gown +3", augments={'Enhances "Enlightenment" effect',}},
-    hands="",
-    legs="Amalric Slops +1",
-    feet="Amalric Nails +1",
-    neck= "Sanctity Necklace",
-    waist="Embla Sash",
-    left_ear="Savant's Earring",
-    right_ear="Etiolation Earring",
-    left_ring="",
-    right_ring="",
-    back="Fi Follet Cape +1",
-}
-    sets.precast.JA['Tabula Rasa'] = {legs="Pedagogy Pants +3"}
-	sets.precast.JA['Dark Arts'] = {body="Acad. Gown +3"}
-	sets.precast.JA['Light Arts'] = {legs="Acad. Pants +2"}
-    
+    sets.precast.JA['Sublimation'] = {
+        main = "Musa",
+        sub = "Clerisy strap +1",
+        ammo = "Incanter stone",
+        head = "Acad. Mortar. +3",
+        body = {
+            name = "Peda. Gown +3",
+            augments = {'Enhances "Enlightenment" effect'}
+        },
+        hands = "",
+        legs = "Amalric Slops +1",
+        feet = "Amalric Nails +1",
+        neck = "Sanctity Necklace",
+        waist = "Embla Sash",
+        left_ear = "Savant's Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "",
+        right_ring = "",
+        back = "Fi Follet Cape +1"
+    }
+    sets.precast.JA['Tabula Rasa'] = {
+        legs = "Pedagogy Pants +3"
+    }
+    sets.precast.JA['Dark Arts'] = {
+        body = "Acad. Gown +3"
+    }
+    sets.precast.JA['Light Arts'] = {
+        legs = "Acad. Pants +3"
+    }
+    sets.precast.JA['Enlightenment'] = {
+        body = "Peda. Gown +3"
+    }
+
     -- Fast cast sets for Elemental spells
 
-    sets.precast.FC = { 
-    main="Musa",
-    sub="Clerisy Strap",
-    ammo="Sapience Orb",
-    head={ name="Peda. M.Board +2", augments={'Enh. "Altruism" and "Focalization"',}},
-    body="Merlinic Jubbah",
-    hands="Acad. Bracers +2",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck="Orunmila's Torque",
-    waist="Embla Sash",
-    left_ear="Malignance Earring",
-    right_ear="Enchanter Earring +1",
-    left_ring="Kishar Ring",
-    right_ring="Lebeche Ring",
-    back="Fi Follet Cape +1",
-}
+    sets.precast.FC = {
+        main = "Musa", -- 10
+        sub = "Clerisy Strap +1", -- 3
+        ammo = "Sapience Orb", -- 2
+        head = "Amalric coif +1", -- 11
+        body = "Merlinic Jubbah", -- 9
+        hands = "Acad. Bracers +3", -- 9
+        legs = "Volte brais", -- 8
+        feet = "Amalric nails +1", -- 6
+        neck = "Orunmila's Torque", -- 4
+        waist = "Embla Sash", -- 5
+        left_ear = "Malignance Earring", -- 4
+        right_ear = "Enchanter's earring +1", -- 2
+        left_ring = "Kishar Ring", -- 4
+        right_ring = "Lebeche Ring", --
+        back = {
+            name = "Lugh's Cape",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', '"Fast Cast"+10', 'Phys. dmg. taken-10%'}
+        }
+    }
 
-    sets.precast.Impact = set_combine(sets.midcast['Elemental Magic'], {body="Twilight Cloak"})
-
+    sets.precast.Impact = set_combine(sets.midcast['Elemental Magic'], {
+        body = "Twilight Cloak"
+    })
 
     -- Midcast Sets
 
-    sets.midcast.FastRecast = { 
-    main="Musa",
-    sub="Clerisy Strap +1",
-    ammo="Sapience Orb",
-    head="Cath Palug crown",
-    body="Merlinic Jubbah",
-    hands="Acad. Bracers +2",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck="Orunmila's Torque",
-    waist="Embla Sash",
-    left_ear="Malignance Earring",
-    right_ear="Enchanter Earring +1",
-    left_ring="Kishar Ring",
-    right_ring="Weatherspoon ring",
-    back="Fi Follet Cape +1",
-}
-
-   sets.midcast.Cure = {
-    main="Musa",
-    sub="Genbu's shield",
-    head="Vanya Hood",
-    body="Kaykaus bliaut",
-    hands="Ayao's gages",
-    legs="Doyen pants",
-    feet="Vanya Clogs",
-    neck="Incanter's Torque",
-    waist="",
-    left_ear="Meili Earring",
-    right_ear="Beatific Earring",
-    left_ring="Haoma's ring",
-    right_ring="Sirona's ring",
-    back="Altruistic cape",
-}
+    sets.midcast.Cure = {
+        main = "Daybreak",
+        sub = "Sors Shield",
+        ammo = "Sapience Orb",
+        head = {
+            name = "Kaykaus Mitra +1",
+            augments = {'MP+80', 'MND+12', 'Mag. Acc.+20'}
+        },
+        body = "Kaykaus Bliaut",
+        hands = {
+            name = "Peda. Bracers +3",
+            augments = {'Enh. "Tranquility" and "Equanimity"'}
+        },
+        legs = "Volte brais",
+        feet = "Amalric nails +1",
+        neck = "Incanter's Torque",
+        waist = "Luminary Sash",
+        left_ear = "Meili Earring",
+        right_ear = "Mendi. Earring",
+        left_ring = "Ephedra Ring",
+        right_ring = "Sirona's Ring",
+        back = "Pahtli Cape"
+    }
     sets.midcast.Curaga = sets.midcast.Cure
 
     sets.midcast.Regen = {
-		main="Musa",
-		sub="Oneiros grip",
-		head="Arbatel Bonnet +1",
-		neck="Incanter's Torque",
-		ear1="Andoaa Earring",
-		ear2="Mimir earring",
-        body="Pedagogy gown +3",
-		hands="Arbatel bracers +1",
-		Ring1="Stikini Ring +1",
-		Ring2="Stikini Ring +1",
-        back="Lugh's Cape",
-		waist="Embla Sash",
-		legs="Telchine Braconi",
-		feet="Telchine Pigaches"
-}
-	sets.midcast.Haste = {main="Musa",sub="Ammurapi Shield",ammo="Savant's Treatise",
-        head="Telchine Cap",neck="Incanter's Torque",ear1="Andoaa Earring",
-        body="Peda. Gown +3",hands="Telchine Gloves",Ring1="Stikini Ring +1",Ring2="Stikini Ring",
-        back="Fi Follet +1",waist="Embla Sash",legs="Telchine Braconi",feet="Telchine Pigaches"}
-	
-    sets.midcast.Cursna = {
-		main="Musa",
-		sub="Sors shield",
-		ammo="Incantor Stone",	
-		head="Vanya hood",
-		neck="Malison medallion",	
-		ear1="Nourishing earring",
-		ear2="Glorious earring",
-		body="Ebers bliaud +1",
-		hands="Hieros mittens",
-		ring1="Haoma's ring",
-		ring2="Haoma's ring",
-		back="Alaunus's cape",
-		waist="Channeler's stone",
-		legs="Volte brais",
-		feet="Vanya clogs",
-}
+        main = "Musa",
+        sub = "Oneiros grip",
+        head = "Arbatel Bonnet +2",
+        neck = "Incanter's Torque",
+        ear1 = "Andoaa Earring",
+        ear2 = "Mimir earring",
+        body = "Telchine chasuble",
 
-    sets.midcast['Enhancing Magic'] = {main="Musa",sub="Ammurapi Shield",ammo="Savant's Treatise",
-        head="Telchine Cap",neck="Incanter's Torque",ear1="Andoaa Earring", ear2="Mimir Earring",
-        body="Peda. Gown +3",hands="Telchine Gloves",Ring1="Stikini Ring +1",Ring2="Stikini Ring",
-        back="Fi Follet Cape +1",waist="Embla Sash",legs="Telchine Braconi",feet="Telchine Pigaches"}
+        hands = "Arbatel bracers +2",
+        Ring1 = "Stikini Ring +1",
+        Ring2 = "Stikini Ring +1",
+        back = "Lugh's Cape",
+        waist = "Embla Sash",
+        legs = "Telchine Braconi",
+        feet = "Telchine Pigaches"
+    }
+    sets.midcast.Haste = {
+        main = "Musa",
+        sub = "",
+        ammo = "Savant's Treatise",
+        head = "Telchine Cap",
+        neck = "Incanter's Torque",
+        ear1 = "Andoaa Earring",
+        body = "Peda. Gown +3",
+        hands = "Telchine Gloves",
+        Ring1 = "Stikini Ring +1",
+        Ring2 = "Stikini Ring",
+        back = "Fi Follet +1",
+        waist = "Embla Sash",
+        legs = "Telchine Braconi",
+        feet = "Telchine Pigaches"
+    }
+
+    sets.midcast.Cursna = {
+        main = "Gada",
+        sub = "",
+        ammo = "Incantor Stone",
+        head = "Vanya hood",
+        neck = "Malison medallion",
+        ear1 = "Meili earring",
+        ear2 = "Beatific earring",
+        body = "Pedagogy gown +3",
+        hands = "Hieros mittens",
+        ring1 = "Haoma's ring",
+        ring2 = "Menelaus's ring",
+        back = "Oretania's cape +1",
+        waist = "Bishop's sash",
+        legs = "Volte brais",
+        feet = "Vanya clogs"
+    }
+
+    sets.midcast['Enhancing Magic'] = {
+        main = "Musa",
+        sub = "",
+        ammo = "Savant's Treatise",
+        head = "Telchine Cap",
+        neck = "Incanter's Torque",
+        ear1 = "Andoaa Earring",
+        ear2 = "Mimir Earring",
+        body = "Peda. Gown +3",
+        hands = "Arbatel bracers +2",
+        Ring1 = "Stikini Ring +1",
+        Ring2 = "Stikini Ring +1",
+        back = "Fi Follet Cape +1",
+        waist = "Embla sash",
+        legs = "Telchine Braconi",
+        feet = "Telchine Pigaches"
+    }
 
     sets.midcast.Stoneskin = set_combine(sets.midcast['Enhancing Magic'], {
-    neck="Nodens Gorget",
-    waist="Siegel Sash",
-})
-    sets.midcast.Refresh = set_combine(sets.midcast['Enhancing Magic'], {waist="Gishdubar Sash",})
+        neck = "Nodens Gorget",
+        waist = "Siegel Sash"
+    })
+    sets.midcast.Refresh = set_combine(sets.midcast['Enhancing Magic'], {
+        waist = "Gishdubar Sash",
+        feet = "Insprited boots"
+    })
 
     sets.midcast.Storm = set_combine(sets.midcast['Enhancing Magic'])
-    
-	sets.midcast.Protect = set_combine(sets.midcast['Enhancing Magic'], {ring2="Sheltered Ring"})
+
+    sets.midcast.Protect = set_combine(sets.midcast['Enhancing Magic'], {
+        ring2 = "Sheltered Ring"
+    })
     sets.midcast.Protectra = sets.midcast.Protect
 
-    sets.midcast.Shell = set_combine(sets.midcast['Enhancing Magic'], {ring2="Sheltered Ring"})
+    sets.midcast.Shell = set_combine(sets.midcast['Enhancing Magic'], {
+        ring2 = "Sheltered Ring"
+    })
     sets.midcast.Shellra = sets.midcast.Shell
 
-
     -- Custom spell classes
-    sets.midcast.MndEnfeebles = { 
-	main="Musa",
-    sub="Ammurapi Shield",
-    ammo="Pemphredo Tathlum",
-    head="Acad. Mortar. +3",
-    body="Acad. Gown +3",
-    hands="Acad. Bracers +2",
-    legs="Acad. Pants +3",
-    feet="Acad. Loafers +3",
-    neck=="Argute Stole +1",
-    waist="",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Stikini Ring +1",
-    right_ring={ name="Metamor. Ring +1", augments={'Path: A',}},
-    back={ name="Aurist's Cape +1", augments={'Path: A',}},
-}
+    sets.midcast.MndEnfeebles = {
+        main = "Daybreak",
+        sub = "Ammurapi Shield",
+        ammo = "Pemphredo Tathlum",
+        head = "Acad. Mortar. +3",
+        body = "Acad. Gown +3",
+        hands = "Acad. Bracers +3",
+        legs = "Acad. Pants +3",
+        feet = "Acad. Loafers +3",
+        neck == "Argute Stole +1",
+        waist = "Luminary sash",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = {
+            name = "Metamor. Ring +1",
+            augments = {'Path: A'}
+        },
+        back = {
+            name = "Aurist's Cape +1",
+            augments = {'Path: A'}
+        }
+    }
     sets.midcast.IntEnfeebles = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
-    ammo="Pemphredo Tathlum",
-    head="Acad. Mortar. +3",
-    body="Acad. Gown +3",
-    hands="Acad. Bracers +2",
-    legs="Acad. Pants +3",
-    feet="Acad. Loafers +3",
-    neck="Argute Stole +1",
-    waist="Sacro Cord",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="",
-    back="",
-}
+        main = "Maxentius",
+        sub = "Ammurapi Shield",
+        ammo = "Pemphredo Tathlum",
+        head = "Acad. Mortar. +3",
+        body = "Acad. Gown +3",
+        hands = "Acad. Bracers +3",
+        legs = "Acad. Pants +3",
+        feet = "Acad. Loafers +3",
+        neck = "Argute Stole +1",
+        waist = "Channeler's stone",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = "Freke ring",
+        back = "Aurist's Cape"
+    }
     sets.midcast.ElementalEnfeeble = sets.midcast.IntEnfeebles
 
     sets.midcast['Dark Magic'] = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
-    ammo="Pemphredo Tathlum",
-    head="Pixie Hairpin +1",
-    body="Acad. Gown +3",
-    hands="Acad. Bracers +2",
-    legs={ name="Peda. Pants +3", augments={'Enhances "Tabula Rasa" effect',}},
-    feet="Merlinic Crackows",
-    neck="Erra Pendant",
-    waist="Fucho-no-Obi",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Evanescence Ring",
-    right_ring="Archon Ring",
-    back="Bookworm's Cape",
-}
+        main = "Maxentius",
+        sub = "Ammurapi Shield",
+        ammo = "Pemphredo Tathlum",
+        head = "Pixie Hairpin +1",
+        body = "Acad. Gown +3",
+        hands = "Acad. Bracers +3",
+        legs = {
+            name = "Peda. Pants +3",
+            augments = {'Enhances "Tabula Rasa" effect'}
+        },
+        feet = "Merlinic Crackows",
+        neck = "Erra Pendant",
+        waist = "Fucho-no-Obi",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Freke ring",
+        right_ring = "Archon Ring",
+        back = "Bookworm's Cape"
+    }
     sets.midcast.Kaustra = {
-    main={ name="Akademos", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
-    sub="Enki Strap",
-    ammo="Pemphredo Tathlum",
-    head="Pixie Hairpin +1",
-    body={ name="Merlinic Jubbah", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+10%','Mag. Acc.+15','"Mag.Atk.Bns."+12',}},
-    hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-    legs={ name="Amalric Slops +1", augments={'MP+80','"Mag.Atk.Bns."+25','Enmity-6',}},
-    feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+26','Magic burst dmg.+10%','Mag. Acc.+13',}},
-    neck={ name="Argute Stole +2", augments={'Path: A',}},
-    waist="Hachirin-no-Obi",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Freke Ring",
-    right_ring="Archon Ring",
-    back={ name="Bookworm's Cape", augments={'INT+2','MND+1','Helix eff. dur. +20','"Regen" potency+6',}},
-}
+        main = {
+            name = "Akademos",
+            augments = {'MP+80', 'INT+20', '"Mag.Atk.Bns."+20'}
+        },
+        sub = "Enki Strap",
+        ammo = "Pemphredo Tathlum",
+        head = "Pixie Hairpin +1",
+        body = {
+            name = "Merlinic Jubbah",
+            augments = {'Mag. Acc.+19 "Mag.Atk.Bns."+19', 'Magic burst dmg.+10%', 'Mag. Acc.+15', '"Mag.Atk.Bns."+12'}
+        },
+        hands = {
+            name = "Amalric Gages +1",
+            augments = {'INT+12', 'Mag. Acc.+20', '"Mag.Atk.Bns."+20'}
+        },
+        legs = {
+            name = "Amalric Slops +1",
+            augments = {'MP+80', '"Mag.Atk.Bns."+25', 'Enmity-6'}
+        },
+        feet = {
+            name = "Merlinic Crackows",
+            augments = {'"Mag.Atk.Bns."+26', 'Magic burst dmg.+10%', 'Mag. Acc.+13'}
+        },
+        neck = {
+            name = "Argute Stole +2",
+            augments = {'Path: A'}
+        },
+        waist = "Hachirin-no-Obi",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Freke Ring",
+        right_ring = "Archon Ring",
+        back = "Bookworm's Cape"
+    }
 
     sets.midcast.Drain = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
-    ammo="Pemphredo Tathlum",
-    head="Pixie Hairpin +1",
-    body="Acad. Gown +3",
-    hands="Acad. Bracers +2",
-    legs={ name="Peda. Pants +3", augments={'Enhances "Tabula Rasa" effect',}},
-    feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+26','Magic burst dmg.+10%','Mag. Acc.+13',}},
-    neck="Erra Pendant",
-    waist="Fucho-no-Obi",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Evanescence Ring",
-    right_ring="Archon Ring",
-    back={ name="Bookworm's Cape", augments={'INT+2','MND+1','Helix eff. dur. +20','"Regen" potency+6',}},
-}
-    
+        main = "Maxentius",
+        sub = "Ammurapi Shield",
+        ammo = "Pemphredo Tathlum",
+        head = "Pixie Hairpin +1",
+        body = "Acad. Gown +3",
+        hands = "Acad. Bracers +3",
+        legs = {
+            name = "Peda. Pants +3",
+            augments = {'Enhances "Tabula Rasa" effect'}
+        },
+        feet = {
+            name = "Merlinic Crackows",
+            augments = {'"Mag.Atk.Bns."+26', 'Magic burst dmg.+10%', 'Mag. Acc.+13'}
+        },
+        neck = "Erra Pendant",
+        waist = "Fucho-no-Obi",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Evanescence Ring",
+        right_ring = "Archon Ring",
+        back = {
+            name = "Bookworm's Cape",
+            augments = {'INT+2', 'MND+1', 'Helix eff. dur. +20', '"Regen" potency+6'}
+        }
+    }
 
     sets.midcast.Stun = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
-    ammo="Pemphredo Tathlum",
-    head="Acad. Mortar. +2",
-    body="Acad. Gown +3",
-    hands="Acad. Bracers +2",
-    legs="Acad. Pants +3",
-    feet="Acad. Loafers +3",
-    neck="Argute Stole +1",
-    waist="Sacro Cord",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="",
-    back="",
-}
+        main = "Maxentius",
+        sub = "Ammurapi Shield",
+        ammo = "Pemphredo Tathlum",
+        head = "Acad. Mortar. +3",
+        body = "Acad. Gown +3",
+        hands = "Acad. Bracers +3",
+        legs = "Acad. Pants +3",
+        feet = "Acad. Loafers +3",
+        neck = "Argute Stole +1",
+        waist = "Sacro Cord",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = "Freke ring",
+        back = ""
+    }
 
-    sets.midcast.Stun.Resistant = set_combine(sets.midcast.Stun, {main="Akademos"})
-
+    sets.midcast.Stun.Resistant = set_combine(sets.midcast.Stun, {
+        main = "Akademos"
+    })
 
     -- Elemental Magic sets are default for handling low-tier nukes.
     sets.midcast['Elemental Magic'] = {
-		main="Akademos",
-		sub="Khonsu",
-		ammo="Pemphredo tathlum",
-		head="Peda. M.Board +2",
-		body="Merlinic Jubbah",
-		hands="Amalric Gages +1",
-		legs="Amalric Slops +1",
-		feet="Academic's loafers +3",
-		neck="Argute Stole +1",
-		waist="Hachirin-no-Obi",
-		left_ear="Malignance Earring",
-		right_ear="Regal Earring",
-		left_ring="Shiva ring +1",
-		right_ring="Mujin band",
-		back="Lugh's cape",
-}
-    
+        main = "Daybreak",
+        sub = "Ammurapi shield",
+        ammo = "Pemphredo tathlum",
+        head = "Peda. M.Board +3",
+        body = "Amalric Doublet +1",
+        hands = "Amalric Gages +1",
+        legs = "Amalric Slops +1",
+        feet = "Academic's loafers +3",
+        neck = "Argute Stole +1",
+        waist = "Hachirin-no-Obi",
+        left_ear = "Malignance Earring",
+        right_ear = "Regal Earring",
+        left_ring = "Freke ring",
+        right_ring = "Mujin band",
+        back = "Lugh's cape"
+    }
 
     sets.midcast['Elemental Magic'].MidTierNuke = {
-		main="Akademos",
-		sub="Khonsu",
-		ammo="Pemphredo tathlum",
-		head="Peda. M.Board +2",
-		body="Merlinic Jubbah",
-		hands="Amalric Gages +1",
-		legs="Amalric Slops +1",
-		feet="Academic's loafers +3",
-		neck="Argute Stole +1",
-		waist="Hachirin-no-Obi",
-		left_ear="Malignance Earring",
-		right_ear="Regal Earring",
-		left_ring="Shiva ring +1",
-		right_ring="Mujin band",
-		back="Lugh's cape",
-}
-	
+        main = "Daybreak",
+        sub = "Ammurapi shield",
+        ammo = "Pemphredo tathlum",
+        head = "Peda. M.Board +3",
+        body = "Amalric Doublet +1",
+        hands = "Amalric Gages +1",
+        legs = "Amalric Slops +1",
+        feet = "Academic's loafers +3",
+        neck = "Argute Stole +1",
+        waist = "Hachirin-no-Obi",
+        left_ear = "Malignance Earring",
+        right_ear = "Regal Earring",
+        left_ring = "Freke ring",
+        right_ring = "Mujin band",
+        back = "Lugh's cape"
+    }
+
     -- Custom refinements for certain nuke tiers
-    sets.midcast['Elemental Magic'].HighTierNuke = { 
-		main="Akademos",
-		sub="Khonsu",
-		ammo="Pemphredo tathlum",
-		head="Peda. M.Board +2",
-		body="Merlinic Jubbah",
-		hands="Amalric Gages +1",
-		legs="Amalric Slops +1",
-		feet="Academic's loafers +3",
-		neck="Argute Stole +1",
-		waist="Hachirin-no-Obi",
-		left_ear="Malignance Earring",
-		right_ear="Regal Earring",
-		left_ring="Shiva ring +1",
-		right_ring="Mujin band",
-		back="Lugh's cape",
-}
+    sets.midcast['Elemental Magic'].HighTierNuke = {
+        main = "Daybreak",
+        sub = "Ammurapi shield",
+        ammo = "Pemphredo tathlum",
+        head = "Peda. M.Board +3",
+        body = "Amalric Doublet +1",
+        hands = "Amalric Gages +1",
+        legs = "Amalric Slops +1",
+        feet = "Academic's loafers +3",
+        neck = "Argute Stole +1",
+        waist = "Hachirin-no-Obi",
+        left_ear = "Malignance Earring",
+        right_ear = "Regal Earring",
+        left_ring = "Freke ring",
+        right_ring = "Mujin band",
+        back = "Lugh's cape"
+    }
 
     -- Sets to return to when not performing an action.
 
     -- Resting sets
     sets.resting = {
-    main="Boonwell Staff",
-    sub="Oneiros Grip",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands="Volte gloves",
-    legs="Volte Brais",
-    feet="Battlecast gaiters",
-    neck="Bathy Choker",
-    waist="Fucho-no-Obi",
-    left_ear="Infused Earring",
-    right_ear={ name="Moonshade Earring", augments={'MP+25','Latent effect: "Refresh"+1',}},
-    left_ring="Stikini Ring +1",
-    right_ring="Defending ring",
-    back="Moonbeam Cape",
-}
-
+        main = "Boonwell Staff",
+        sub = "Oneiros Grip",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Academic's gown +3",
+        hands = "Volte gloves",
+        legs = "Volte Brais",
+        feet = "Battlecast gaiters",
+        neck = "Bathy Choker",
+        waist = "Fucho-no-Obi",
+        left_ear = "Infused Earring",
+        right_ear = {
+            name = "Moonshade Earring",
+            augments = {'MP+25', 'Latent effect: "Refresh"+1'}
+        },
+        left_ring = "Stikini Ring +1",
+        right_ring = "Defending ring",
+        back = "Moonbeam Cape"
+    }
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle.Town = {
-    main="Musa",
-    sub="Khonsu",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3", 
-    hands="Volte gloves",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck="Loricate Torque +1",
-    waist="Fucho-no-Obi",
-    left_ear="",
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
+        main = "Musa",
+        sub = "Khonsu",
+        ammo = "Homiliary",
+        head = "Gala corsage",
+        body = "Shamash robe",
+        hands = "Volte gloves",
+        legs = "Volte brais",
+        feet = "Volte gaiters",
+        neck = "Loricate Torque +1",
+        waist = "Fucho-no-Obi",
+        left_ear = "",
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
     sets.idle.Field = {
-    main="Musa",
-    sub="Khonsu",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands="Volte gloves",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck={ name="Loricate Torque +1", augments={'Path: A',}},
-    waist="Fucho-no-Obi",
-    left_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
+        main = "Daybreak",
+        sub = "Genbu's shield",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Shamash robe",
+        hands = "Nyame gauntlets",
+        legs = "Volte brais",
+        feet = "Nyame sollerets",
+        neck = {
+            name = "Loricate Torque +1",
+            augments = {'Path: A'}
+        },
+        waist = "Fucho-no-Obi",
+        left_ear = "Moonshade earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
     sets.idle.Field.PDT = {
-    main="Musa",
-    sub="Khonsu",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands="Volte gloves",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck={ name="Loricate Torque +1", augments={'Path: A',}},
-    waist="Fucho-no-Obi",
-    left_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
+        main = "Daybreak",
+        sub = "Genbu's shield",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Shamash robe",
+        hands = "Nyame gauntlets",
+        legs = "Volte brais",
+        feet = "Nyame sollerets",
+        neck = {
+            name = "Loricate Torque +1",
+            augments = {'Path: A'}
+        },
+        waist = "Fucho-no-Obi",
+        left_ear = "Moonshade earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
 
     sets.idle.Weak = {
-    main="Musa",
-    sub="Khonsu",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands="Volte gloves",
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck={ name="Loricate Torque +1", augments={'Path: A',}},
-    waist="Fucho-no-Obi",
-    left_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
+        main = "Daybreak",
+        sub = "Genbu's shield",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Shamash robe",
+        hands = "Nyame gauntlets",
+        legs = "Volte brais",
+        feet = "Nyame sollerets",
+        neck = {
+            name = "Loricate Torque +1",
+            augments = {'Path: A'}
+        },
+        waist = "Fucho-no-Obi",
+        left_ear = "Moonshade earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
 
     -- Defense sets
 
     sets.defense.PDT = {
-    main="Musa",
-    sub="Khonsu",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands={ name="Kaykaus Cuffs", augments={'MP+60','MND+10','Mag. Acc.+15',}},
-    legs="Volte brais",
-    feet="Volte gaiters",
-    neck={ name="Loricate Torque +1", augments={'Path: A',}},
-    waist="Fucho-no-Obi",
-    left_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
-    sets.defense.MDT = {main=gear.Staff.PDT,sub="Achaq Grip",ammo="Incantor Stone",
-        head="Nahtirah Hat",neck="Twilight Torque",ear1="Bloodgem Earring",ear2="Loquacious Earring",
-        body="Vanir Cotehardie",hands="Yaoyotl Gloves",ring1="Defending Ring",ring2="Shadow Ring",
-        back="Tuilha Cape",waist="Hierarch Belt",legs="Bokwus Slops",feet="Hagondes Sabots"}
+        main = "Musa",
+        sub = "Khonsu",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Academic's gown +3",
+        hands = {
+            name = "Kaykaus Cuffs",
+            augments = {'MP+60', 'MND+10', 'Mag. Acc.+15'}
+        },
+        legs = "Volte brais",
+        feet = "Volte gaiters",
+        neck = {
+            name = "Loricate Torque +1",
+            augments = {'Path: A'}
+        },
+        waist = "Fucho-no-Obi",
+        left_ear = {
+            name = "Odnowa Earring +1",
+            augments = {'Path: A'}
+        },
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
+    sets.defense.MDT = {
+        main = gear.Staff.PDT,
+        sub = "Achaq Grip",
+        ammo = "Incantor Stone",
+        head = "Nahtirah Hat",
+        neck = "Twilight Torque",
+        ear1 = "Bloodgem Earring",
+        ear2 = "Loquacious Earring",
+        body = "Vanir Cotehardie",
+        hands = "Yaoyotl Gloves",
+        ring1 = "Defending Ring",
+        ring2 = "Shadow Ring",
+        back = "Tuilha Cape",
+        waist = "Hierarch Belt",
+        legs = "Bokwus Slops",
+        feet = "Hagondes Sabots"
+    }
 
-    sets.Kiting = {feet="Herald's Gaiters"}
+    sets.Kiting = {
+        feet = "Herald's Gaiters"
+    }
 
-    sets.latent_refresh = {waist="Fucho-no-obi"}
+    sets.latent_refresh = {
+        waist = "Fucho-no-obi"
+    }
 
     -- Engaged sets
 
@@ -524,35 +628,65 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {
-    main="Malignance Pole",
-    sub="Oneiros grip",
-    ammo="Homiliary",
-    head="Befouled Crown",
-    body="Academic's gown +3",
-    hands={ name="Kaykaus Cuffs", augments={'MP+60','MND+10','Mag. Acc.+15',}},
-    legs="Volte brais",
-    feet={ name="Merlinic Crackows", augments={'INT+6','Weapon Skill Acc.+3','"Refresh"+2','Mag. Acc.+12 "Mag.Atk.Bns."+12',}},
-    neck={ name="Loricate Torque +1", augments={'Path: A',}},
-    waist="Fucho-no-Obi",
-    left_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Stikini Ring +1",
-    back="Moonbeam Cape",
-}
-
+        main = "Malignance Pole",
+        sub = "Oneiros grip",
+        ammo = "Homiliary",
+        head = "Befouled Crown",
+        body = "Academic's gown +3",
+        hands = {
+            name = "Kaykaus Cuffs",
+            augments = {'MP+60', 'MND+10', 'Mag. Acc.+15'}
+        },
+        legs = "Volte brais",
+        feet = {
+            name = "Merlinic Crackows",
+            augments = {'INT+6', 'Weapon Skill Acc.+3', '"Refresh"+2', 'Mag. Acc.+12 "Mag.Atk.Bns."+12'}
+        },
+        neck = {
+            name = "Loricate Torque +1",
+            augments = {'Path: A'}
+        },
+        waist = "Fucho-no-Obi",
+        left_ear = {
+            name = "Odnowa Earring +1",
+            augments = {'Path: A'}
+        },
+        right_ear = "Etiolation Earring",
+        left_ring = "Defending Ring",
+        right_ring = "Stikini Ring +1",
+        back = "Moonbeam Cape"
+    }
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
-    sets.buff['Rapture'] = {head="Arbatel Bonnet +1"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +1"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +1"}
-    sets.buff['Penury'] = {legs="Arbatel Pants +1"}
-    sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
-    sets.buff['Celerity'] = {feet="Pedagogy Loafers +3"}
-    sets.buff['Alacrity'] = {feet="Pedagogy Loafers +3"}
-    sets.buff.FullSublimation = {head="Academic's Mortarboard +3",ear1="Savant's Earring",body="Pedagogy Gown +3",waist="Embla Sash"}
-    
-    --sets.buff['Sandstorm'] = {feet="Desert Boots"}
+    sets.buff['Rapture'] = {
+        head = "Arbatel Bonnet +1"
+    }
+    sets.buff['Perpetuance'] = {
+        hands = "Arbatel Bracers +1"
+    }
+    sets.buff['Immanence'] = {
+        hands = "Arbatel Bracers +1"
+    }
+    sets.buff['Penury'] = {
+        legs = "Arbatel Pants +1"
+    }
+    sets.buff['Parsimony'] = {
+        legs = "Arbatel Pants +1"
+    }
+    sets.buff['Celerity'] = {
+        feet = "Pedagogy Loafers +3"
+    }
+    sets.buff['Alacrity'] = {
+        feet = "Pedagogy Loafers +3"
+    }
+    sets.buff.FullSublimation = {
+        head = "Academic's Mortarboard +3",
+        ear1 = "Savant's Earring",
+        body = "Pedagogy Gown +3",
+        waist = "Embla Sash"
+    }
+
+    -- sets.buff['Sandstorm'] = {feet="Desert Boots"}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -583,9 +717,9 @@ end
 function job_state_change(stateField, newValue, oldValue)
     if stateField == 'Offense Mode' then
         if newValue == 'Normal' then
-            disable('main','sub','range')
+            disable('main', 'sub', 'range')
         else
-            enable('main','sub','range')
+            enable('main', 'sub', 'range')
         end
     end
 end
@@ -637,8 +771,9 @@ end
 
 -- Called by the 'update' self-command.
 function job_update(cmdParams, eventArgs)
-    if cmdParams[1] == 'user' and not (buffactive['light arts']      or buffactive['dark arts'] or
-                       buffactive['addendum: white'] or buffactive['addendum: black']) then
+    if cmdParams[1] == 'user' and
+        not (buffactive['light arts'] or buffactive['dark arts'] or buffactive['addendum: white'] or
+            buffactive['addendum: black']) then
         if state.IdleMode.value == 'Stun' then
             send_command('@input /ja "Dark Arts" <me>')
         else
@@ -693,7 +828,7 @@ end
 
 -- Equip sets appropriate to the active buffs, relative to the spell being cast.
 function apply_grimoire_bonuses(spell, action, spellMap)
-    if state.Buff.Perpetuance and spell.type =='WhiteMagic' and spell.skill == 'Enhancing Magic' then
+    if state.Buff.Perpetuance and spell.type == 'WhiteMagic' and spell.skill == 'Enhancing Magic' then
         equip(sets.buff['Perpetuance'])
     end
     if state.Buff.Rapture and (spellMap == 'Cure' or spellMap == 'Curaga') then
@@ -711,12 +846,19 @@ function apply_grimoire_bonuses(spell, action, spellMap)
         end
     end
 
-    if state.Buff.Penury then equip(sets.buff['Penury']) end
-    if state.Buff.Parsimony then equip(sets.buff['Parsimony']) end
-    if state.Buff.Celerity then equip(sets.buff['Celerity']) end
-    if state.Buff.Alacrity then equip(sets.buff['Alacrity']) end
+    if state.Buff.Penury then
+        equip(sets.buff['Penury'])
+    end
+    if state.Buff.Parsimony then
+        equip(sets.buff['Parsimony'])
+    end
+    if state.Buff.Celerity then
+        equip(sets.buff['Celerity'])
+    end
+    if state.Buff.Alacrity then
+        equip(sets.buff['Alacrity'])
+    end
 end
-
 
 -- General handling of strategems in an Arts-agnostic way.
 -- Format: gs c scholar <strategem>
@@ -725,7 +867,7 @@ function handle_strategems(cmdParams)
     -- cmdParams[2] == strategem to use
 
     if not cmdParams[2] then
-        add_to_chat(123,'Error: No strategem command given.')
+        add_to_chat(123, 'Error: No strategem command given.')
         return
     end
     local strategem = cmdParams[2]:lower()
@@ -734,7 +876,7 @@ function handle_strategems(cmdParams)
         if buffactive['light arts'] then
             send_command('input /ja "Addendum: White" <me>')
         elseif buffactive['addendum: white'] then
-            add_to_chat(122,'Error: Addendum: White is already active.')
+            add_to_chat(122, 'Error: Addendum: White is already active.')
         else
             send_command('input /ja "Light Arts" <me>')
         end
@@ -742,7 +884,7 @@ function handle_strategems(cmdParams)
         if buffactive['dark arts'] then
             send_command('input /ja "Addendum: Black" <me>')
         elseif buffactive['addendum: black'] then
-            add_to_chat(122,'Error: Addendum: Black is already active.')
+            add_to_chat(122, 'Error: Addendum: Black is already active.')
         else
             send_command('input /ja "Dark Arts" <me>')
         end
@@ -762,13 +904,13 @@ function handle_strategems(cmdParams)
         elseif strategem == 'enmity' then
             send_command('input /ja Tranquility <me>')
         elseif strategem == 'skillchain' then
-            add_to_chat(122,'Error: Light Arts does not have a skillchain strategem.')
+            add_to_chat(122, 'Error: Light Arts does not have a skillchain strategem.')
         elseif strategem == 'addendum' then
             send_command('input /ja "Addendum: White" <me>')
         else
-            add_to_chat(123,'Error: Unknown strategem ['..strategem..']')
+            add_to_chat(123, 'Error: Unknown strategem [' .. strategem .. ']')
         end
-    elseif buffactive['dark arts']  or buffactive['addendum: black'] then
+    elseif buffactive['dark arts'] or buffactive['addendum: black'] then
         if strategem == 'cost' then
             send_command('input /ja Parsimony <me>')
         elseif strategem == 'speed' then
@@ -778,7 +920,7 @@ function handle_strategems(cmdParams)
         elseif strategem == 'power' then
             send_command('input /ja Ebullience <me>')
         elseif strategem == 'duration' then
-            add_to_chat(122,'Error: Dark Arts does not have a duration strategem.')
+            add_to_chat(122, 'Error: Dark Arts does not have a duration strategem.')
         elseif strategem == 'accuracy' then
             send_command('input /ja Focalization <me>')
         elseif strategem == 'enmity' then
@@ -788,13 +930,12 @@ function handle_strategems(cmdParams)
         elseif strategem == 'addendum' then
             send_command('input /ja "Addendum: Black" <me>')
         else
-            add_to_chat(123,'Error: Unknown strategem ['..strategem..']')
+            add_to_chat(123, 'Error: Unknown strategem [' .. strategem .. ']')
         end
     else
-        add_to_chat(123,'No arts has been activated yet.')
+        add_to_chat(123, 'No arts has been activated yet.')
     end
 end
-
 
 -- Gets the current number of available strategems based on the recast remaining
 -- and the level of the sch.
@@ -805,13 +946,12 @@ function get_current_strategem_count()
 
     local maxStrategems = (player.main_job_level + 10) / 20
 
-    local fullRechargeTime = 4*60
+    local fullRechargeTime = 4 * 60
 
     local currentCharges = math.floor(maxStrategems - maxStrategems * stratsRecast / fullRechargeTime)
 
     return currentCharges
 end
-
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()

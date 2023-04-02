@@ -107,6 +107,26 @@ function get_sets()
         right_ring = "Defending Ring",
         feet = "Nyame Sollerets",
     })
+    sets.Engaged.Arebati = {
+        main = "Shining One",
+        sub = "Utu Grip",
+        ammo = "Coiste Bodhar",
+        head = "Nyame Helm",
+        body = "Gleti's Cuirass",
+        hands = "Gleti's Gauntlets",
+        legs = "Gleti's Breeches",
+        feet = "Nyame Sollerets",
+        neck = "Dgn. Collar +2",
+        waist = "Ioskeha Belt +1",
+        left_ear = "Telos Earring",
+        right_ear = "Sherida Earring",
+        left_ring = "Chirich Ring +1",
+        right_ring = "Niqmaddu Ring",
+        back = {
+            name = "Brigantia's Mantle",
+            augments = {'DEX+20', 'Accuracy+20 Attack+20', 'DEX+10', '"Dbl.Atk."+10', 'Phys. dmg. taken-10%'}
+        }
+    }
 
     sets.Engaged.Sword = {
         main = "Naegling",

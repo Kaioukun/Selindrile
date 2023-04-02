@@ -76,6 +76,32 @@ function get_sets()
         right_ring = "Menelaus's Ring"
     }
 
+    sets.Helix = {
+        Burst = {
+            main = "Bunzi's Rod",
+            sub = "Ammurapi Shield",
+            head = "Agwu's Cap",
+            body = "Agwu's Robe",
+            hands = "Agwu's Gages",
+            legs = "Agwu's Slops",
+            feet = "Arbatel Loafers +3",
+            neck = "Argute Stole +2",
+            waist = "Skrymir Cord +1",
+            left_ear = "Malignance Earring",
+            right_ear = {
+                name = "Arbatel Earring +1",
+                augments = {'System: 1 ID: 1676 Val: 0', 'Mag. Acc.+12', 'Enmity-2'}
+            },
+            left_ring = "Shiva Ring +1",
+            right_ring = "Mallquis Ring",
+            back = {
+                name = "Lugh's Cape",
+                augments = {'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Phys. dmg. taken-10%'}
+            }
+        },
+        Free = {}
+    }
+
     sets.Midcast["Elemental Magic"] = {
         main = "Bunzi's Rod",
         sub = "Ammurapi Shield",
@@ -99,11 +125,11 @@ function get_sets()
     sets.Midcast.Regen = {
         main = "Musa",
         ammo = "Staunch Tathlum",
-        head = "Arbatel Bonnet +2",
+        head = "Arbatel Bonnet +3",
         body = "Telchine Chas.",
-        hands = "Arbatel Bracers +2",
+        hands = "Arbatel Bracers +3",
         legs = "Telchine Braconi",
-        feet = "Nyame Sollerets",
+        feet = "Telchine pigaches",
         neck = "Loricate Torque +1",
         waist = "Embla Sash",
         left_ear = "Magnetic Earring",
@@ -114,16 +140,18 @@ function get_sets()
     }
 
     sets.Midcast["Enhancing Magic"] = {
-        main = "Gada",
-        sub = "Ammurapi Shield",
+        main = "Musa",
         head = "Telchine Cap",
         body = "Telchine Chas.",
         hands = "Telchine Gloves",
         legs = "Telchine Braconi",
+        feet = "Telchine Pigaches",
         waist = "Embla Sash",
-        left_ear = "Magnetic Earring",
-        right_ear = "Calamitous Earring",
-        back = "Lugh's Cape"
+        left_ear = "Mimir Earring",
+        right_ear = "Andoaa Earring",
+        left_ring = "Stikini Ring +1",
+        right_ring = "Stikini Ring +1",
+        back = "Fi Follet Cape +1"
     }
 end
 

@@ -118,6 +118,23 @@ function get_sets()
         right_ear = "Calamitous Earring",
         back = "Lugh's Cape"
     }
+
+    sets.Midcast["Enfeebling Magic"] = {
+        main = "Daybreak",
+        sub = "Ammurapi Shield",
+        head = "Arbatel Bonnet +3",
+        body = "Arbatel Gown +3",
+        hands = "Peda. Bracers +3",
+        legs = "Arbatel Pants +3",
+        feet = "Acad. Loafers +2",
+        neck = "Argute Stole +2",
+        waist = "Luminary Sash",
+        left_ear = "Regal Earring",
+        right_ear = "Malignance Earring",
+        left_ring = "Stikini Ring",
+        right_ring = "Stikini Ring +1"
+    }
+
 end
 
 function precast(spell, action)
