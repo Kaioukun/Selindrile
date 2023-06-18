@@ -10,7 +10,7 @@ function get_sets()
     sets.Idle.Turtle = {
         ammo = "Staunch Tathlum +1",
         head = "Nyame Helm",
-        body = "Hashishin Mintan +2",
+        body = "Hashishin Mintan +3",
         hands = "Nyame Gauntlets",
         legs = "Carmine cuisses +1",
         feet = "Nyame Sollerets",

@@ -13,7 +13,7 @@ function get_sets()
         left_ear = "Moonshade Earring",
         right_ear = "Hearty Earring",
         left_ring = "Defending Ring",
-        right_ring = "Stikini Ring +1",
+        right_ring="Gurebu's Ring",
         back = {
             name = "Alaunus's Cape",
             augments = {'Mag. Acc+20 /Mag. Dmg.+20', 'Damage taken-5%'}

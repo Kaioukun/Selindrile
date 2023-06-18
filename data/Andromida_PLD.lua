@@ -42,6 +42,7 @@ function get_sets()
         right_ring = "Stikini Ring +1",
         back = "Weard Mantle"
     }
+    sets.Midcast['Enhancing Magic'].Phalanx = sets.Engaged
 
     sets.Midcast['Healing Magic'] = {
         equipable = true,

@@ -112,7 +112,7 @@ function get_sets()
         waist = "Sailfi Belt +1",
         left_ear = "Moonshade Earring",
         right_ear = "Thrud Earring",
-        left_ring = "Karieyh Ring",
+        left_ring = "Ephramad's Ring",
         right_ring = "Epaminondas's Ring",
         back = {
             name = "Brigantia's Mantle",

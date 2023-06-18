@@ -163,22 +163,24 @@ function get_sets()
     }
 
     sets.Midcast["Elemental Magic"] = {
-        equipable = true,
-        main = "Daybreak",
-        sub = "Ammurapi Shield",
+        main = "Idris",
+        sub = "Genmei Shield",
         range = "Dunna",
-        head = "Jhakri Coronal +2",
-        body = "Jhakri Robe +2",
-        hands = "Jhakri Cuffs +2",
-        legs = "Jhakri Slops +2",
-        feet = "Jhakri Pigaches +2",
-        neck = "Sanctity Necklace",
-        waist = "Eschan Stone",
-        left_ear = "Malignance Earring",
-        right_ear = "Friomisi Earring",
-        left_ring = "Stikini Ring", -- "Strendu Ring",
-        right_ring = "Stikini Ring", -- "Acuman Ring",
-        back = "Nantosuelta's Cape"
+        head = "Azimuth Hood +3",
+        body = "Azimuth Coat +3",
+        hands = "Geo. Mitaines +2",
+        legs = "Nyame Flanchard",
+        feet = "Geo. Sandals +2",
+        neck = "Bagua Charm +2",
+        waist = "Acuity Belt +1",
+        left_ear = "Moonshade Earring",
+        right_ear = "Etiolation Earring",
+        left_ring = "Metamor. Ring +1",
+        right_ring = "Mujin Band",
+        back = {
+            name = "Nantosuelta's Cape",
+            augments = {'Eva.+20 /Mag. Eva.+20', 'Pet: "Regen"+10', 'Pet: "Regen"+5'}
+        }
     }
 
     sets.Geomancy = {

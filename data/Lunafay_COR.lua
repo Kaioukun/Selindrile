@@ -21,7 +21,7 @@ function get_sets()
 
     sets.Engaged = {}
     sets.Engaged.Normal = {
-        main={ name="Rostam", augments={'Path: A',}},
+        -- main={ name="Rostam", augments={'Path: A',}},
         ammo = "Chrono Bullet",
         head = "Malignance Chapeau",
         body = "Mummu Jacket +2",

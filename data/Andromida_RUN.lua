@@ -390,18 +390,22 @@ function get_sets()
     }
 
     sets.FastCast = {
-        ammo="Sapience orb", -- 2
-        head="Rune. Bandeau +3", -- 14
-        hands="Leyline Gloves", -- 5
-        legs="Agwu's Slops", -- 7
-        feet="Carmine Greaves +1", -- 8
-        neck="Voltsurge Torque", -- 4
-        left_ear="Etiolation Earring", -- 2
-        right_ear="Loquac. Earring", -- 2
-        left_ring="Prolix Ring", -- 2
-        right_ring="Kishar Ring", -- 4
-        back={ name="Ogma's Cape", augments={'"Fast Cast"+10',}}, -- 10
-    } -- 60
+        ammo = "Sapience Orb",
+        head = "Rune. Bandeau +3",
+        body = "Erilaz Surcoat +3",
+        hands = "Leyline Gloves",
+        legs = "Agwu's Slops",
+        feet = "Carmine Greaves +1",
+        neck = "Voltsurge Torque",
+        left_ear = "Etiolation Earring",
+        right_ear = "Odnowa Earring +1",
+        left_ring = "Kishar Ring",
+        right_ring = "Defending Ring",
+        back = {
+            name = "Ogma's Cape",
+            augments = {'"Fast Cast"+10'}
+        }
+    }
 
     sets.SIRD = {
         ammo = "Staunch Tathlum +1", -- 11
@@ -433,6 +437,27 @@ function get_sets()
 
     sets.Midcast = {}
 
+    sets.Midcast["Healing Magic"] = {}
+    sets.Midcast["Healing Magic"]["Cure IV"] = {
+        ammo = "Sapience Orb",
+        head = "Nyame Helm",
+        body = "Nyame Mail",
+        hands = "Erilaz Gauntlets +3",
+        legs = "Eri. Leg Guards +3",
+        feet = "Erilaz Greaves +3",
+        waist = "Sroda Belt",
+        right_ear = "Cryptic Earring",
+        left_ring = "Moonlight Ring",
+        right_ring = "Vocane Ring +1",
+        back = {
+            name = "Ogma's Cape",
+            augments = {'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Mag. Evasion+10', 'Enmity+10', 'Phys. dmg. taken-10%'}
+        }
+    }
+    sets.Midcast["Healing Magic"]["Cure III"] = set_combine(sets.Midcast["Healing Magic"]["Cure IV"], {})
+    sets.Midcast["Healing Magic"]["Cure II"] = set_combine(sets.Midcast["Healing Magic"]["Cure IV"], {})
+    sets.Midcast["Healing Magic"]["Cure"] = set_combine(sets.Midcast["Healing Magic"]["Cure IV"], {})
+
     sets.Midcast["Enhancing Magic"] = {
         equipable = true,
         sub = "Utu Grip",
@@ -450,7 +475,10 @@ function get_sets()
         ammo = "Staunch Tathlum +1",
         head = "Fu. Bandeau +3",
         hands = "Regal Gauntlets",
-        legs = "Futhark Trousers +1",
+        legs = {
+            name="Herculean Trousers",
+            augments={'Phalanx +3'}
+        },
         feet = {
             name = "Herculean Boots",
             augments = {'Weapon Skill Acc.+3', 'Crit.hit rate+3', 'Phalanx +5', 'Accuracy+6 Attack+6'}
@@ -460,7 +488,7 @@ function get_sets()
         left_ear = "Andoaa Earring",
         right_ear = "Mimir Earring",
         left_ring = "Stikini Ring +1",
-        right_ring = "Stikini Ring +1",
+        right_ring = "Defending Ring",
     }
     sets.Midcast["Enhancing Magic"].Regen = set_combine(
         sets.Midcast["Enhancing Magic"],

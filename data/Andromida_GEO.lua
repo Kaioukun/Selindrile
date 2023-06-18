@@ -10,9 +10,9 @@ function get_sets()
         range = "Dunna",
         head = "Azimuth Hood +3",
         body = "Azimuth Coat +3",
-        hands = "Azimuth Gloves +2",
+        hands = "Azimuth Gloves +3",
         legs = "Nyame Flanchard",
-        feet = "Geo. Sandals +1",
+        feet = "Geo. Sandals +3",
         neck = "Loricate Torque +1",
         waist = "Carrier's Sash",
         left_ear = "Odnowa Earring +1",
@@ -27,11 +27,11 @@ function get_sets()
     sets.Idle.Dt = set_combine(sets.Idle.Refresh, {
         main = "Malignance Pole",
         range = "Dunna",
-        neck = "Twilight Torque",
+        -- neck = "Twilight Torque",
         left_ear = "Genmei Earring",
         right_ear = "Etiolation Earring",
         left_ring = "Defending Ring",
-        right_ring = "Sheltered Ring"
+        -- right_ring = "Sheltered Ring"
     })
     sets.Idle.Pet = {
         main = "Idris",
@@ -95,33 +95,33 @@ function get_sets()
     sets.Midcast["Healing Magic"] = {}
     sets.Midcast["Healing Magic"].Cure = {
         main = "Daybreak",
-        sub = "Genmei Shield",
+        -- sub = "Genmei Shield",
         range = "Dunna",
-        head = {
-            name = "Vanya Hood",
-            augments = {
-                'Healing magic skill +20',
-                '"Cure" spellcasting time -7%',
-                'Magic dmg. taken -3'
-            }
-        },
+        -- head = {
+        --     name = "Vanya Hood",
+        --     augments = {
+        --         'Healing magic skill +20',
+        --         '"Cure" spellcasting time -7%',
+        --         'Magic dmg. taken -3'
+        --     }
+        -- },
         body = "Geomancy Tunic +1",
         hands = "Telchine Gloves",
         legs = "Bagua Pants +1",
-        feet = {
-            name = "Vanya Clogs",
-            augments = {
-                'Healing magic skill +20',
-                '"Cure" spellcasting time -7%',
-                'Magic dmg. taken -3'
-            }
-        },
-        neck = "Henic Torque",
+        -- feet = {
+        --     name = "Vanya Clogs",
+        --     augments = {
+        --         'Healing magic skill +20',
+        --         '"Cure" spellcasting time -7%',
+        --         'Magic dmg. taken -3'
+        --     }
+        -- },
+        -- neck = "Henic Torque",
         waist = "Gishdubar Sash",
         left_ear = "Malignance Earring",
         right_ear = "Regal Earring",
-        left_ring = "Janniston Ring",
-        right_ring = "Sirona's Ring"
+        -- left_ring = "Janniston Ring",
+        -- right_ring = "Sirona's Ring"
     }
     sets.Midcast["Healing Magic"]["Cure II"] = sets.Midcast["Healing Magic"].Cure
     sets.Midcast["Healing Magic"]["Cure III"] = sets.Midcast["Healing Magic"].Cure
@@ -133,7 +133,7 @@ function get_sets()
         body = "Telchine Chas.",
         hands = "Telchine Gloves",
         legs = "Telchine Braconi",
-        feet = "Geo. Sandals +1",
+        feet = "Geo. Sandals +3",
         waist = "Gishdubar Sash"
     }
 
@@ -145,7 +145,7 @@ function get_sets()
         body = "Geo. Tunic +1",
         hands = "Geo. Mitaines +3",
         legs = "Geo. Pants +1",
-        feet = "Geo. Sandals +1",
+        feet = "Geo. Sandals +3",
         neck = "Bagua Charm +2",
         waist = "Luminary Sash",
         left_ear = "Malignance Earring",
@@ -174,8 +174,8 @@ function get_sets()
         body = "Geomancy Tunic +1",
         hands = "Geo. Mitaines +3",
         legs = "Geomancy Pants +1",
-        feet = "Geo. Sandals +1",
-        neck = "Bagua Charm +1",
+        feet = "Geo. Sandals +3",
+        neck = "Bagua Charm +2",
         waist = "Luminary Sash",
         left_ear = "Etiolation Earring",
         right_ear = "Malignance Earring",
@@ -213,12 +213,12 @@ function get_sets()
         range = "Dunna",
         head = "Azimuth Hood +3",
         body = "Bagua tunic +1",
-        hands = "Shrieker's Cuffs",
+        -- hands = "Shrieker's Cuffs",
         legs = "Bagua Pants +1",
         feet = "Azimuth Gaiters +3",
-        neck = "Bagua Charm +1",
+        neck = "Bagua Charm +2",
         left_ear = "Magnetic Earring",
-        right_ear = "Calamitous Earring",
+        -- right_ear = "Calamitous Earring",
         left_ring = "Stikini Ring +1",
         right_ring = "Stikini Ring +1",
         back = "Nantosuelta's Cape"
